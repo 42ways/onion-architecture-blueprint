@@ -3,11 +3,8 @@ package de.fourtytwoways.enums.provider;
 
 import de.fourtytwoways.enums.core.AbstractEnumFactory;
 import de.fourtytwoways.enums.core.EnumEntry;
-import de.fourtytwoways.enums.core.EnumType;
-import de.fourtytwoways.enums.types.Product;
-import de.fourtytwoways.enums.types.Tariff;
+import de.fourtytwoways.enums.types.EnumType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExampleEnumFactory extends AbstractEnumFactory {

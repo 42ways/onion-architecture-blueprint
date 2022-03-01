@@ -3,7 +3,7 @@ package de.fourtytwoways.enums.demo;
 
 import de.fourtytwoways.enums.core.EnumEntry;
 import de.fourtytwoways.enums.core.EnumFactory;
-import de.fourtytwoways.enums.core.EnumType;
+import de.fourtytwoways.enums.types.EnumType;
 import de.fourtytwoways.enums.provider.ExampleEnumFactory;
 
 public class EnumDemo {

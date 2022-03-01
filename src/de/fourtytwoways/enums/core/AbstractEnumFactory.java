@@ -1,6 +1,8 @@
 package de.fourtytwoways.enums.core;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.enums.types.EnumType;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,8 @@
 package de.fourtytwoways.enums.core;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.enums.types.EnumType;
+
 public abstract class AbstractEnumEntry implements EnumEntry {
     final EnumType type;
     final int id;
