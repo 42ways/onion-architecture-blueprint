@@ -1,27 +1,8 @@
 package de.fourtytwoways.enums.core;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
-public abstract class EnumEntry {
-    final EnumType type;
-    final int id;
-    final String key;
-    final String value;
-
-    public EnumEntry(EnumType type, int id, String key, String value) {
-        this.type = type;
-        this.id = id;
-        this.key = key;
-        this.value = value;
-    }
-
-    final int getId() {
-        return id;
-    }
-
-    final String getKey() {
-        return key;
-    }
-
-    final String getValue() {
-        return value;
-    }
+public interface EnumEntry {
+    int getId();
+    String getKey();
+    String getValue();
 }

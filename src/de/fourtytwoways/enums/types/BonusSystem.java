@@ -1,9 +1,10 @@
 package de.fourtytwoways.enums.types;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.enums.core.EnumEntry;
+import de.fourtytwoways.enums.core.AbstractEnumEntry;
 import de.fourtytwoways.enums.core.EnumType;
 
-public class BonusSystem extends EnumEntry {
+public class BonusSystem extends AbstractEnumEntry {
     public BonusSystem(int id, String key, String value) {
         super(EnumType.BONUS_SYSTEM, id, key, value);
     }
