@@ -29,6 +29,6 @@ public abstract class AbstractEnumEntry implements EnumEntry {
     }
 
     public final String toString() {
-        return "[" + id + ", " + key + ", " + value + "]";
+        return type + " [" + id + ", " + key + ", " + value + "]";
     }
 }
