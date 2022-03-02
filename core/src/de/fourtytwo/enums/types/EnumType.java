@@ -1,4 +1,4 @@
-package de.fourtytwoways.enums.types;
+package de.fourtytwo.enums.types;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 public enum EnumType {

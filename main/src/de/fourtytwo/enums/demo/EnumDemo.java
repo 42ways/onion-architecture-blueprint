@@ -1,10 +1,10 @@
-package de.fourtytwoways.enums.demo;
+package de.fourtytwo.enums.demo;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.enums.core.EnumEntry;
-import de.fourtytwoways.enums.core.EnumFactory;
-import de.fourtytwoways.enums.types.EnumType;
-import de.fourtytwoways.enums.provider.ExampleEnumFactory;
+import de.fourtytwo.enums.core.EnumEntry;
+import de.fourtytwo.enums.provider.ExampleEnumFactory;
+import de.fourtytwo.enums.types.EnumType;
+import de.fourtytwo.enums.core.EnumFactory;
 
 public class EnumDemo {
 
