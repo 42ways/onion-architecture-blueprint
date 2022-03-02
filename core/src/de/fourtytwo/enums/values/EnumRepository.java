@@ -6,7 +6,7 @@ import de.fourtytwo.enums.types.EnumType;
 import java.util.List;
 import java.util.Optional;
 
-public interface EnumFactory {
+public interface EnumRepository {
     List<EnumValue> getAllEntries(EnumType enumType);
 
     Optional<EnumValue> getEntry(EnumType enumType, int enumId);

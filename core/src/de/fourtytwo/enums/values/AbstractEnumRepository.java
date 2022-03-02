@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractEnumFactory implements EnumFactory {
+public abstract class AbstractEnumRepository implements EnumRepository {
     public List<EnumValue> getAllEntries(EnumType enumType) {
         return Collections.unmodifiableList(getEntriesImpl(enumType));
     }

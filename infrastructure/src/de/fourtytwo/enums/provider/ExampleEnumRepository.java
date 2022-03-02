@@ -1,13 +1,13 @@
 package de.fourtytwo.enums.provider;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwo.enums.values.AbstractEnumFactory;
+import de.fourtytwo.enums.values.AbstractEnumRepository;
 import de.fourtytwo.enums.values.EnumValue;
 import de.fourtytwo.enums.types.EnumType;
 
 import java.util.List;
 
-public class ExampleEnumFactory extends AbstractEnumFactory {
+public class ExampleEnumRepository extends AbstractEnumRepository {
     ExampleEnumProviderOne providerOne = new ExampleEnumProviderOne();
     ExampleEnumProviderTwo providerTwo = new ExampleEnumProviderTwo();
 
