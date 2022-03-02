@@ -1,7 +1,7 @@
-package de.fourtytwo.enums.core;
+package de.fourtytwo.enums.values;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-public interface EnumEntry {
+public interface EnumValue {
     int getId();
     String getKey();
     String getValue();

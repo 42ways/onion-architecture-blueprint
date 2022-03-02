@@ -1,10 +1,10 @@
 package de.fourtytwo.enums.demo;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwo.enums.core.EnumEntry;
+import de.fourtytwo.enums.values.EnumValue;
 import de.fourtytwo.enums.provider.ExampleEnumFactory;
 import de.fourtytwo.enums.types.EnumType;
-import de.fourtytwo.enums.core.EnumFactory;
+import de.fourtytwo.enums.values.EnumFactory;
 
 public class EnumDemo {
 
@@ -12,13 +12,13 @@ public class EnumDemo {
         EnumFactory myEnumFactory = new ExampleEnumFactory();
 
         System.out.println("My products are:");
-        for (EnumEntry e:
+        for (EnumValue e:
              myEnumFactory.getAllEntries(EnumType.PRODUCT)) {
             System.out.println(e);
         }
 
         System.out.println("My tariffs are:");
-        for (EnumEntry e:
+        for (EnumValue e:
                 myEnumFactory.getAllEntries(EnumType.TARIFF)) {
             System.out.println(e);
         }

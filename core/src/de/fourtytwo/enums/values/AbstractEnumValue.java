@@ -1,15 +1,15 @@
-package de.fourtytwo.enums.core;
+package de.fourtytwo.enums.values;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwo.enums.types.EnumType;
 
-public abstract class AbstractEnumEntry implements EnumEntry {
+public abstract class AbstractEnumValue implements EnumValue {
     final EnumType type;
     final int id;
     final String key;
     final String value;
 
-    protected AbstractEnumEntry(EnumType type, int id, String key, String value) {
+    protected AbstractEnumValue(EnumType type, int id, String key, String value) {
         this.type = type;
         this.id = id;
         this.key = key;
