@@ -1,13 +1,11 @@
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import javax.persistence.metamodel.EntityType;
-
-import java.util.Map;
 
 public class Main {
     private static final SessionFactory ourSessionFactory;
@@ -27,9 +25,8 @@ public class Main {
         return ourSessionFactory.openSession();
     }
 
-    public static void main(final String[] args) throws Exception {
-        final Session session = getSession();
-        try {
+    public static void main(final String[] args) {
+        try (Session session = getSession()) {
             System.out.println("querying all the managed entities...");
             final Metamodel metamodel = session.getSessionFactory().getMetamodel();
             for (EntityType<?> entityType : metamodel.getEntities()) {
@@ -40,8 +37,6 @@ public class Main {
                     System.out.println("  " + o);
                 }
             }
-        } finally {
-            session.close();
         }
     }
 }
