@@ -10,6 +10,8 @@
         <!-- <property name="connection.password"/> -->
 
         <!-- DB schema will be updated if needed -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- <property name="show_sql">true</property> -->
+        <mapping class="de.fourtytwoways.enums.provider.EnumTable"/>
     </session-factory>
 </hibernate-configuration>
