@@ -3,7 +3,9 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" value="4e5ff41e-e955-4185-9c90-1ba453562f8b" />
+        </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
       </configuration>
@@ -21,7 +23,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/h2-2.1.210.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/h2-1.4.200.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

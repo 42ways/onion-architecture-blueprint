@@ -1,4 +1,4 @@
-package de.fourtytwo.enums.values;
+package de.fourtytwoways.enums.values;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 public interface EnumValue {
