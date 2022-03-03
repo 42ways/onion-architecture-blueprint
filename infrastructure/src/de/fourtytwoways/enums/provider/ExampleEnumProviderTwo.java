@@ -45,35 +45,44 @@ public class ExampleEnumProviderTwo {
             session.beginTransaction();
             session.persist(new EnumTable( 1, "P870", EnumType.PRODUCT, "Gemischte Leben"));
             session.persist(new EnumTable( 2, "P890", EnumType.PRODUCT, "Was auch immer für ein Produkt"));
+            session.persist(new EnumTable( 3, "T870", EnumType.TARIFF, "Gemischte Leben 870"));
+            session.persist(new EnumTable( 4, "BU210", EnumType.TARIFF, "Berufsunfähigkeit Zusatzversicherung"));
+            session.persist(new EnumTable( 5, "T890", EnumType.TARIFF, "Was auch immer für ein Tarif"));
             session.getTransaction().commit();
             session.close();
         }
     }
 
     List<EnumValue> getProducts() {
+        List<EnumTable> results = getEnumValues(EnumType.PRODUCT);
         List<EnumValue> products = new ArrayList<>();
-        try (Session session = getSession()) {
-            CriteriaBuilder cb = session.getCriteriaBuilder();
-            CriteriaQuery<EnumTable> cr = cb.createQuery(EnumTable.class);
-            Root<EnumTable> root = cr.from(EnumTable.class);
-            cr.select(root).where(cb.equal(root.get("type"), EnumType.PRODUCT.name()));
-            Query query = session.createQuery(cr);
-
-            List<EnumTable> results = query.getResultList();
-            session.close();
-
-            for (EnumTable r : results) {
-                products.add(new Product(r.id, r.key, r.value));
-            }
+        for (EnumTable r : results) {
+            products.add(new Product(r.id, r.key, r.value));
         }
         return products;
     }
 
     List<EnumValue> getTariffs() {
+        List<EnumTable> results = getEnumValues(EnumType.TARIFF);
         List<EnumValue> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff(1, "T870", "Gemischte Leben"));
-        tariffs.add(new Tariff(2, "BU210", "Berufsunfähigkeit Zusatzversicherung"));
-        tariffs.add(new Tariff(3, "T890", "Was auch immer für ein Tarif"));
+        for (EnumTable r : results) {
+            tariffs.add(new Tariff(r.id, r.key, r.value));
+        }
         return tariffs;
+    }
+
+    private List<EnumTable> getEnumValues(EnumType type) {
+        try (Session session = getSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<EnumTable> cr = cb.createQuery(EnumTable.class);
+            Root<EnumTable> root = cr.from(EnumTable.class);
+            cr.select(root).where(cb.equal(root.get("type"), type.name()));
+            Query query = session.createQuery(cr);
+
+            List<EnumTable> results = query.getResultList();
+            session.close();
+
+            return results;
+        }
     }
 }
