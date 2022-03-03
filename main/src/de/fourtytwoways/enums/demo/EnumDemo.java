@@ -23,10 +23,11 @@ public class EnumDemo {
             System.out.println(e);
         }
 
-        System.out.println("Tariff 4 is: " + myEnumRepository.getEntry(EnumType.TARIFF, 4).orElse(null));
+        System.out.println("Tariff with id 2 is: " + myEnumRepository.getEntry(EnumType.TARIFF, 2).orElse(null));
+        System.out.println("Tariff with id 3 is: " + myEnumRepository.getEntry(EnumType.TARIFF, 3).orElse(null));
 
         System.out.println("Bonussystem VA is: " + myEnumRepository.getEntryByKey(EnumType.BONUS_SYSTEM, "VA").orElse(null));
 
-        System.out.println("Product Gemischte Leben is: " + myEnumRepository.getEntryByValue(EnumType.PRODUCT, "Gemischte Leben").orElse(null));
+        System.out.println("Product Gemischte Versicherung is: " + myEnumRepository.getEntryByValue(EnumType.PRODUCT, "Gemischte Versicherung").orElse(null));
     }
 }
