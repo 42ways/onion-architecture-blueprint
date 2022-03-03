@@ -8,20 +8,21 @@ import de.fourtytwoways.enums.values.EnumRepository;
 
 public class EnumDemo {
 
+    private static void printEnums(EnumRepository repo, EnumType t) {
+        System.out.println("Values for " + t + " are:");
+        for (EnumValue e:
+                repo.getAllEntries(t)) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
         EnumRepository myEnumRepository = new ExampleEnumRepository();
 
-        System.out.println("My products are:");
-        for (EnumValue e:
-             myEnumRepository.getAllEntries(EnumType.PRODUCT)) {
-            System.out.println(e);
-        }
-
-        System.out.println("My tariffs are:");
-        for (EnumValue e:
-                myEnumRepository.getAllEntries(EnumType.TARIFF)) {
-            System.out.println(e);
-        }
+        printEnums(myEnumRepository, EnumType.PRODUCT);
+        printEnums(myEnumRepository, EnumType.TARIFF);
+        printEnums(myEnumRepository, EnumType.BONUS_SYSTEM);
+        printEnums(myEnumRepository, EnumType.SEX);
 
         System.out.println("Tariff with id 2 is: " + myEnumRepository.getEntry(EnumType.TARIFF, 2).orElse(null));
         System.out.println("Tariff with id 3 is: " + myEnumRepository.getEntry(EnumType.TARIFF, 3).orElse(null));

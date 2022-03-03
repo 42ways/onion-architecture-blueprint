@@ -4,5 +4,6 @@ package de.fourtytwoways.enums.types;
 public enum EnumType {
     PRODUCT,
     TARIFF,
-    BONUS_SYSTEM
+    BONUS_SYSTEM,
+    SEX
 }

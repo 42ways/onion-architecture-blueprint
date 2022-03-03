@@ -23,6 +23,9 @@ public class ExampleEnumRepository extends AbstractEnumRepository {
             case BONUS_SYSTEM -> {
                 return providerOne.getBonusSystems();
             }
+            case SEX -> {
+                return providerOne.getSexes();
+            }
         }
         return null;
     }
