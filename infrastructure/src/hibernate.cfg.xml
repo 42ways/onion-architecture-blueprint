@@ -12,8 +12,8 @@
         <!-- DB schema will be updated if needed -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- <property name="show_sql">true</property> -->
-        <mapping class="de.fourtytwoways.enums.provider.EnumValueDAO"/>
-        <mapping class="de.fourtytwoways.people.db.PersonDAO"/>
-        <mapping class="de.fourtytwoways.contracts.db.ContractDAO"/>
+        <mapping class="de.fourtytwoways.exp.arch.onion.enums.provider.EnumValueDAO"/>
+        <mapping class="de.fourtytwoways.exp.arch.onion.people.db.PersonDAO"/>
+        <mapping class="de.fourtytwoways.exp.arch.onion.contracts.db.ContractDAO"/>
     </session-factory>
 </hibernate-configuration>
