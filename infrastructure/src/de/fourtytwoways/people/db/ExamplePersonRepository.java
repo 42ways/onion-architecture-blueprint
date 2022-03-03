@@ -25,8 +25,10 @@ public class ExamplePersonRepository implements PersonRepository {
     }
 
     @Override
-    public Optional<Person> getPersonById(int id) {
-        return Optional.empty();
+    public Person getPersonById(int id) {
+        try (Session session = SessionFactory.getSession()) {
+            return toPerson(session.find(PersonDAO.class, new Integer(id)));
+        }
     }
 
     @Override
@@ -51,6 +53,8 @@ public class ExamplePersonRepository implements PersonRepository {
     }
 
     private Person toPerson(PersonDAO personDAO) {
+        if ( personDAO == null )
+            return null;
         Sex sex = (Sex)enumRepository.getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
         return new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
     }

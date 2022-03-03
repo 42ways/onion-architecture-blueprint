@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonRepository {
-    Optional<Person> getPersonById(int id);
+    Person getPersonById(int id);
 
     List<Person> getPeopleByName(String name, String surname);
 
