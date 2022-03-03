@@ -1,0 +1,192 @@
+@startuml
+
+' skinparam linetype ortho
+
+title Onion Architecture Example
+
+component CORE #orange {
+
+  package de.fourtytwoways.exp.arch.onion.contracts {
+    class de.fourtytwoways.exp.arch.onion.contracts.Contract {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.contracts {
+    interface de.fourtytwoways.exp.arch.onion.contracts.ContractRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.types {
+    class de.fourtytwoways.exp.arch.onion.enums.types.BonusSystem {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.types {
+    enum EnumType {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.types {
+    class de.fourtytwoways.exp.arch.onion.enums.types.Product {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.types {
+    class de.fourtytwoways.exp.arch.onion.enums.types.Sex {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.types {
+    class de.fourtytwoways.exp.arch.onion.enums.types.Tariff {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.values {
+    abstract class de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.values {
+    abstract class de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.values {
+    interface de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.values {
+    interface de.fourtytwoways.exp.arch.onion.enums.values.EnumValue {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.people {
+    class de.fourtytwoways.exp.arch.onion.people.Person {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.people {
+    interface de.fourtytwoways.exp.arch.onion.people.PersonRepository {
+    }
+  }
+  
+
+  de.fourtytwoways.exp.arch.onion.contracts.Contract o-- de.fourtytwoways.exp.arch.onion.enums.types.Product : product
+  de.fourtytwoways.exp.arch.onion.enums.types.BonusSystem -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
+  de.fourtytwoways.exp.arch.onion.enums.types.Product -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
+  de.fourtytwoways.exp.arch.onion.enums.types.Sex -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
+  de.fourtytwoways.exp.arch.onion.enums.types.Tariff -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
+  de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumRepository .up.|> de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository
+  de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue .up.|> de.fourtytwoways.exp.arch.onion.enums.values.EnumValue
+  de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue o-- de.fourtytwoways.exp.arch.onion.enums.types.EnumType : type
+  de.fourtytwoways.exp.arch.onion.people.Person o-- de.fourtytwoways.exp.arch.onion.enums.types.Sex : sex
+
+}
+
+component INFRASTRUCTURE #lightblue {
+
+  package de.fourtytwoways.exp.arch.onion.contracts.db {
+    class de.fourtytwoways.exp.arch.onion.contracts.db.ContractDAO {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.contracts.db {
+    class de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.database {
+    class de.fourtytwoways.exp.arch.onion.database.SessionFactory {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.provider {
+    class de.fourtytwoways.exp.arch.onion.enums.provider.EnumValueDAO {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.provider {
+    class de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderOne {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.provider {
+    class de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderTwo {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.provider {
+    class de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.people.db {
+    class de.fourtytwoways.exp.arch.onion.people.db.ExamplePersonRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.people.db {
+    class de.fourtytwoways.exp.arch.onion.people.db.PersonDAO {
+    }
+  }
+  
+
+  de.fourtytwoways.exp.arch.onion.contracts.db.ContractDAO -up-|> de.fourtytwoways.exp.arch.onion.contracts.Contract
+  de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository .up.|> de.fourtytwoways.exp.arch.onion.contracts.ContractRepository
+  de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository o-- de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository : enumRepository
+  de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumRepository
+  de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderOne : providerOne
+  de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderTwo : providerTwo
+  de.fourtytwoways.exp.arch.onion.people.db.ExamplePersonRepository .up.|> de.fourtytwoways.exp.arch.onion.people.PersonRepository
+  de.fourtytwoways.exp.arch.onion.people.db.ExamplePersonRepository o-- de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository : enumRepository
+
+}
+
+component MAIN {
+
+  package de.fourtytwoways.exp.arch.onion.contracts.demo {
+    class de.fourtytwoways.exp.arch.onion.contracts.demo.ContractDemo {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.enums.demo {
+    class de.fourtytwoways.exp.arch.onion.enums.demo.EnumDemo {
+    }
+  }
+  
+
+  package de.fourtytwoways.exp.arch.onion.people.demo {
+    class de.fourtytwoways.exp.arch.onion.people.demo.PersonDemo {
+    }
+  }
+
+}
+
+  INFRASTRUCTURE -[#blue,bold]-> CORE
+  MAIN -[#blue,bold]-> CORE
+  MAIN -[#blue,bold]-> INFRASTRUCTURE
+
+
+@enduml
