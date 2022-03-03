@@ -13,5 +13,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- <property name="show_sql">true</property> -->
         <mapping class="de.fourtytwoways.enums.provider.EnumValueDAO"/>
+        <mapping class="de.fourtytwoways.people.db.PersonDAO"/>
     </session-factory>
 </hibernate-configuration>

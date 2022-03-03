@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonRepository {
-    List<Person> getAllPeople();
+    Optional<Person> getPersonById(int id);
 
-    Optional<Person> getPersonByName(String name, String surname);
+    List<Person> getPeopleByName(String name, String surname);
 
     boolean savePerson(Person person);
 }

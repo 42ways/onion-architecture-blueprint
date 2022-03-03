@@ -56,4 +56,7 @@ public class Person {
         return sex;
     }
 
+    public String toString() {
+        return "PERSON [" + name + " " + surname + ", born on " + birthday + ", " + sex + "]";
+    }
 }

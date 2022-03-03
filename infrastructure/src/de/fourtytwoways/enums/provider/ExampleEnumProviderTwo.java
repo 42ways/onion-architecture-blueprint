@@ -22,6 +22,7 @@ public class ExampleEnumProviderTwo {
     }
 
     private void insertExampleData() {
+        // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             session.persist(new EnumValueDAO( 1, "ARR", EnumType.PRODUCT, "Aufgeschobene Rürup-Rente"));
