@@ -2,7 +2,6 @@ package de.fourtytwoways.people.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.database.SessionFactory;
-import de.fourtytwoways.enums.provider.EnumValueDAO;
 import de.fourtytwoways.enums.types.EnumType;
 import de.fourtytwoways.enums.types.Sex;
 import de.fourtytwoways.enums.values.EnumRepository;
@@ -15,7 +14,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
-import java.util.Optional;
 
 public class ExamplePersonRepository implements PersonRepository {
     private final EnumRepository enumRepository;
@@ -27,7 +25,7 @@ public class ExamplePersonRepository implements PersonRepository {
     @Override
     public Person getPersonById(int id) {
         try (Session session = SessionFactory.getSession()) {
-            return toPerson(session.find(PersonDAO.class, new Integer(id)));
+            return toPerson(session.find(PersonDAO.class, id));
         }
     }
 
@@ -48,7 +46,7 @@ public class ExamplePersonRepository implements PersonRepository {
             List<PersonDAO> results = query.getResultList();
             session.close();
 
-            return results.stream().map(personDAO -> toPerson(personDAO)).toList();
+            return results.stream().map(this::toPerson).toList();
         }
     }
 
