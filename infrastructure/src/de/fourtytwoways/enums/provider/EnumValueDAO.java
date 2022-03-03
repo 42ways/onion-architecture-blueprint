@@ -5,19 +5,21 @@ import de.fourtytwoways.enums.types.EnumType;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class EnumTable {
+@Table(name = "ENUM_VALUES")
+public class EnumValueDAO {
     @Id
     int id;
     String key;
     String type;
     String value;
 
-    EnumTable() {
+    EnumValueDAO() {
     }
 
-    EnumTable(int id, String key, EnumType type, String value) {
+    EnumValueDAO(int id, String key, EnumType type, String value) {
         this.id = id;
         this.key = key;
         this.type = type.name();
