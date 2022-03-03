@@ -64,7 +64,7 @@ public class ExamplePersonRepository implements PersonRepository {
             session.beginTransaction();
             PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
                     person.getBirthday(), person.getSex().getKey());
-            session.persist(personDAO);
+            session.saveOrUpdate(personDAO);
             session.getTransaction().commit();
             session.close();
             return true;

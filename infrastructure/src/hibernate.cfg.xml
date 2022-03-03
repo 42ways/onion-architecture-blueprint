@@ -14,5 +14,6 @@
         <!-- <property name="show_sql">true</property> -->
         <mapping class="de.fourtytwoways.enums.provider.EnumValueDAO"/>
         <mapping class="de.fourtytwoways.people.db.PersonDAO"/>
+        <mapping class="de.fourtytwoways.contracts.db.ContractDAO"/>
     </session-factory>
 </hibernate-configuration>
