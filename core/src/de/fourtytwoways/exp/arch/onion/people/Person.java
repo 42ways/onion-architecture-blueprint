@@ -2,15 +2,19 @@ package de.fourtytwoways.exp.arch.onion.people;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.exp.arch.onion.enums.types.Sex;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode
 public class Person {
-    private int id;
-    private String name;
-    private String surname;
-    private LocalDate birthday;
-    private Sex sex;
+    @Getter private int id;
+    @Getter @Setter private String name;
+    @Getter @Setter private String surname;
+    @Getter @Setter private LocalDate birthday;
+    @Getter @Setter private Sex sex;
 
     public Person(int id, String name, String surname, LocalDate birthday, Sex sex) {
         this.id = id;
@@ -18,42 +22,6 @@ public class Person {
         this.setSurname(surname);
         this.setBirthday(birthday);
         this.setSex(sex);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setSex(Sex sex) {
-        this.sex = sex;
-    }
-
-    public Sex getSex() {
-        return sex;
     }
 
     public String toString() {
