@@ -208,7 +208,7 @@ component MAIN #lightgray {
 
 
 footer
-(c) 2022 Thomas Herrmann, 42ways GmbH
+© 2022 Thomas Herrmann, 42ways GmbH
 endfooter
 
 @enduml
