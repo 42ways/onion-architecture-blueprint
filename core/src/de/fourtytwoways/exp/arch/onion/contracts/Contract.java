@@ -2,15 +2,19 @@ package de.fourtytwoways.exp.arch.onion.contracts;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.exp.arch.onion.enums.types.Product;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode
 public class Contract {
-    private String contractNumber;
-    private Product product;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private double premium;
+    @Getter @Setter private String contractNumber;
+    @Getter @Setter private Product product;
+    @Getter @Setter private LocalDate startDate;
+    @Getter @Setter private LocalDate endDate;
+    @Getter @Setter private double premium;
 
     protected Contract() {
     }
@@ -27,43 +31,4 @@ public class Contract {
         return "CONTRACT [" + contractNumber + " - " + product + ", from " + startDate + " to " + endDate + " with premium " + premium + "]";
     }
 
-    protected String getContractNumber() {
-        return contractNumber;
-    }
-
-    public void setContractNumber(String contractNumber) {
-        this.contractNumber = contractNumber;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public double getPremium() {
-        return premium;
-    }
-
-    public void setPremium(double premium) {
-        this.premium = premium;
-    }
 }
