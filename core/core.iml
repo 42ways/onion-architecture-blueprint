@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/lombok.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
