@@ -1,6 +1,24 @@
 @startuml
 
+<style>
+title {
+  FontSize 24
+  FontColor Black
+  BackgroundColor Red
+}
+footer {
+  HorizontalAlignment left
+  FontSize 18
+  FontColor red
+}
+</style>
+
 ' skinparam linetype ortho
+' skinparam titleBorderRoundCorner 15
+' skinparam titleBorderThickness 2
+' skinparam titleBorderColor red
+' skinparam titleBackgroundColor Red
+
 
 title Onion Architecture Example
 
@@ -163,7 +181,7 @@ component INFRASTRUCTURE #lightblue {
 
 }
 
-component MAIN {
+component MAIN #lightgray {
 
   package de.fourtytwoways.exp.arch.onion.contracts.demo {
     class de.fourtytwoways.exp.arch.onion.contracts.demo.ContractDemo {
@@ -188,5 +206,9 @@ component MAIN {
   MAIN -[#blue,bold]-> CORE
   MAIN -[#blue,bold]-> INFRASTRUCTURE
 
+
+footer
+(c) 2022 Thomas Herrmann, 42ways GmbH
+endfooter
 
 @enduml
