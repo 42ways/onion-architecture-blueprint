@@ -76,6 +76,12 @@ component CORE #orange {
   
 
   package de.fourtytwoways.onion.domain.entities.person {
+    class de.fourtytwoways.onion.domain.entities.person.Address {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.entities.person {
     class de.fourtytwoways.onion.domain.entities.person.Person {
     }
   }
@@ -201,6 +207,12 @@ component INFRASTRUCTURE #lightblue {
   
 
   package de.fourtytwoways.onion.infrastructure.people.db {
+    class de.fourtytwoways.onion.infrastructure.people.db.AddressDAO {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.infrastructure.people.db {
     class de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository {
     }
   }
@@ -217,6 +229,7 @@ component INFRASTRUCTURE #lightblue {
   de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository -up-|> de.fourtytwoways.onion.application.repositories.AbstractEnumRepository
   de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderOne : providerOne
   de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderTwo : providerTwo
+  de.fourtytwoways.onion.infrastructure.people.db.AddressDAO o-- de.fourtytwoways.onion.infrastructure.people.db.PersonDAO : personDAO
   de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository .up.|> de.fourtytwoways.onion.application.repositories.PersonRepository
   de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository o-- de.fourtytwoways.onion.application.repositories.EnumRepository : enumRepository
 
