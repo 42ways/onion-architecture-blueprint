@@ -5,16 +5,22 @@ import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @EqualsAndHashCode
+@ToString
 public class Person {
     @Getter private int id;
     @Getter @Setter private String name;
     @Getter @Setter private String surname;
     @Getter @Setter private LocalDate birthday;
     @Getter @Setter private Sex sex;
+    @Getter private final ArrayList<Address> addresses = new ArrayList<>();
 
     public Person(int id, String name, String surname, LocalDate birthday, Sex sex) {
         this.id = id;
@@ -24,7 +30,12 @@ public class Person {
         this.setSex(sex);
     }
 
-    public String toString() {
-        return "PERSON [" + name + " " + surname + ", born on " + birthday + ", " + sex + "]";
+    public void addAddress(Address address) {
+        addresses.add(address);
     }
+
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+    }
+
 }

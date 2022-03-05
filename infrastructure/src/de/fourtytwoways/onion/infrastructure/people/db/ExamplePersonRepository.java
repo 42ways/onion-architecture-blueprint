@@ -1,6 +1,7 @@
 package de.fourtytwoways.onion.infrastructure.people.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
@@ -36,10 +37,10 @@ public class ExamplePersonRepository implements PersonRepository {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<PersonDAO> cr = cb.createQuery(PersonDAO.class);
             Root<PersonDAO> root = cr.from(PersonDAO.class);
-            if ( name != null ) {
+            if (name != null) {
                 cr.select(root).where(cb.equal(root.get("name"), name));
             }
-            if ( surname != null ) {
+            if (surname != null) {
                 cr.select(root).where(cb.equal(root.get("surname"), surname));
             }
             Query query = session.createQuery(cr);
@@ -52,10 +53,14 @@ public class ExamplePersonRepository implements PersonRepository {
     }
 
     private Person toPerson(PersonDAO personDAO) {
-        if ( personDAO == null )
+        if (personDAO == null)
             return null;
-        Sex sex = (Sex)enumRepository.getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
-        return new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
+        Sex sex = (Sex) enumRepository.getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
+        Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
+        for (AddressDAO addressDAO : personDAO.addressDAOS) {
+            person.addAddress(new Address(addressDAO.isPrimary, addressDAO.street, addressDAO.number, addressDAO.zipCode, addressDAO.city));
+        }
+        return person;
     }
 
     @Override
@@ -64,7 +69,7 @@ public class ExamplePersonRepository implements PersonRepository {
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
-                    person.getBirthday(), person.getSex().getKey());
+                    person.getBirthday(), person.getSex().getKey(), person.getAddresses());
             session.saveOrUpdate(personDAO);
             session.getTransaction().commit();
             session.close();
