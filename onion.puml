@@ -24,188 +24,226 @@ title Onion Architecture Example
 
 component CORE #orange {
 
-  package de.fourtytwoways.exp.arch.onion.contracts {
-    class de.fourtytwoways.exp.arch.onion.contracts.Contract {
+  package de.fourtytwoways.onion.domain.entities.contract {
+    class de.fourtytwoways.onion.domain.entities.contract.Contract {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.contracts {
-    interface de.fourtytwoways.exp.arch.onion.contracts.ContractRepository {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    abstract class de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.types {
-    class de.fourtytwoways.exp.arch.onion.enums.types.BonusSystem {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    class de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.types {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
     enum EnumType {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.types {
-    class de.fourtytwoways.exp.arch.onion.enums.types.Product {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    interface de.fourtytwoways.onion.domain.entities.enumeration.EnumValue {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.types {
-    class de.fourtytwoways.exp.arch.onion.enums.types.Sex {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    class de.fourtytwoways.onion.domain.entities.enumeration.Product {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.types {
-    class de.fourtytwoways.exp.arch.onion.enums.types.Tariff {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    class de.fourtytwoways.onion.domain.entities.enumeration.Sex {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.values {
-    abstract class de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumRepository {
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    class de.fourtytwoways.onion.domain.entities.enumeration.Tariff {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.values {
-    abstract class de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue {
+  package de.fourtytwoways.onion.domain.entities.person {
+    class de.fourtytwoways.onion.domain.entities.person.Person {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.values {
-    interface de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository {
+  package de.fourtytwoways.onion.domain.usecases.contract {
+    class de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.values {
-    interface de.fourtytwoways.exp.arch.onion.enums.values.EnumValue {
+  package de.fourtytwoways.onion.domain.usecases.contract {
+    class de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.people {
-    class de.fourtytwoways.exp.arch.onion.people.Person {
+  de.fourtytwoways.onion.domain.entities.contract.Contract o-- de.fourtytwoways.onion.domain.entities.enumeration.Product : product
+  de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue .up.|> de.fourtytwoways.onion.domain.entities.enumeration.EnumValue
+  de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue o-- de.fourtytwoways.onion.domain.entities.enumeration.EnumType : type
+  de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.entities.enumeration.Product -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.entities.enumeration.Sex -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.entities.enumeration.Tariff -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.entities.person.Person o-- de.fourtytwoways.onion.domain.entities.enumeration.Sex : sex
+
+}
+
+component APPLICATION #yellow {
+
+  package de.fourtytwoways.onion.application.repositories {
+    abstract class de.fourtytwoways.onion.application.repositories.AbstractEnumRepository {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.people {
-    interface de.fourtytwoways.exp.arch.onion.people.PersonRepository {
+  package de.fourtytwoways.onion.application.repositories {
+    interface de.fourtytwoways.onion.application.repositories.ContractRepository {
     }
   }
   
 
-  de.fourtytwoways.exp.arch.onion.contracts.Contract o-- de.fourtytwoways.exp.arch.onion.enums.types.Product : product
-  de.fourtytwoways.exp.arch.onion.enums.types.BonusSystem -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
-  de.fourtytwoways.exp.arch.onion.enums.types.Product -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
-  de.fourtytwoways.exp.arch.onion.enums.types.Sex -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
-  de.fourtytwoways.exp.arch.onion.enums.types.Tariff -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue
-  de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumRepository .up.|> de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository
-  de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue .up.|> de.fourtytwoways.exp.arch.onion.enums.values.EnumValue
-  de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumValue o-- de.fourtytwoways.exp.arch.onion.enums.types.EnumType : type
-  de.fourtytwoways.exp.arch.onion.people.Person o-- de.fourtytwoways.exp.arch.onion.enums.types.Sex : sex
+  package de.fourtytwoways.onion.application.repositories {
+    interface de.fourtytwoways.onion.application.repositories.EnumRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.repositories {
+    interface de.fourtytwoways.onion.application.repositories.PersonRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.repositories {
+    interface de.fourtytwoways.onion.application.repositories.Repository {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.repositories {
+    class de.fourtytwoways.onion.application.repositories.RepositoryRegistry {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.usecases.contract {
+    class de.fourtytwoways.onion.application.usecases.contract.ContractCalculationService {
+    }
+  }
+  
+
+  de.fourtytwoways.onion.application.repositories.AbstractEnumRepository .up.|> de.fourtytwoways.onion.application.repositories.EnumRepository
 
 }
 
 component INFRASTRUCTURE #lightblue {
 
-  package de.fourtytwoways.exp.arch.onion.contracts.db {
-    class de.fourtytwoways.exp.arch.onion.contracts.db.ContractDAO {
+  package de.fourtytwoways.onion.infrastructure.contracts.db {
+    class de.fourtytwoways.onion.infrastructure.contracts.db.ContractDAO {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.contracts.db {
-    class de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository {
+  package de.fourtytwoways.onion.infrastructure.contracts.db {
+    class de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.database {
-    class de.fourtytwoways.exp.arch.onion.database.SessionFactory {
+  package de.fourtytwoways.onion.infrastructure.database {
+    class de.fourtytwoways.onion.infrastructure.database.SessionFactory {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.provider {
-    class de.fourtytwoways.exp.arch.onion.enums.provider.EnumValueDAO {
+  package de.fourtytwoways.onion.infrastructure.enums.provider {
+    class de.fourtytwoways.onion.infrastructure.enums.provider.EnumValueDAO {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.provider {
-    class de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderOne {
+  package de.fourtytwoways.onion.infrastructure.enums.provider {
+    class de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderOne {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.provider {
-    class de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderTwo {
+  package de.fourtytwoways.onion.infrastructure.enums.provider {
+    class de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderTwo {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.provider {
-    class de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository {
+  package de.fourtytwoways.onion.infrastructure.enums.provider {
+    class de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.people.db {
-    class de.fourtytwoways.exp.arch.onion.people.db.ExamplePersonRepository {
+  package de.fourtytwoways.onion.infrastructure.people.db {
+    class de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.people.db {
-    class de.fourtytwoways.exp.arch.onion.people.db.PersonDAO {
+  package de.fourtytwoways.onion.infrastructure.people.db {
+    class de.fourtytwoways.onion.infrastructure.people.db.PersonDAO {
     }
   }
   
 
-  de.fourtytwoways.exp.arch.onion.contracts.db.ContractDAO -up-|> de.fourtytwoways.exp.arch.onion.contracts.Contract
-  de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository .up.|> de.fourtytwoways.exp.arch.onion.contracts.ContractRepository
-  de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository o-- de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository : enumRepository
-  de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository -up-|> de.fourtytwoways.exp.arch.onion.enums.values.AbstractEnumRepository
-  de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderOne : providerOne
-  de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.exp.arch.onion.enums.provider.ExampleEnumProviderTwo : providerTwo
-  de.fourtytwoways.exp.arch.onion.people.db.ExamplePersonRepository .up.|> de.fourtytwoways.exp.arch.onion.people.PersonRepository
-  de.fourtytwoways.exp.arch.onion.people.db.ExamplePersonRepository o-- de.fourtytwoways.exp.arch.onion.enums.values.EnumRepository : enumRepository
+  de.fourtytwoways.onion.infrastructure.contracts.db.ContractDAO -up-|> de.fourtytwoways.onion.domain.entities.contract.Contract
+  de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository .up.|> de.fourtytwoways.onion.application.repositories.ContractRepository
+  de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository -up-|> de.fourtytwoways.onion.application.repositories.AbstractEnumRepository
+  de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderOne : providerOne
+  de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderTwo : providerTwo
+  de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository .up.|> de.fourtytwoways.onion.application.repositories.PersonRepository
+  de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository o-- de.fourtytwoways.onion.application.repositories.EnumRepository : enumRepository
 
 }
 
 component MAIN #lightgray {
 
-  package de.fourtytwoways.exp.arch.onion.contracts.demo {
-    class de.fourtytwoways.exp.arch.onion.contracts.demo.ContractDemo {
+  package de.fourtytwoways.onion {
+    class de.fourtytwoways.onion.ContractDemo {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.enums.demo {
-    class de.fourtytwoways.exp.arch.onion.enums.demo.EnumDemo {
+  package de.fourtytwoways.onion {
+    class de.fourtytwoways.onion.EnumDemo {
     }
   }
   
 
-  package de.fourtytwoways.exp.arch.onion.people.demo {
-    class de.fourtytwoways.exp.arch.onion.people.demo.PersonDemo {
+  package de.fourtytwoways.onion {
+    class de.fourtytwoways.onion.PersonDemo {
     }
   }
 
 }
 
-  INFRASTRUCTURE -[#blue,bold]-> CORE
-  MAIN -[#blue,bold]-> CORE
   MAIN -[#blue,bold]-> INFRASTRUCTURE
+  MAIN -[#blue,bold]-> APPLICATION
+  MAIN -[#blue,bold]-> CORE
 
+  INFRASTRUCTURE -[#blue,bold]-> APPLICATION
+  INFRASTRUCTURE -[#blue,bold]-> CORE
+
+  APPLICATION -[#blue,bold]-> CORE
 
 footer
 © 2022 Thomas Herrmann, 42ways GmbH

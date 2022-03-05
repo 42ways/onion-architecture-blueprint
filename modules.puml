@@ -1,0 +1,46 @@
+@startuml
+
+<style>
+title {
+  FontSize 24
+  FontColor Black
+  BackgroundColor Red
+}
+footer {
+  HorizontalAlignment left
+  FontSize 18
+  FontColor red
+}
+</style>
+
+' skinparam linetype ortho
+' skinparam titleBorderRoundCorner 15
+' skinparam titleBorderThickness 2
+' skinparam titleBorderColor red
+' skinparam titleBackgroundColor Red
+
+
+title Onion Architecture Example
+
+component CORE #orange
+
+component APPLICATION #yellow
+
+component INFRASTRUCTURE #lightblue
+
+component MAIN #lightgray
+
+  MAIN -[#blue,bold]-> INFRASTRUCTURE
+  MAIN -[#blue,bold]-> APPLICATION
+  MAIN -[#blue,bold]-> CORE
+
+  INFRASTRUCTURE -[#blue,bold]-> APPLICATION
+  INFRASTRUCTURE -[#blue,bold]-> CORE
+
+  APPLICATION -[#blue,bold]-> CORE
+
+footer
+© 2022 Thomas Herrmann, 42ways GmbH
+endfooter
+
+@enduml
