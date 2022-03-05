@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 
 @EqualsAndHashCode
 public class Contract {
@@ -28,6 +29,15 @@ public class Contract {
         this.endDate = endDate;
         this.benefit = benefit;
         this.premium = premium;
+    }
+
+    public Period getDuration() {
+        return startDate.until(endDate);
+    }
+
+    public BigDecimal getDurationInMonths() {
+        Period duration = getDuration();
+        return BigDecimal.valueOf(duration.getYears() * 12 + duration.getMonths());
     }
 
     public String toString() {

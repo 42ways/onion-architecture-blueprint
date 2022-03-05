@@ -10,15 +10,13 @@ import java.time.Period;
 
 public class ContractCalculation {
     public Contract calculatePremium(@NonNull Contract contract) {
-        Period duration = contract.getStartDate().until(contract.getEndDate());
-        BigDecimal durationInMonths = BigDecimal.valueOf(duration.getYears() * 12 + duration.getMonths());
+        BigDecimal durationInMonths = contract.getDurationInMonths();
         contract.setPremium(contract.getBenefit().divide(durationInMonths, 2, RoundingMode.HALF_UP));
         return contract;
     }
 
     public Contract calculateBenefit(@NonNull Contract contract) {
-        Period duration = contract.getStartDate().until(contract.getEndDate());
-        BigDecimal durationInMonths = BigDecimal.valueOf(duration.getYears() * 12 + duration.getMonths());
+        BigDecimal durationInMonths = contract.getDurationInMonths();
         contract.setBenefit(contract.getPremium().multiply(durationInMonths));
         return contract;
     }
