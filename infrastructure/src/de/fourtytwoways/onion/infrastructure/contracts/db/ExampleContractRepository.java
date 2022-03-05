@@ -24,8 +24,8 @@ public class ExampleContractRepository implements ContractRepository {
     }
 
     @Override
-    public Contract createContract(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal premium) {
-        return new ContractDAO(contractNumber, product, beginDate, endDate, premium);
+    public Contract createContract(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal benefit, BigDecimal premium) {
+        return new ContractDAO(contractNumber, product, beginDate, endDate, benefit, premium);
     }
 
     @Override

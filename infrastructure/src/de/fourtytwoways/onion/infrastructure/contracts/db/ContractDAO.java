@@ -21,8 +21,8 @@ public class ContractDAO extends Contract {
     ContractDAO() {
     }
 
-    public ContractDAO(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal premium) {
-        super(contractNumber, product, beginDate, endDate, premium);
+    public ContractDAO(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal benefit, BigDecimal premium) {
+        super(contractNumber, product, beginDate, endDate, benefit, premium);
     }
 
     @Access(AccessType.PROPERTY)
@@ -50,6 +50,12 @@ public class ContractDAO extends Contract {
     @Column(name = "endDate")
     public LocalDate getEndDate() {
         return super.getEndDate();
+    }
+
+    @Access(AccessType.PROPERTY)
+    @Column(name = "benefit")
+    public BigDecimal getBenefit() {
+        return super.getBenefit();
     }
 
     @Access(AccessType.PROPERTY)

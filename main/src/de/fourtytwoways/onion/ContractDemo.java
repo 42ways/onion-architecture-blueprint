@@ -37,6 +37,7 @@ public class ContractDemo {
                 myContractRepository.createContract("42",
                         gemischteVersicherung,
                         LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
+                        null /* calculate this later */,
                         BigDecimal.valueOf( 666.));
         System.out.println(c1);
         myContractRepository.saveContract(c1);
@@ -55,7 +56,7 @@ public class ContractDemo {
                 myContractRepository.createContract("0815",
                         gemischteVersicherung,
                         LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
-                        BigDecimal.valueOf(47.11));
+                        BigDecimal.valueOf(4711), null /* calculate later */);
         System.out.println(c4);
         myContractRepository.saveContract(c4);
 

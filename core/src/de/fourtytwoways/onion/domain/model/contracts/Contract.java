@@ -15,21 +15,23 @@ public class Contract {
     @Getter @Setter private Product product;
     @Getter @Setter private LocalDate startDate;
     @Getter @Setter private LocalDate endDate;
+    @Getter @Setter private BigDecimal benefit;
     @Getter @Setter private BigDecimal premium;
 
     protected Contract() {
     }
 
-    public Contract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, BigDecimal premium) {
+    public Contract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, BigDecimal benefit, BigDecimal premium) {
         this.contractNumber = contractNumber;
         this.product = product;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.benefit = benefit;
         this.premium = premium;
     }
 
     public String toString() {
-        return "CONTRACT [" + contractNumber + " - " + product + ", from " + startDate + " to " + endDate + " with premium " + premium + "]";
+        return "CONTRACT [" + contractNumber + " - " + product + ", from " + startDate + " to " + endDate + " with benefit " + benefit + " and premium " + premium + "]";
     }
 
 }
