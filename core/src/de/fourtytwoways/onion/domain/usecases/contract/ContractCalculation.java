@@ -9,14 +9,14 @@ import java.math.RoundingMode;
 import java.time.Period;
 
 public class ContractCalculation {
-    public static Contract calculatePremium(@NonNull Contract contract) {
+    public Contract calculatePremium(@NonNull Contract contract) {
         Period duration = contract.getStartDate().until(contract.getEndDate());
         BigDecimal durationInMonths = BigDecimal.valueOf(duration.getYears() * 12 + duration.getMonths());
         contract.setPremium(contract.getBenefit().divide(durationInMonths, 2, RoundingMode.HALF_UP));
         return contract;
     }
 
-    public static Contract calculateBenefit(@NonNull Contract contract) {
+    public Contract calculateBenefit(@NonNull Contract contract) {
         Period duration = contract.getStartDate().until(contract.getEndDate());
         BigDecimal durationInMonths = BigDecimal.valueOf(duration.getYears() * 12 + duration.getMonths());
         contract.setBenefit(contract.getPremium().multiply(durationInMonths));

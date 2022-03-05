@@ -48,12 +48,12 @@ public class ContractDemo {
         Contract c2 = myContractRepository.getContractByNumber("42");
         System.out.println(c2);
 
-        c2 = ContractCalculation.calculateBenefit(c2);
+        c2 = new ContractCalculation().calculateBenefit(c2);
         System.out.println(c2);
 
-        c2  = ContractDurationChange.adjustEndDate(c2, LocalDate.of(2032, 3, 31));
+        c2  = new ContractDurationChange().adjustEndDate(c2, LocalDate.of(2032, 3, 31));
         System.out.println(c2);
-        c2 = ContractCalculation.calculateBenefit(c2);
+        c2 = new ContractCalculation().calculateBenefit(c2);
         System.out.println(c2);
         myContractRepository.saveContract(c2);
 
@@ -66,11 +66,11 @@ public class ContractDemo {
                         LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
                         BigDecimal.valueOf(4711), null /* calculate later */);
         System.out.println(c4);
-        c4 = ContractCalculation.calculatePremium(c4);
+        c4 = new ContractCalculation().calculatePremium(c4);
         System.out.println(c4);
         myContractRepository.saveContract(c4);
 
-        c4 = ContractDurationChange.adjustStartDate(c4, LocalDate.of(2027, 4, 1), false);
+        c4 = new ContractDurationChange().adjustStartDate(c4, LocalDate.of(2027, 4, 1), false);
         System.out.println(c4);
         myContractRepository.saveContract(c4);
 

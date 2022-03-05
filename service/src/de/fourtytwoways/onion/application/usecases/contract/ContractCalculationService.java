@@ -14,7 +14,7 @@ public class ContractCalculationService {
         Contract contract = contractRepository.getContractByNumber(contractNumber);
         if ( contract != null ) {
             contract.setPremium(newPremium);
-            Contract modifiedContract = ContractCalculation.calculateBenefit(contract);
+            Contract modifiedContract = new ContractCalculation().calculateBenefit(contract);
             contractRepository.saveContract(modifiedContract);
             return modifiedContract;
         }
