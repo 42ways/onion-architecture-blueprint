@@ -2,7 +2,7 @@
 
 <style>
 title {
-  FontSize 24
+  FontSize 16
   FontColor Black
   BackgroundColor Red
 }
@@ -20,7 +20,7 @@ footer {
 ' skinparam titleBackgroundColor Red
 
 
-title Onion Architecture Example
+title Onion Architecture Module Dependencies
 
 component CORE #orange
 

@@ -9,7 +9,7 @@ To show the code dependencies, the project is split up into several modules with
 
 The dependencies between the modules are shown in this graphics:
 
-![](modules.png)
+![Onion Architecture Module Dependencies](modules.png)
 
 ## Usage
 The module `main` includes some demo programs that can be started by running
