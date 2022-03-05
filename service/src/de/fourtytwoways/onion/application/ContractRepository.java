@@ -1,8 +1,8 @@
 package de.fourtytwoways.onion.application;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.model.contracts.Contract;
-import de.fourtytwoways.onion.domain.model.enums.Product;
+import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.entities.enumeration.Product;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

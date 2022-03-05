@@ -2,10 +2,10 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
-import de.fourtytwoways.onion.domain.model.enums.EnumType;
-import de.fourtytwoways.onion.domain.model.enums.Sex;
+import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
 import de.fourtytwoways.onion.application.EnumRepository;
-import de.fourtytwoways.onion.domain.model.people.Person;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.application.PersonRepository;
 import org.hibernate.Session;
 

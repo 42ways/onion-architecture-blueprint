@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.domain.model.enums;
+package de.fourtytwoways.onion.domain.entities.enumeration;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 public class BonusSystem extends AbstractEnumValue {

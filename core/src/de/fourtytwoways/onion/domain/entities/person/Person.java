@@ -1,7 +1,7 @@
-package de.fourtytwoways.onion.domain.model.people;
+package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.model.enums.Sex;
+import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

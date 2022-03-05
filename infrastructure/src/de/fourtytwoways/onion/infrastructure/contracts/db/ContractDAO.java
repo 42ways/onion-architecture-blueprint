@@ -1,8 +1,8 @@
 package de.fourtytwoways.onion.infrastructure.contracts.db;
 
-import de.fourtytwoways.onion.domain.model.contracts.Contract;
-import de.fourtytwoways.onion.domain.model.enums.EnumType;
-import de.fourtytwoways.onion.domain.model.enums.Product;
+import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.entities.enumeration.Product;
 import de.fourtytwoways.onion.application.EnumRepository;
 
 import javax.persistence.*;

@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion.application;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.model.people.Person;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 
 import java.util.List;
 

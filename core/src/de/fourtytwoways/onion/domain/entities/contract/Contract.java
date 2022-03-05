@@ -1,7 +1,7 @@
-package de.fourtytwoways.onion.domain.model.contracts;
+package de.fourtytwoways.onion.domain.entities.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.model.enums.Product;
+import de.fourtytwoways.onion.domain.entities.enumeration.Product;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
