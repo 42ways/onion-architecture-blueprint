@@ -1,9 +1,10 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.enums.values.EnumValue;
-import de.fourtytwoways.onion.enums.provider.ExampleEnumRepository;
-import de.fourtytwoways.onion.enums.types.EnumType;
+import de.fourtytwoways.onion.application.EnumRepository;
+import de.fourtytwoways.onion.domain.model.enums.EnumValue;
+import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
+import de.fourtytwoways.onion.domain.model.enums.EnumType;
 
 public class EnumDemo {
 
