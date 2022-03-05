@@ -8,7 +8,7 @@ title {
 }
 footer {
   HorizontalAlignment left
-  FontSize 18
+  FontSize 11
   FontColor red
 }
 </style>
