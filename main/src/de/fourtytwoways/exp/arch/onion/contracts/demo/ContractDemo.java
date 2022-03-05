@@ -1,6 +1,7 @@
 package de.fourtytwoways.exp.arch.onion.contracts.demo;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.exp.arch.onion.RepositoryRegistry;
 import de.fourtytwoways.exp.arch.onion.contracts.Contract;
 import de.fourtytwoways.exp.arch.onion.contracts.ContractRepository;
 import de.fourtytwoways.exp.arch.onion.contracts.db.ExampleContractRepository;
@@ -13,9 +14,21 @@ import java.time.LocalDate;
 
 public class ContractDemo {
 
+    public static void registerRepos() {
+        EnumRepository enumRepository = new ExampleEnumRepository();
+        ContractRepository contractRepository = new ExampleContractRepository(enumRepository);
+
+        RepositoryRegistry.getInstance().
+                registerRepository(EnumRepository.class, enumRepository).
+                registerRepository(ContractRepository.class, contractRepository);
+    }
+
     public static void main(String[] args) {
-        EnumRepository myEnumRepository = new ExampleEnumRepository();
-        ContractRepository myContractRepository = new ExampleContractRepository(myEnumRepository);
+
+        registerRepos();
+
+        EnumRepository myEnumRepository = (EnumRepository)  RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
+        ContractRepository myContractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
 
         Product gemischteVersicherung = (Product) myEnumRepository.getEntryByKey(EnumType.PRODUCT, "GV").orElse(null);
 

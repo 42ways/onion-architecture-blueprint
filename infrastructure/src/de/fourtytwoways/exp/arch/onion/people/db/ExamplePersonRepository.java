@@ -19,6 +19,7 @@ public class ExamplePersonRepository implements PersonRepository {
     private final EnumRepository enumRepository;
 
     public ExamplePersonRepository(EnumRepository enumRepository) {
+        // TODO: Is this a good strategy? Could query EnumRepository when we need it...
         this.enumRepository = enumRepository;
     }
 

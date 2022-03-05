@@ -16,10 +16,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ExampleContractRepository implements ContractRepository {
-    private final EnumRepository enumRepository;
 
     public ExampleContractRepository(EnumRepository enumRepository) {
-        this.enumRepository = enumRepository;
+        // TODO: Is this a good strategy? Could query EnumRepository in ContractDAO when we need it...
         ContractDAO.enumRepository = enumRepository;
     }
 
