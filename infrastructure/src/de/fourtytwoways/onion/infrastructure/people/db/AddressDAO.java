@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Table(name = "ADDRESSES")
 public class AddressDAO {
     @Id
-    private int id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    int id;
     @JoinColumn(name="person_id")
     @ManyToOne
     private PersonDAO personDAO;
@@ -23,6 +24,7 @@ public class AddressDAO {
     }
 
     AddressDAO(PersonDAO personDAO, Address address) {
+        this.id = address.getId();
         this.personDAO = personDAO;
         this.isPrimary = address.isPrimary();
         this.street = address.getStreet();

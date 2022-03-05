@@ -58,7 +58,8 @@ public class ExamplePersonRepository implements PersonRepository {
         Sex sex = (Sex) enumRepository.getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
         Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
         for (AddressDAO addressDAO : personDAO.addressDAOS) {
-            person.addAddress(new Address(addressDAO.isPrimary, addressDAO.street, addressDAO.number, addressDAO.zipCode, addressDAO.city));
+            person.addAddress(new Address(addressDAO.id, addressDAO.isPrimary,
+                    addressDAO.street, addressDAO.number, addressDAO.zipCode, addressDAO.city));
         }
         return person;
     }

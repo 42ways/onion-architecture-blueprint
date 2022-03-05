@@ -3,13 +3,17 @@ package de.fourtytwoways.onion.domain.entities.person;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class Address {
-    boolean primary = false;
-    private String street;
-    private String number;
-    private String zipCode;
-    private String city;
+    private int id;
+    @NonNull private boolean primary;
+    @NonNull private String street;
+    @NonNull private String number;
+    @NonNull private String zipCode;
+    @NonNull private String city;
 }
