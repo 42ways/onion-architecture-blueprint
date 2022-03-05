@@ -8,6 +8,9 @@ out/
 # Log file
 *.log
 
+# Sketch It! files
+*.plantuml
+
 # BlueJ files
 *.ctxt
 
