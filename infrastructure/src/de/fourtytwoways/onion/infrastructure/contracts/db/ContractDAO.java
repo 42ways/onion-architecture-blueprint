@@ -6,6 +6,7 @@ import de.fourtytwoways.onion.domain.model.enums.Product;
 import de.fourtytwoways.onion.application.EnumRepository;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -20,7 +21,7 @@ public class ContractDAO extends Contract {
     ContractDAO() {
     }
 
-    public ContractDAO(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, double premium) {
+    public ContractDAO(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal premium) {
         super(contractNumber, product, beginDate, endDate, premium);
     }
 
@@ -53,7 +54,7 @@ public class ContractDAO extends Contract {
 
     @Access(AccessType.PROPERTY)
     @Column(name = "premium")
-    public double getPremium() {
+    public BigDecimal getPremium() {
         return super.getPremium();
     }
 

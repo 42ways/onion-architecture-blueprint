@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @EqualsAndHashCode
@@ -14,12 +15,12 @@ public class Contract {
     @Getter @Setter private Product product;
     @Getter @Setter private LocalDate startDate;
     @Getter @Setter private LocalDate endDate;
-    @Getter @Setter private double premium;
+    @Getter @Setter private BigDecimal premium;
 
     protected Contract() {
     }
 
-    public Contract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, double premium) {
+    public Contract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, BigDecimal premium) {
         this.contractNumber = contractNumber;
         this.product = product;
         this.startDate = startDate;

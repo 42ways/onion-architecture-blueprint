@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ExampleContractRepository implements ContractRepository {
     }
 
     @Override
-    public Contract createContract(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, double premium) {
+    public Contract createContract(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal premium) {
         return new ContractDAO(contractNumber, product, beginDate, endDate, premium);
     }
 

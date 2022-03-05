@@ -4,10 +4,11 @@ package de.fourtytwoways.onion.application;
 import de.fourtytwoways.onion.domain.model.contracts.Contract;
 import de.fourtytwoways.onion.domain.model.enums.Product;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public interface ContractRepository extends Repository {
-    Contract createContract(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, double premium);
+    Contract createContract(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, BigDecimal premium);
 
     Contract getContractByNumber(String contractNumber);
 
