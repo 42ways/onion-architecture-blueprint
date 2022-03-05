@@ -1,5 +1,7 @@
 @startuml
 
+'© 2022 Thomas Herrmann, 42ways GmbH
+
 <style>
 title {
   FontSize 24
@@ -19,8 +21,9 @@ footer {
 ' skinparam titleBorderColor red
 ' skinparam titleBackgroundColor Red
 
-
 title Onion Architecture Example
+
+' -------------------------
 
 component CORE #orange {
 
@@ -101,6 +104,8 @@ component CORE #orange {
 
 }
 
+' -------------------------
+
 component APPLICATION #yellow {
 
   package de.fourtytwoways.onion.application.repositories {
@@ -148,6 +153,8 @@ component APPLICATION #yellow {
   de.fourtytwoways.onion.application.repositories.AbstractEnumRepository .up.|> de.fourtytwoways.onion.application.repositories.EnumRepository
 
 }
+
+' -------------------------
 
 component INFRASTRUCTURE #lightblue {
 
@@ -215,6 +222,8 @@ component INFRASTRUCTURE #lightblue {
 
 }
 
+' -------------------------
+
 component MAIN #lightgray {
 
   package de.fourtytwoways.onion {
@@ -233,8 +242,12 @@ component MAIN #lightgray {
     class de.fourtytwoways.onion.PersonDemo {
     }
   }
+  
+
 
 }
+
+' -------------------------
 
   MAIN -[#blue,bold]-> INFRASTRUCTURE
   MAIN -[#blue,bold]-> APPLICATION

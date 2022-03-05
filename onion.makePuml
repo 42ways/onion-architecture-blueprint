@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+# create PlantUML file from the Sketch It! generated module images
+
+cat > onion.puml << END_OF_HEAD
+@startuml
+
+'© 2022 Thomas Herrmann, 42ways GmbH
+
+<style>
+title {
+  FontSize 24
+  FontColor Black
+  BackgroundColor Red
+}
+footer {
+  HorizontalAlignment left
+  FontSize 18
+  FontColor red
+}
+</style>
+
+' skinparam linetype ortho
+' skinparam titleBorderRoundCorner 15
+' skinparam titleBorderThickness 2
+' skinparam titleBorderColor red
+' skinparam titleBackgroundColor Red
+
+title Onion Architecture Example
+
+END_OF_HEAD
+
+echo "' -------------------------" >> onion.puml
+echo >> onion.puml
+echo "component CORE #orange {" >> onion.puml
+
+tail -n +4 core/core.plantuml | tail -r | tail -n +10 | tail -r | sed -e's/namespace/package/' >> onion.puml
+
+echo "}" >> onion.puml
+
+echo >> onion.puml
+echo "' -------------------------" >> onion.puml
+echo >> onion.puml
+echo "component APPLICATION #yellow {" >> onion.puml
+
+tail -n +4 application/application.plantuml | tail -r | tail -n +10 | tail -r | sed -e's/namespace/package/' >> onion.puml
+
+echo "}" >> onion.puml
+
+echo >> onion.puml
+echo "' -------------------------" >> onion.puml
+echo >> onion.puml
+echo "component INFRASTRUCTURE #lightblue {" >> onion.puml
+
+tail -n +4 infrastructure/infrastructure.plantuml | tail -r | tail -n +10 | tail -r | sed -e's/namespace/package/' >> onion.puml
+
+echo "}" >> onion.puml
+
+echo >> onion.puml
+echo "' -------------------------" >> onion.puml
+echo >> onion.puml
+echo "component MAIN #lightgray {" >> onion.puml
+
+tail -n +4 main/main.plantuml | tail -r | tail -n +10 | tail -r | sed -e's/namespace/package/' >> onion.puml
+
+echo "}" >> onion.puml
+
+echo >> onion.puml
+echo "' -------------------------" >> onion.puml
+
+cat >> onion.puml << END_OF_TAIL
+
+  MAIN -[#blue,bold]-> INFRASTRUCTURE
+  MAIN -[#blue,bold]-> APPLICATION
+  MAIN -[#blue,bold]-> CORE
+
+  INFRASTRUCTURE -[#blue,bold]-> APPLICATION
+  INFRASTRUCTURE -[#blue,bold]-> CORE
+
+  APPLICATION -[#blue,bold]-> CORE
+
+footer
+© 2022 Thomas Herrmann, 42ways GmbH
+endfooter
+
+@enduml
+END_OF_TAIL
+
