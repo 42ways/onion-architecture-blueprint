@@ -1,9 +1,9 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.ContractRepository;
-import de.fourtytwoways.onion.application.EnumRepository;
-import de.fourtytwoways.onion.application.RepositoryRegistry;
+import de.fourtytwoways.onion.application.repositories.ContractRepository;
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;

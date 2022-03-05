@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;

@@ -3,7 +3,7 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.entities.enumeration.Product;
-import de.fourtytwoways.onion.application.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

@@ -4,9 +4,9 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
-import de.fourtytwoways.onion.application.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.domain.entities.person.Person;
-import de.fourtytwoways.onion.application.PersonRepository;
+import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import org.hibernate.Session;
 
 import javax.persistence.Query;

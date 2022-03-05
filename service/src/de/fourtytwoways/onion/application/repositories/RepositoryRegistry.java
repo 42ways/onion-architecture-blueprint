@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.application;
+package de.fourtytwoways.onion.application.repositories;
 
 import java.util.HashMap;
 

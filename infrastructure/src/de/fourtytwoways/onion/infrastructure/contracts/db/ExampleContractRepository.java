@@ -2,10 +2,10 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
-import de.fourtytwoways.onion.application.ContractRepository;
+import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import de.fourtytwoways.onion.domain.entities.enumeration.Product;
-import de.fourtytwoways.onion.application.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
