@@ -3,7 +3,7 @@ package de.fourtytwoways.onion.contracts.db;
 import de.fourtytwoways.onion.contracts.Contract;
 import de.fourtytwoways.onion.enums.types.EnumType;
 import de.fourtytwoways.onion.enums.types.Product;
-import de.fourtytwoways.onion.enums.values.EnumRepository;
+import de.fourtytwoways.onion.EnumRepository;
 
 import javax.persistence.*;
 import java.time.LocalDate;

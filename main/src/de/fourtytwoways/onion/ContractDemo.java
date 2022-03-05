@@ -1,14 +1,11 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.RepositoryRegistry;
 import de.fourtytwoways.onion.contracts.Contract;
-import de.fourtytwoways.onion.contracts.ContractRepository;
 import de.fourtytwoways.onion.contracts.db.ExampleContractRepository;
 import de.fourtytwoways.onion.enums.provider.ExampleEnumRepository;
 import de.fourtytwoways.onion.enums.types.EnumType;
 import de.fourtytwoways.onion.enums.types.Product;
-import de.fourtytwoways.onion.enums.values.EnumRepository;
 
 import java.time.LocalDate;
 

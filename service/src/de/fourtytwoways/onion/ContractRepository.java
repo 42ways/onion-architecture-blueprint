@@ -1,7 +1,8 @@
-package de.fourtytwoways.onion.contracts;
+package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.Repository;
+import de.fourtytwoways.onion.contracts.Contract;
 import de.fourtytwoways.onion.enums.types.Product;
 
 import java.time.LocalDate;

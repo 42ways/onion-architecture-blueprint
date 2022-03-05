@@ -1,7 +1,8 @@
-package de.fourtytwoways.onion.people;
+package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.Repository;
+import de.fourtytwoways.onion.people.Person;
 
 import java.util.List;
 

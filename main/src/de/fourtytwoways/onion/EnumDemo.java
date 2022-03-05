@@ -4,7 +4,6 @@ package de.fourtytwoways.onion;
 import de.fourtytwoways.onion.enums.values.EnumValue;
 import de.fourtytwoways.onion.enums.provider.ExampleEnumRepository;
 import de.fourtytwoways.onion.enums.types.EnumType;
-import de.fourtytwoways.onion.enums.values.EnumRepository;
 
 public class EnumDemo {
 

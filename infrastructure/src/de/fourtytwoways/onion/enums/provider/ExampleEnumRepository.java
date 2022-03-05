@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion.enums.provider;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.enums.values.AbstractEnumRepository;
+import de.fourtytwoways.onion.AbstractEnumRepository;
 import de.fourtytwoways.onion.enums.values.EnumValue;
 import de.fourtytwoways.onion.enums.types.EnumType;
 
