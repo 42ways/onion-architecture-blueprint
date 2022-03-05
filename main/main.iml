@@ -9,6 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" />
     <orderEntry type="module" module-name="infrastructure" />
-    <orderEntry type="module" module-name="service" />
+    <orderEntry type="module" module-name="application" />
   </component>
 </module>
