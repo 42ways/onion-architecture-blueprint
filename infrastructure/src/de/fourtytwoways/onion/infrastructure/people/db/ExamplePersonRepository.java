@@ -77,4 +77,18 @@ public class ExamplePersonRepository implements PersonRepository {
             return true;
         }
     }
+
+    @Override
+    public boolean deletePerson(Person person) {
+        // TODO: Error handling
+        try (Session session = SessionFactory.getSession()) {
+            session.beginTransaction();
+            PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
+                    person.getBirthday(), person.getSex().getKey(), person.getAddresses());
+            session.delete(personDAO);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        }
+    }
 }

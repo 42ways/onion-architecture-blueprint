@@ -11,4 +11,6 @@ public interface PersonRepository extends Repository {
     List<Person> getPeopleByName(String name, String surname);
 
     boolean savePerson(Person person);
+
+    boolean deletePerson(Person person);
 }
