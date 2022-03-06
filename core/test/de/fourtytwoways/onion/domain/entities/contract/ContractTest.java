@@ -1,4 +1,5 @@
 package de.fourtytwoways.onion.domain.entities.contract;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import org.junit.jupiter.api.Test;
 
