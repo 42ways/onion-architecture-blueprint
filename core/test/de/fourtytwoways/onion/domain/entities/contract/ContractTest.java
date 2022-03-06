@@ -13,7 +13,7 @@ class ContractTest {
     @Test
     void testToString() {
         Contract contract = new Contract("4711", null, LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1), BigDecimal.valueOf(47.11), BigDecimal.valueOf(08.15));
-        assertEquals("CONTRACT [4711 - null, from 2022-01-01 to 2042-01-01 with benefit 47.11 and premium 8.15]", contract.toString());
+        assertEquals("Contract(contractNumber=4711, product=null, startDate=2022-01-01, endDate=2042-01-01, benefit=47.11, premium=8.15)", contract.toString());
     }
 
     @Test
