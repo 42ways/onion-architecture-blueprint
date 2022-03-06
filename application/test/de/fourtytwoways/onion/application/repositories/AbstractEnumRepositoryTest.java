@@ -1,4 +1,5 @@
 package de.fourtytwoways.onion.application.repositories;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
