@@ -1,11 +1,13 @@
 package de.fourtytwoways.onion.application.repositories;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RepositoryRegistryTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getInstance() {
         RepositoryRegistry myRegistry = RepositoryRegistry.getInstance();
         assertNotNull(myRegistry);
@@ -18,7 +20,7 @@ class RepositoryRegistryTest {
         public int getMagicNumber() { return 42; }
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void registerRepository() {
         RepositoryRegistry myRegistry = RepositoryRegistry.getInstance();
         assertNull(myRegistry.getRepository(MyRepository.class));
@@ -26,7 +28,7 @@ class RepositoryRegistryTest {
         assertNotNull(myRegistry.getRepository(MyRepository.class));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getRepository() {
         RepositoryRegistry myRegistry = RepositoryRegistry.getInstance();
         myRegistry.registerRepository(MyRepository.class, new MyRepository());
