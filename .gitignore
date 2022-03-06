@@ -2,6 +2,9 @@
 *.class
 out/
 
+# H2 database
+.h2/
+
 # Mac stuff
 .DS_Store
 

@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:h2:mem:playground-primary</property>
+        <property name="connection.url">jdbc:h2:file:./.h2/java-architecture-playground</property>
         <property name="connection.driver_class">org.h2.Driver</property>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->

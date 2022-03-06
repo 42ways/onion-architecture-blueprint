@@ -25,16 +25,16 @@ public class ExampleEnumProviderTwo {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
-            session.persist(new EnumValueDAO( 1, "ARR", EnumType.PRODUCT, "Aufgeschobene Rürup-Rente"));
-            session.persist(new EnumValueDAO( 2, "RR", EnumType.TARIFF, "Rürup-Rente"));
-            session.persist(new EnumValueDAO( 3, "RHR", EnumType.TARIFF, "Rürup-Hinterbliebenenrente"));
-            session.persist(new EnumValueDAO( 4, "GV", EnumType.PRODUCT, "Gemischte Versicherung"));
-            session.persist(new EnumValueDAO( 5, "GV", EnumType.TARIFF, "Gemischte Versicherung"));
-            session.persist(new EnumValueDAO( 6, "GV2", EnumType.TARIFF, "Gemischte Versicherung auf 2 Leben"));
-            session.persist(new EnumValueDAO( 7, "AR", EnumType.PRODUCT, "Aufgeschobene Rente"));
-            session.persist(new EnumValueDAO( 8, "BUZR", EnumType.TARIFF, "BUZ Barrente"));
-            session.persist(new EnumValueDAO( 9, "BUZBB", EnumType.TARIFF, "BUZ Beitragsbefreiung"));
-            session.persist(new EnumValueDAO( 10, "ALR", EnumType.TARIFF, "Aufgeschobene Leibrente"));
+            session.saveOrUpdate(new EnumValueDAO( 1, "ARR", EnumType.PRODUCT, "Aufgeschobene Rürup-Rente"));
+            session.saveOrUpdate(new EnumValueDAO( 2, "RR", EnumType.TARIFF, "Rürup-Rente"));
+            session.saveOrUpdate(new EnumValueDAO( 3, "RHR", EnumType.TARIFF, "Rürup-Hinterbliebenenrente"));
+            session.saveOrUpdate(new EnumValueDAO( 4, "GV", EnumType.PRODUCT, "Gemischte Versicherung"));
+            session.saveOrUpdate(new EnumValueDAO( 5, "GV", EnumType.TARIFF, "Gemischte Versicherung"));
+            session.saveOrUpdate(new EnumValueDAO( 6, "GV2", EnumType.TARIFF, "Gemischte Versicherung auf 2 Leben"));
+            session.saveOrUpdate(new EnumValueDAO( 7, "AR", EnumType.PRODUCT, "Aufgeschobene Rente"));
+            session.saveOrUpdate(new EnumValueDAO( 8, "BUZR", EnumType.TARIFF, "BUZ Barrente"));
+            session.saveOrUpdate(new EnumValueDAO( 9, "BUZBB", EnumType.TARIFF, "BUZ Beitragsbefreiung"));
+            session.saveOrUpdate(new EnumValueDAO( 10, "ALR", EnumType.TARIFF, "Aufgeschobene Leibrente"));
             session.getTransaction().commit();
             session.close();
         }
