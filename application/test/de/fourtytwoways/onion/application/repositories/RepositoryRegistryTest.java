@@ -14,7 +14,7 @@ class RepositoryRegistryTest {
         assert myRegistry == mySecondRegistry;
     }
 
-    class MyRepository implements Repository {
+    private static class MyRepository implements Repository {
         public int getMagicNumber() { return 42; }
     }
 
