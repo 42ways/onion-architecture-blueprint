@@ -66,26 +66,25 @@ public class ExamplePersonRepository implements PersonRepository {
 
     @Override
     public boolean savePerson(Person person) {
-        // TODO: Error handling
-        try (Session session = SessionFactory.getSession()) {
-            session.beginTransaction();
-            PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
-                    person.getBirthday(), person.getSex().getKey(), person.getAddresses());
-            session.saveOrUpdate(personDAO);
-            session.getTransaction().commit();
-            session.close();
-            return true;
-        }
+        return doPersonTransaction(person, Session::saveOrUpdate);
     }
 
     @Override
     public boolean deletePerson(Person person) {
+        return doPersonTransaction(person, Session::delete);
+    }
+
+    private interface PersonDbOp {
+        void doDml(Session session, PersonDAO p);
+    }
+
+    private boolean doPersonTransaction(Person person, PersonDbOp dbOp) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
                     person.getBirthday(), person.getSex().getKey(), person.getAddresses());
-            session.delete(personDAO);
+            dbOp.doDml(session, personDAO);
             session.getTransaction().commit();
             session.close();
             return true;
