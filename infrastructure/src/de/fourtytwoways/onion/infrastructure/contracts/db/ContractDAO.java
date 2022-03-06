@@ -1,4 +1,5 @@
 package de.fourtytwoways.onion.infrastructure.contracts.db;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
