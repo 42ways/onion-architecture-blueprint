@@ -1,4 +1,5 @@
 package de.fourtytwoways.onion.application.repositories;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import java.util.HashMap;
 
