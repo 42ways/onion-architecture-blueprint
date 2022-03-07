@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-class ContractCalculationServiceTest {
+class ChangePremiumServiceTest {
 
     @Test
     void changePremium() {
@@ -23,8 +23,8 @@ class ContractCalculationServiceTest {
 
         assertEquals(BigDecimal.valueOf(19.71), loadContract("0815").getPremium());
         assertEquals(BigDecimal.valueOf(4711), loadContract("0815").getBenefit());
-        ;
-        Contract changedContract = new ContractCalculationService().changePremium("0815", BigDecimal.valueOf(22.22));
+
+        Contract changedContract = new ChangePremiumService().changePremium("0815", BigDecimal.valueOf(22.22));
         assertEquals(BigDecimal.valueOf(22.22), changedContract.getPremium());
 
         assertEquals(BigDecimal.valueOf(22.22), loadContract("0815").getPremium());

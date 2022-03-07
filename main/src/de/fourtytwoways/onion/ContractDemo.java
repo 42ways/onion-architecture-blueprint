@@ -4,7 +4,7 @@ package de.fourtytwoways.onion;
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
-import de.fourtytwoways.onion.application.usecases.contract.ContractCalculationService;
+import de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
@@ -80,7 +80,7 @@ public class ContractDemo {
         Contract c6 = myContractRepository.getContractByNumber("0815");
         System.out.println(c6);
 
-        Contract c7 = new ContractCalculationService().
+        Contract c7 = new ChangePremiumService().
                 changePremium("42", BigDecimal.valueOf(3216.8));
         System.out.println(c7);
 

@@ -8,7 +8,7 @@ import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 
 import java.math.BigDecimal;
 
-public class ContractCalculationService {
+public class ChangePremiumService {
     public Contract changePremium(String contractNumber, BigDecimal newPremium) {
         ContractRepository contractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
         Contract contract = contractRepository.getContractByNumber(contractNumber);
