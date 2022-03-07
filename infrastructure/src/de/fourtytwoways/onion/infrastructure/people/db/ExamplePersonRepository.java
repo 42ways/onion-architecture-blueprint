@@ -74,17 +74,17 @@ public class ExamplePersonRepository implements PersonRepository {
         return doPersonTransaction(person, Session::delete);
     }
 
-    private interface PersonDbOp {
-        void doDml(Session session, PersonDAO p);
+    private interface SessionOperationWithPersonDao {
+        void apply(Session session, PersonDAO p);
     }
 
-    private boolean doPersonTransaction(Person person, PersonDbOp dbOp) {
+    private boolean doPersonTransaction(Person person, SessionOperationWithPersonDao sessionOperation) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
                     person.getBirthday(), person.getSex().getKey(), person.getAddresses());
-            dbOp.doDml(session, personDAO);
+            sessionOperation.apply(session, personDAO);
             session.getTransaction().commit();
             session.close();
             return true;
