@@ -1,13 +1,13 @@
 package de.fourtytwoways.onion.infrastructure.people.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.person.Address;
-import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.domain.entities.person.Person;
-import de.fourtytwoways.onion.application.repositories.PersonRepository;
+import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 public class ExamplePersonRepository implements PersonRepository {
     private final EnumRepository enumRepository;
@@ -74,17 +75,13 @@ public class ExamplePersonRepository implements PersonRepository {
         return doPersonTransaction(person, Session::delete);
     }
 
-    private interface SessionOperationWithPersonDao {
-        void apply(Session session, PersonDAO p);
-    }
-
-    private boolean doPersonTransaction(Person person, SessionOperationWithPersonDao sessionOperation) {
+    private boolean doPersonTransaction(Person person, BiConsumer<Session, PersonDAO> sessionOperation) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
                     person.getBirthday(), person.getSex().getKey(), person.getAddresses());
-            sessionOperation.apply(session, personDAO);
+            sessionOperation.accept(session, personDAO);
             session.getTransaction().commit();
             session.close();
             return true;
