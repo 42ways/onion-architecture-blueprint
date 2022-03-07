@@ -151,12 +151,40 @@ component APPLICATION #yellow {
   
 
   package de.fourtytwoways.onion.application.usecases.contract {
-    class de.fourtytwoways.onion.application.usecases.contract.ContractCalculationService {
+    abstract class de.fourtytwoways.onion.application.usecases.contract.AbstractContractModificationService {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.usecases.contract {
+    class de.fourtytwoways.onion.application.usecases.contract.AdjustEndDateService {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.usecases.contract {
+    class de.fourtytwoways.onion.application.usecases.contract.AdjustStartDateService {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.usecases.contract {
+    class de.fourtytwoways.onion.application.usecases.contract.ChangeBenefitService {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.usecases.contract {
+    class de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService {
     }
   }
   
 
   de.fourtytwoways.onion.application.repositories.AbstractEnumRepository .up.|> de.fourtytwoways.onion.application.repositories.EnumRepository
+  de.fourtytwoways.onion.application.usecases.contract.AdjustEndDateService -up-|> de.fourtytwoways.onion.application.usecases.contract.AbstractContractModificationService
+  de.fourtytwoways.onion.application.usecases.contract.AdjustStartDateService -up-|> de.fourtytwoways.onion.application.usecases.contract.AbstractContractModificationService
+  de.fourtytwoways.onion.application.usecases.contract.ChangeBenefitService -up-|> de.fourtytwoways.onion.application.usecases.contract.AbstractContractModificationService
+  de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService -up-|> de.fourtytwoways.onion.application.usecases.contract.AbstractContractModificationService
 
 }
 
