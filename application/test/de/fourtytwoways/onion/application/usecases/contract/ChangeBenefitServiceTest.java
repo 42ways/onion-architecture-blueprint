@@ -1,6 +1,4 @@
 package de.fourtytwoways.onion.application.usecases.contract;
-
-
 // Copyright (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
@@ -11,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +16,7 @@ class ChangeBenefitServiceTest {
 
     @Test
     void changeBenefit() {
-        RepositoryRegistry.getInstance().registerRepository(ContractRepository.class, new ChangeBenefitServiceTest.TestContractRepository());
+        RepositoryRegistry.getInstance().registerRepository(ContractRepository.class, new TestContractRepository());
 
         saveContract(createContract("0815"));
 
@@ -51,28 +48,6 @@ class ChangeBenefitServiceTest {
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
                 BigDecimal.valueOf(4711), BigDecimal.valueOf(19.71));
-    }
-
-    private static class TestContractRepository implements ContractRepository {
-
-        HashMap<String, Contract> contractHashMap = new HashMap<>();
-
-        @Override
-        public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, BigDecimal benefit, BigDecimal premium) {
-            Contract myContract = new Contract(contractNumber, product, startDate, endDate, benefit, premium);
-            return myContract;
-        }
-
-        @Override
-        public Contract getContractByNumber(String contractNumber) {
-            return (Contract) contractHashMap.get(contractNumber);
-        }
-
-        @Override
-        public boolean saveContract(Contract contract) {
-            contractHashMap.put(contract.getContractNumber(), contract);
-            return true;
-        }
     }
 
 }
