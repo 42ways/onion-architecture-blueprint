@@ -14,18 +14,18 @@ public abstract class AbstractEnumRepository implements EnumRepository {
     }
 
     public Optional<EnumValue> getEntry(EnumType enumType, int enumId) {
-        List<EnumValue> entries = getAllEntries(enumType);
-        return entries.stream().filter(enumEntry -> enumEntry.getId() == enumId).findFirst();
+        return getAllEntries(enumType).stream().filter(enumEntry ->
+                                                               enumEntry.getId() == enumId).findFirst();
     }
 
     public Optional<EnumValue> getEntryByKey(EnumType enumType, String enumKey) {
-        List<EnumValue> entries = getAllEntries(enumType);
-        return entries.stream().filter(enumEntry -> enumKey.equals(enumEntry.getKey())).findFirst();
+        return getAllEntries(enumType).stream().filter(enumEntry ->
+                                                               enumKey.equals(enumEntry.getKey())).findFirst();
     }
 
     public Optional<EnumValue> getEntryByValue(EnumType enumType, String enumValue) {
-        List<EnumValue> entries = getAllEntries(enumType);
-        return entries.stream().filter(enumEntry -> enumValue.equals(enumEntry.getValue())).findFirst();
+        return getAllEntries(enumType).stream().filter(enumEntry ->
+                                                               enumValue.equals(enumEntry.getValue())).findFirst();
     }
 
     protected abstract List<EnumValue> getEntriesImpl(EnumType enumType);
