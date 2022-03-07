@@ -8,17 +8,12 @@ import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 
 import java.math.BigDecimal;
 
-public class ChangePremiumService {
+public class ChangePremiumService extends AbstractContractModificationService {
     public Contract changePremium(String contractNumber, BigDecimal newPremium) {
-        ContractRepository contractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
-        Contract contract = contractRepository.getContractByNumber(contractNumber);
-        if ( contract != null ) {
-            contract.setPremium(newPremium);
-            Contract modifiedContract = new ContractCalculation().calculateBenefit(contract);
-            contractRepository.saveContract(modifiedContract);
-            return modifiedContract;
-        }
-        else
-            return null;
+        return modifyContract(contractNumber,
+                              contract -> {
+                                  contract.setPremium(newPremium);
+                                  return new ContractCalculation().calculateBenefit(contract);
+                              });
     }
 }

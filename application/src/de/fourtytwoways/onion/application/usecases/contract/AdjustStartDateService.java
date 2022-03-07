@@ -8,16 +8,9 @@ import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
 
 import java.time.LocalDate;
 
-public class AdjustStartDateService {
+public class AdjustStartDateService extends AbstractContractModificationService {
     public Contract adjustStartDate(String contractNumber, LocalDate newStartDate) {
-        ContractRepository contractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
-        Contract contract = contractRepository.getContractByNumber(contractNumber);
-        if ( contract != null ) {
-            Contract modifiedContract = new ContractDurationChange().adjustStartDate(contract, newStartDate);
-            contractRepository.saveContract(modifiedContract);
-            return modifiedContract;
-        }
-        else
-            return null;
+        return modifyContract(contractNumber,
+                              contract -> new ContractDurationChange().adjustStartDate(contract, newStartDate));
     }
 }

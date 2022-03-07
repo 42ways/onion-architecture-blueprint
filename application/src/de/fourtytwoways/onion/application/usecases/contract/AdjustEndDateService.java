@@ -7,17 +7,11 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
 
 import java.time.LocalDate;
+import java.util.function.Function;
 
-public class AdjustEndDateService {
+public class AdjustEndDateService extends AbstractContractModificationService {
     public Contract adjustEndDate(String contractNumber, LocalDate newEndDate) {
-        ContractRepository contractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
-        Contract contract = contractRepository.getContractByNumber(contractNumber);
-        if ( contract != null ) {
-            Contract modifiedContract = new ContractDurationChange().adjustEndDate(contract, newEndDate);
-            contractRepository.saveContract(modifiedContract);
-            return modifiedContract;
-        }
-        else
-            return null;
+        return modifyContract(contractNumber,
+                              contract -> new ContractDurationChange().adjustEndDate(contract, newEndDate));
     }
 }

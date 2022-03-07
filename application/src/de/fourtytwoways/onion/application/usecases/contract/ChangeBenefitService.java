@@ -5,20 +5,16 @@ import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
+import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
 
 import java.math.BigDecimal;
 
-public class ChangeBenefitService {
+public class ChangeBenefitService extends AbstractContractModificationService {
     public Contract changeBenefit(String contractNumber, BigDecimal newBenefit) {
-        ContractRepository contractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
-        Contract contract = contractRepository.getContractByNumber(contractNumber);
-        if ( contract != null ) {
-            contract.setBenefit(newBenefit);
-            Contract modifiedContract = new ContractCalculation().calculatePremium(contract);
-            contractRepository.saveContract(modifiedContract);
-            return modifiedContract;
-        }
-        else
-            return null;
+        return modifyContract(contractNumber,
+                              contract -> {
+                                  contract.setBenefit(newBenefit);
+                                  return new ContractCalculation().calculatePremium(contract);
+                              });
     }
 }
