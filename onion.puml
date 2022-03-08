@@ -33,6 +33,12 @@ component CORE #orange {
   }
   
 
+  package de.fourtytwoways.onion.domain.entities.document {
+    interface de.fourtytwoways.onion.domain.entities.document.Document {
+    }
+  }
+  
+
   package de.fourtytwoways.onion.domain.entities.enumeration {
     abstract class de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue {
     }
@@ -41,6 +47,12 @@ component CORE #orange {
 
   package de.fourtytwoways.onion.domain.entities.enumeration {
     class de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.entities.enumeration {
+    class de.fourtytwoways.onion.domain.entities.enumeration.DocumentType {
     }
   }
   
@@ -103,6 +115,7 @@ component CORE #orange {
   de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue .up.|> de.fourtytwoways.onion.domain.entities.enumeration.EnumValue
   de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue o-- de.fourtytwoways.onion.domain.entities.enumeration.EnumType : type
   de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.entities.enumeration.DocumentType -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
   de.fourtytwoways.onion.domain.entities.enumeration.Product -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
   de.fourtytwoways.onion.domain.entities.enumeration.Sex -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
   de.fourtytwoways.onion.domain.entities.enumeration.Tariff -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
@@ -122,6 +135,12 @@ component APPLICATION #yellow {
 
   package de.fourtytwoways.onion.application.repositories {
     interface de.fourtytwoways.onion.application.repositories.ContractRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.application.repositories {
+    interface de.fourtytwoways.onion.application.repositories.DocumentRepository {
     }
   }
   
@@ -210,6 +229,18 @@ component INFRASTRUCTURE #lightblue {
   }
   
 
+  package de.fourtytwoways.onion.infrastructure.documents {
+    class de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.infrastructure.documents {
+    class de.fourtytwoways.onion.infrastructure.documents.ExamplePolicyDocument {
+    }
+  }
+  
+
   package de.fourtytwoways.onion.infrastructure.enums.provider {
     class de.fourtytwoways.onion.infrastructure.enums.provider.EnumValueDAO {
     }
@@ -254,6 +285,9 @@ component INFRASTRUCTURE #lightblue {
 
   de.fourtytwoways.onion.infrastructure.contracts.db.ContractDAO -up-|> de.fourtytwoways.onion.domain.entities.contract.Contract
   de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository .up.|> de.fourtytwoways.onion.application.repositories.ContractRepository
+  de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository .up.|> de.fourtytwoways.onion.application.repositories.DocumentRepository
+  de.fourtytwoways.onion.infrastructure.documents.ExamplePolicyDocument .up.|> de.fourtytwoways.onion.domain.entities.document.Document
+  de.fourtytwoways.onion.infrastructure.documents.ExamplePolicyDocument o-- de.fourtytwoways.onion.domain.entities.contract.Contract : contract
   de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository -up-|> de.fourtytwoways.onion.application.repositories.AbstractEnumRepository
   de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderOne : providerOne
   de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository o-- de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumProviderTwo : providerTwo
