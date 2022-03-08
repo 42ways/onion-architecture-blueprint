@@ -3,5 +3,5 @@ package de.fourtytwoways.onion.domain.entities.document;
 
 public interface Document {
     // TODO: Methods for document metadata, e.g. object id, document type etc.
-    public void print();
+    void print();
 }
