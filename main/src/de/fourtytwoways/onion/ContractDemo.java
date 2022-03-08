@@ -2,6 +2,7 @@ package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
+import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService;
@@ -9,6 +10,7 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
 import de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository;
+import de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.entities.enumeration.Product;
@@ -21,10 +23,12 @@ public class ContractDemo {
     public static void registerRepos() {
         EnumRepository enumRepository = new ExampleEnumRepository();
         ContractRepository contractRepository = new ExampleContractRepository(enumRepository);
+        DocumentRepository documentRepository = new ExampleDocumentRepository();
 
         RepositoryRegistry.getInstance().
                 registerRepository(EnumRepository.class, enumRepository).
-                registerRepository(ContractRepository.class, contractRepository);
+                registerRepository(ContractRepository.class, contractRepository).
+                registerRepository(DocumentRepository.class, documentRepository);
     }
 
     public static void main(String[] args) {

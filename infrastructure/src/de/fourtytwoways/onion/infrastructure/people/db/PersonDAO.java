@@ -20,10 +20,10 @@ public class PersonDAO {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "personDAO")
     List<AddressDAO> addressDAOS = new ArrayList<>();
 
-    PersonDAO() {
+    public PersonDAO() {
     }
 
-    PersonDAO(int id, String name, String surname, LocalDate birthday, String sex, ArrayList<Address> addresses) {
+    PersonDAO(int id, String name, String surname, LocalDate birthday, String sex, List<Address> addresses) {
         this.id = id;
         this.name = name;
         this.surname = surname;

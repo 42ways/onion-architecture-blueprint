@@ -26,6 +26,9 @@ public class ExampleEnumRepository extends AbstractEnumRepository {
             case SEX -> {
                 return providerOne.getSexes();
             }
+            case DOCUMENT_TYPE -> {
+                return providerOne.getDocumentTypes();
+            }
         }
         return null;
     }
