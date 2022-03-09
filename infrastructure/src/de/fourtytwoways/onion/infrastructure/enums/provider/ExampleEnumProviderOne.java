@@ -18,7 +18,7 @@ public class ExampleEnumProviderOne {
     }
 
     List<EnumValue> getSexes() {
-         // TODO: This is a fixed enumeration type and should probably be defined in application or core layer
+         // TODO: This is a fixed enumeration type and should probably be defined in application or core layer!
         List<EnumValue> sexes = new ArrayList<>();
         sexes.add(new Sex(1, "F", "Female"));
         sexes.add(new Sex(2, "M", "Male"));
@@ -26,9 +26,9 @@ public class ExampleEnumProviderOne {
     }
 
     List<EnumValue> getDocumentTypes() {
-        // TODO: This is a fixed enumeration type and should probably be defined in application or core layer
+        // TODO: This is a fixed enumeration type and should probably be defined in application or core layer!
         List<EnumValue> documentTypes = new ArrayList<>();
-        documentTypes.add(new DocumentType(1, "POLICY", "Policy"));
+        documentTypes.add(DocumentType.POLICY);
         return documentTypes;
     }
 }

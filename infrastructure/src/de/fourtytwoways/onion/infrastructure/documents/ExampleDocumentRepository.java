@@ -7,20 +7,18 @@ import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.entities.enumeration.DocumentType;
 import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
 
-import java.util.Optional;
-
 public class ExampleDocumentRepository implements DocumentRepository {
+    private static int lastId = 0;
+
     @Override
-    public void createDocument(Optional<EnumValue> type, Object contentObject) {
-        if (type.isPresent()) {
-            Contract contract = (Contract) contentObject;
-            switch (type.get().getKey()) {
-                case DocumentType.POLICY -> {
-                    Document document = new ExamplePolicyDocument(contract);
-                    document.print();
-                }
-                default -> throw new IllegalStateException("Unexpected value: " + type.get().getKey());
-            }
+    public void createDocument(EnumValue type, Object contentObject) {
+        Contract contract = (Contract) contentObject;
+        if (DocumentType.POLICY.equals(type)) {
+            // TODO: better way to generate document id!
+            Document document = new ExamplePolicyDocument(++lastId, contract);
+            document.print();
+        } else {
+            throw new IllegalStateException("Unexpected value: " + type);
         }
     }
 }

@@ -9,28 +9,32 @@ import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class TestDocumentRepository implements DocumentRepository {
     private final List<Document> documents = new ArrayList<>();
     private final List<String> printOutput = new ArrayList<>();
 
     @Override
-    public void createDocument(Optional<EnumValue> type, Object contentObject) {
-        if (type.isPresent()) {
-            Contract contract = (Contract) contentObject;
-            switch (type.get().getKey()) {
-                case DocumentType.POLICY -> documents.add(new Document() {
-                    @Override
-                    public void print() {
-                        String policy = "POLICY for " + contract.getProduct().getValue() + "\n" +
-                                "Benefit is " + contract.getBenefit() + "\n" +
-                                "Premium is " + contract.getPremium() + "\n";
-                        printOutput.add(policy);
-                    }
-                });
-                default -> throw new IllegalStateException("Unexpected value: " + type.get().getKey());
-            }
+    public void createDocument(EnumValue type, Object contentObject) {
+        Contract contract = (Contract) contentObject;
+        if (DocumentType.POLICY.equals(type)) {
+            documents.add(new Document() {
+                @Override
+                public int getId() {return 42;}
+
+                @Override
+                public DocumentType getDocumentType() {return DocumentType.POLICY;}
+
+                @Override
+                public void print() {
+                    String policy = "POLICY for " + contract.getProduct().getValue() + "\n" +
+                            "Benefit is " + contract.getBenefit() + "\n" +
+                            "Premium is " + contract.getPremium() + "\n";
+                    printOutput.add(policy);
+                }
+            });
+        } else {
+            throw new IllegalStateException("Unexpected value: " + type);
         }
     }
 

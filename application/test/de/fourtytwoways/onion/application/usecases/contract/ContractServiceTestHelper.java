@@ -5,7 +5,6 @@ import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
-import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.entities.enumeration.Product;
 import org.junit.jupiter.api.BeforeEach;
 

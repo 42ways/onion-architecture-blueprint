@@ -3,13 +3,26 @@ package de.fourtytwoways.onion.infrastructure.documents;
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.document.Document;
+import de.fourtytwoways.onion.domain.entities.enumeration.DocumentType;
 
 public class ExamplePolicyDocument implements Document {
-    Contract contract;
+    final int id;
+    final Contract contract;
     boolean printed = false;
 
-    ExamplePolicyDocument(Contract contract) {
+    ExamplePolicyDocument(int id, Contract contract) {
+        this.id = id;
         this.contract = contract;
+    }
+
+    @Override
+    public int getId() {
+        return 0;
+    }
+
+    @Override
+    public DocumentType getDocumentType() {
+        return DocumentType.POLICY;
     }
 
     @Override

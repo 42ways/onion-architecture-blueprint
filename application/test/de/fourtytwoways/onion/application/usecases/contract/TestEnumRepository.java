@@ -13,6 +13,6 @@ public class TestEnumRepository extends AbstractEnumRepository {
 
     @Override
     protected List<EnumValue> getEntriesImpl(EnumType enumType) {
-        return ImmutableList.of(new DocumentType(1, "POLICY", "Policy"));
+        return ImmutableList.of(DocumentType.POLICY);
     }
 }
