@@ -5,6 +5,7 @@ import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -38,7 +39,7 @@ abstract public class ContractServiceTestHelper {
                 new Product(42, "TEST", "MyTestProduct"),
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
-                BigDecimal.valueOf(4711), BigDecimal.valueOf(19.71));
+                Money.valueOf(4711), Money.valueOf(19.71));
     }
 
     protected List<String> getDocumentPrintOutput() {

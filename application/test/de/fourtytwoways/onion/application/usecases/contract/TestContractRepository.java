@@ -3,9 +3,9 @@ package de.fourtytwoways.onion.application.usecases.contract;
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ class TestContractRepository implements ContractRepository {
     HashMap<String, Contract> contractHashMap = new HashMap<>();
 
     @Override
-    public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, BigDecimal benefit, BigDecimal premium) {
+    public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, Money benefit, Money premium) {
         Contract myContract = new Contract(contractNumber, product, startDate, endDate, benefit, premium);
         return myContract;
     }

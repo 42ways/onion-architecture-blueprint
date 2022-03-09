@@ -1,16 +1,12 @@
 package de.fourtytwoways.onion.application.usecases.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.ContractRepository;
-import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
-import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
-
-import java.math.BigDecimal;
+import de.fourtytwoways.onion.domain.values.Money;
 
 public class ChangeBenefitService extends AbstractContractModificationService {
-    public Contract changeBenefit(String contractNumber, BigDecimal newBenefit) {
+    public Contract changeBenefit(String contractNumber, Money newBenefit) {
         return modifyContract(contractNumber,
                               contract -> {
                                   contract.setBenefit(newBenefit);

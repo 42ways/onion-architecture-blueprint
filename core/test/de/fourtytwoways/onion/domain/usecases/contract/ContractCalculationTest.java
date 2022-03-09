@@ -2,6 +2,7 @@ package de.fourtytwoways.onion.domain.usecases.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.values.Money;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -14,22 +15,23 @@ class ContractCalculationTest {
     @Test
     void calculatePremium() {
         Contract contract = new Contract("4711", null,
-                LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
-                BigDecimal.valueOf(4711), null);
+                                         LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
+                                         Money.valueOf(4711, Money.Currency.EUR), null);
         assertNull(contract.getPremium());
         new ContractCalculation().calculatePremium(contract);
         assertNotNull(contract.getPremium());
-        assertEquals(BigDecimal.valueOf(19.63), contract.getPremium());
+        assertEquals(Money.valueOf(19.63, Money.Currency.EUR), contract.getPremium());
     }
 
     @Test
     void calculateBenefit() {
         Contract contract = new Contract("4711", null,
                 LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
-                null, BigDecimal.valueOf(47.11));
+                null, Money.valueOf(47.11, Money.Currency.USD));
         assertNull(contract.getBenefit());
         new ContractCalculation().calculateBenefit(contract);
         assertNotNull(contract.getBenefit());
-        assertEquals(BigDecimal.valueOf(11306.4), contract.getBenefit().stripTrailingZeros());
+        assertEquals(BigDecimal.valueOf(11306.4), contract.getBenefit().getAmount().stripTrailingZeros());
+        assertEquals(Money.Currency.USD, contract.getBenefit().getCurrency());
     }
 }

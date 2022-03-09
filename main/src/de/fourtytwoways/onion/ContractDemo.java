@@ -9,6 +9,7 @@ import de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
+import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository;
 import de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
@@ -42,10 +43,10 @@ public class ContractDemo {
 
         Contract c1 =
                 myContractRepository.createContract("42",
-                        gemischteVersicherung,
-                        LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
-                        null /* calculate this later */,
-                        BigDecimal.valueOf( 666.));
+                                                    gemischteVersicherung,
+                                                    LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
+                                                    null /* calculate this later */,
+                                                    Money.valueOf(666.));
         System.out.println(c1);
         myContractRepository.saveContract(c1);
 
@@ -68,7 +69,7 @@ public class ContractDemo {
                 myContractRepository.createContract("0815",
                         gemischteVersicherung,
                         LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
-                        BigDecimal.valueOf(4711), null /* calculate later */);
+                        Money.valueOf(4711), null /* calculate later */);
         System.out.println(c4);
         c4 = new ContractCalculation().calculatePremium(c4);
         System.out.println(c4);
@@ -85,7 +86,7 @@ public class ContractDemo {
         System.out.println(c6);
 
         Contract c7 = new ChangePremiumService().
-                changePremium("42", BigDecimal.valueOf(3216.8));
+                changePremium("42", Money.valueOf(3216.8, Money.Currency.USD));
         System.out.println(c7);
 
         Contract c8 = myContractRepository.getContractByNumber("42");

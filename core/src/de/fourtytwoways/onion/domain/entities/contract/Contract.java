@@ -1,6 +1,7 @@
 package de.fourtytwoways.onion.domain.entities.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import lombok.*;
 
@@ -16,8 +17,8 @@ public class Contract {
     private Product product;
     private LocalDate startDate;
     private LocalDate endDate;
-    private BigDecimal benefit;
-    private BigDecimal premium;
+    private Money benefit;
+    private Money premium;
 
     public Period getDuration() {
         return startDate.until(endDate);

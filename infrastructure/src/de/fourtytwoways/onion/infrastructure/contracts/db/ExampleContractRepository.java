@@ -1,18 +1,18 @@
 package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
-import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
-import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.values.Money;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
+import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class ExampleContractRepository implements ContractRepository {
     }
 
     @Override
-    public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, BigDecimal benefit, BigDecimal premium) {
+    public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, Money benefit, Money premium) {
         return new ContractDAO(contractNumber, product, startDate, endDate, benefit, premium);
     }
 
