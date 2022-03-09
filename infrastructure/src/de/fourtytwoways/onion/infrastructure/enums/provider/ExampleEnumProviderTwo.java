@@ -2,10 +2,10 @@ package de.fourtytwoways.onion.infrastructure.enums.provider;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.entities.enumeration.Product;
-import de.fourtytwoways.onion.domain.entities.enumeration.Tariff;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
+import de.fourtytwoways.onion.domain.values.enumeration.Tariff;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 import org.hibernate.Session;
 
 import javax.persistence.Query;

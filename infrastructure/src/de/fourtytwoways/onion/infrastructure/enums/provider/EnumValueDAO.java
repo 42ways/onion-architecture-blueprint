@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion.infrastructure.enums.provider;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

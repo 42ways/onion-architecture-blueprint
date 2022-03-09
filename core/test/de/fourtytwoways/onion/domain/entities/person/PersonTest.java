@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
+import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

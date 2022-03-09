@@ -3,9 +3,9 @@ package de.fourtytwoways.onion.application.usecases.contract;
 
 import com.google.common.collect.ImmutableList;
 import de.fourtytwoways.onion.application.repositories.AbstractEnumRepository;
-import de.fourtytwoways.onion.domain.entities.enumeration.DocumentType;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
+import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 import java.util.List;
 

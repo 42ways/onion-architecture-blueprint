@@ -2,7 +2,7 @@ package de.fourtytwoways.onion.application.repositories;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
-import de.fourtytwoways.onion.domain.entities.enumeration.Product;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

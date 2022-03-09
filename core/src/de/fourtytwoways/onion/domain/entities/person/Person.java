@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
+import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,6 @@ import lombok.ToString;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @EqualsAndHashCode
 @ToString

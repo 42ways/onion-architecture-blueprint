@@ -4,7 +4,7 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
-import de.fourtytwoways.onion.domain.entities.enumeration.Product;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import org.hibernate.Session;
 

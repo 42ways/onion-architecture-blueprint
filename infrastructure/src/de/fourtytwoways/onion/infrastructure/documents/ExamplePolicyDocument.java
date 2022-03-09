@@ -3,7 +3,7 @@ package de.fourtytwoways.onion.infrastructure.documents;
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.document.Document;
-import de.fourtytwoways.onion.domain.entities.enumeration.DocumentType;
+import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 
 public class ExamplePolicyDocument implements Document {
     final int id;

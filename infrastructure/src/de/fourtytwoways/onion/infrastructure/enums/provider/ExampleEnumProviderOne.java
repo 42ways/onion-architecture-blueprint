@@ -1,10 +1,10 @@
 package de.fourtytwoways.onion.infrastructure.enums.provider;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem;
-import de.fourtytwoways.onion.domain.entities.enumeration.DocumentType;
-import de.fourtytwoways.onion.domain.entities.enumeration.Sex;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
+import de.fourtytwoways.onion.domain.values.enumeration.BonusSystem;
+import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
+import de.fourtytwoways.onion.domain.values.enumeration.Sex;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 import java.util.ArrayList;
 import java.util.List;

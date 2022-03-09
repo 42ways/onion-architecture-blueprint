@@ -1,7 +1,7 @@
 package de.fourtytwoways.onion.domain.entities.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.enumeration.Product;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import lombok.*;
 
 import java.math.BigDecimal;

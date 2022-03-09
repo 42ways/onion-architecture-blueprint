@@ -1,8 +1,8 @@
 package de.fourtytwoways.onion.application.repositories;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 import java.util.List;
 import java.util.Optional;

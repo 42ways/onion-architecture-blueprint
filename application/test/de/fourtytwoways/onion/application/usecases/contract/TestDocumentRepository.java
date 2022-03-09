@@ -4,8 +4,8 @@ package de.fourtytwoways.onion.application.usecases.contract;
 import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.document.Document;
-import de.fourtytwoways.onion.domain.entities.enumeration.DocumentType;
-import de.fourtytwoways.onion.domain.entities.enumeration.EnumValue;
+import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 import java.util.ArrayList;
 import java.util.List;
