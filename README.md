@@ -26,3 +26,14 @@ After compilation of the project you can use e.g.
 or
 ```java -cp out/production/core:out/production/application:out/production/infrastructure:out/production/main:lib/* de.fourtytwoways.onion.EnumDemo```
 to run the demo/test programs.
+
+## Dependencies and setup
+
+The project is built with the IntelliJ IDE, the repository contains the configuration files in the folder `.idea`.
+
+The dependencies are
+
+* Lombok 1.18.22 (https://projectlombok.org/)
+* Hibernate 5.4.11 (https://hibernate.org/) (only for module infrastructure)
+* Google Guava 31.1-JRE (https://mvnrepository.com/artifact/com.google.guava/guava/31.1-jre)
+* JUnit Jupiter 5.8.2 (https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api/5.8.2)
