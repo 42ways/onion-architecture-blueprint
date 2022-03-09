@@ -1,0 +1,63 @@
+@startuml
+
+<style>
+title {
+  FontSize 16
+  FontColor Black
+  BackgroundColor Red
+}
+footer {
+  HorizontalAlignment left
+  FontSize 11
+  FontColor red
+}
+</style>
+
+' skinparam linetype ortho
+' skinparam titleBorderRoundCorner 15
+' skinparam titleBorderThickness 2
+' skinparam titleBorderColor red
+' skinparam titleBackgroundColor Red
+
+
+title Onion Architecture Module Dependencies
+
+component CORE #orange {
+package domain_usecases
+package domain_entities
+domain_usecases -> domain_entities
+}
+
+component APPLICATION #yellow {
+package usecases
+package repositories
+usecases -> repositories
+}
+
+repositories -> domain_entities
+usecases --> domain_usecases
+usecases -> domain_entities
+
+component INFRASTRUCTURE #lightblue {
+package storage
+package keys
+package documents
+package "cashing/payout"
+}
+
+component MAIN #lightgray
+
+  MAIN -[#blue,bold]-> INFRASTRUCTURE
+' MAIN -[#blue,bold]-> APPLICATION
+' MAIN -[#blue,bold]-> CORE
+
+  INFRASTRUCTURE -[#blue,bold]-> APPLICATION
+' INFRASTRUCTURE -[#blue,bold]-> CORE
+
+  APPLICATION --[#blue,bold]--> CORE
+
+footer
+© 2022 Thomas Herrmann, 42ways GmbH
+endfooter
+
+@enduml
