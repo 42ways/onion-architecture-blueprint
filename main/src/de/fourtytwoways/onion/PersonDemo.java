@@ -3,6 +3,7 @@ package de.fourtytwoways.onion;
 
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
+import de.fourtytwoways.onion.application.repositories.Repository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
@@ -18,7 +19,7 @@ public class PersonDemo {
 
     public static void registerRepos() {
         EnumRepository enumRepository = new ExampleEnumRepository();
-        PersonRepository personRepository = new ExamplePersonRepository(enumRepository);
+        Repository personRepository = new ExamplePersonRepository(enumRepository);
 
         RepositoryRegistry.getInstance().
                 registerRepository(EnumRepository.class, enumRepository).
