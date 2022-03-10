@@ -22,9 +22,9 @@ class AdjustEndDateServiceTest extends ContractServiceTestHelper {
         assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
 
         Contract changedContract = new AdjustEndDateService().adjustEndDate("0815", LocalDate.of(2027, 4, 1));
-        assertEquals(Money.valueOf(1182.6).getAmount(), changedContract.getBenefit().getAmount().stripTrailingZeros());
+        assertEquals(Money.valueOf(1182.6).getAmount(), changedContract.getBenefit().getAmount());
 
-        assertEquals(Money.valueOf(1182.6).getAmount(), loadContract("0815").getBenefit().getAmount().stripTrailingZeros());
+        assertEquals(Money.valueOf(1182.6).getAmount(), loadContract("0815").getBenefit().getAmount());
         assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
 
         List<String > expectedPrintOutput =

@@ -5,7 +5,6 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +30,7 @@ class ContractCalculationTest {
         assertNull(contract.getBenefit());
         new ContractCalculation().calculateBenefit(contract);
         assertNotNull(contract.getBenefit());
-        assertEquals(BigDecimal.valueOf(11306.4), contract.getBenefit().getAmount().stripTrailingZeros());
+        assertEquals(Money.valueOf(11306.4, Money.Currency.USD), contract.getBenefit());
         assertEquals(Money.Currency.USD, contract.getBenefit().getCurrency());
     }
 }
