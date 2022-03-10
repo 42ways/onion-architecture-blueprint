@@ -39,54 +39,6 @@ component CORE #orange {
   }
   
 
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    abstract class de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    class de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    class de.fourtytwoways.onion.domain.entities.enumeration.DocumentType {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    enum EnumType {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    interface de.fourtytwoways.onion.domain.entities.enumeration.EnumValue {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    class de.fourtytwoways.onion.domain.entities.enumeration.Product {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    class de.fourtytwoways.onion.domain.entities.enumeration.Sex {
-    }
-  }
-  
-
-  package de.fourtytwoways.onion.domain.entities.enumeration {
-    class de.fourtytwoways.onion.domain.entities.enumeration.Tariff {
-    }
-  }
-  
-
   package de.fourtytwoways.onion.domain.entities.person {
     class de.fourtytwoways.onion.domain.entities.person.Address {
     }
@@ -111,15 +63,88 @@ component CORE #orange {
   }
   
 
-  de.fourtytwoways.onion.domain.entities.contract.Contract o-- de.fourtytwoways.onion.domain.entities.enumeration.Product : product
-  de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue .up.|> de.fourtytwoways.onion.domain.entities.enumeration.EnumValue
-  de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue o-- de.fourtytwoways.onion.domain.entities.enumeration.EnumType : type
-  de.fourtytwoways.onion.domain.entities.enumeration.BonusSystem -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
-  de.fourtytwoways.onion.domain.entities.enumeration.DocumentType -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
-  de.fourtytwoways.onion.domain.entities.enumeration.Product -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
-  de.fourtytwoways.onion.domain.entities.enumeration.Sex -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
-  de.fourtytwoways.onion.domain.entities.enumeration.Tariff -up-|> de.fourtytwoways.onion.domain.entities.enumeration.AbstractEnumValue
-  de.fourtytwoways.onion.domain.entities.person.Person o-- de.fourtytwoways.onion.domain.entities.enumeration.Sex : sex
+  package de.fourtytwoways.onion.domain.values {
+    class de.fourtytwoways.onion.domain.values.Money {
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      abstract class de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      class de.fourtytwoways.onion.domain.values.enumeration.BonusSystem {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      class de.fourtytwoways.onion.domain.values.enumeration.DocumentType {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      enum EnumType {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      interface de.fourtytwoways.onion.domain.values.enumeration.EnumValue {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      class de.fourtytwoways.onion.domain.values.enumeration.Product {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      class de.fourtytwoways.onion.domain.values.enumeration.Sex {
+      }
+    }
+  }
+  
+
+  package de.fourtytwoways.onion.domain.values {
+    package enumeration {
+      class de.fourtytwoways.onion.domain.values.enumeration.Tariff {
+      }
+    }
+  }
+  
+
+  de.fourtytwoways.onion.domain.entities.contract.Contract o-- de.fourtytwoways.onion.domain.values.Money : benefit
+  de.fourtytwoways.onion.domain.entities.contract.Contract o-- de.fourtytwoways.onion.domain.values.Money : premium
+  de.fourtytwoways.onion.domain.entities.contract.Contract o-- de.fourtytwoways.onion.domain.values.enumeration.Product : product
+  de.fourtytwoways.onion.domain.entities.person.Person o-- de.fourtytwoways.onion.domain.values.enumeration.Sex : sex
+  de.fourtytwoways.onion.domain.values.Money o-- de.fourtytwoways.onion.domain.values.Money.Currency : currency
+  de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue .up.|> de.fourtytwoways.onion.domain.values.enumeration.EnumValue
+  de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue o-- de.fourtytwoways.onion.domain.values.enumeration.EnumType : type
+  de.fourtytwoways.onion.domain.values.enumeration.BonusSystem -up-|> de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.values.enumeration.DocumentType -up-|> de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.values.enumeration.Product -up-|> de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.values.enumeration.Sex -up-|> de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue
+  de.fourtytwoways.onion.domain.values.enumeration.Tariff -up-|> de.fourtytwoways.onion.domain.values.enumeration.AbstractEnumValue
 
 }
 
