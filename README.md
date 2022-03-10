@@ -29,6 +29,15 @@ to run the demo/test programs.
 
 ## Dependencies and setup
 
+### Gradle build
+
+The project comes with gradle build files, including the project module structure and dependencies as well as
+the external dependencies. See `gradle.settings` in the root directory and `gradle.build` in the modules.
+
+See the [official Gradle documentation](https://docs.gradle.org/current/userguide/userguide.html) for further info.
+
+### IntelliJ IDE
+
 The project is built with the IntelliJ IDE, the repository contains the configuration files in the folder `.idea`.
 
 The dependencies are
