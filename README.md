@@ -34,6 +34,8 @@ The project is built with the IntelliJ IDE, the repository contains the configur
 The dependencies are
 
 * Lombok 1.18.22 (https://projectlombok.org/)
-* Hibernate 5.4.11 (https://hibernate.org/) (only for module infrastructure)
 * Google Guava 31.1-JRE (https://mvnrepository.com/artifact/com.google.guava/guava/31.1-jre)
 * JUnit Jupiter 5.8.2 (https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api/5.8.2)
+* Hibernate 5.4.11 (https://hibernate.org/) (only for module infrastructure)
+* H2 1.4.200 (https://mvnrepository.com/artifact/com.h2database/h2/1.4.200) (only for module infrastructure)
+
