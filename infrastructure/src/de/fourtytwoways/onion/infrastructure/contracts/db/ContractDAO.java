@@ -29,7 +29,9 @@ public class ContractDAO extends Contract {
 
     @Access(AccessType.PROPERTY)
     @Column(name = "contractNumber")
-    public String getContractNumber() {return super.getContractNumber();}
+    public String getContractNumber() {
+        return super.getContractNumber();
+    }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "productId")
@@ -66,29 +68,22 @@ public class ContractDAO extends Contract {
     }
 
     public void setBenefitAmount(BigDecimal amount) {
-        // TODO: There has to be a better way for null handling...
-        if (amount != null)
-            super.setBenefit(new Money(amount, getBenefitCurrency()));
-        else
-            super.setBenefit(null);
+        super.setBenefit(createValidMoneyFromPartialData(amount, getBenefitCurrency()));
     }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "benefit_currency")
-    public Money.Currency getBenefitCurrency() {
+    public String getBenefitCurrency() {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
         Money benefit = super.getBenefit();
         if (benefit != null)
-            return benefit.getCurrency();
+            return benefit.getCurrency().toString();
         else
             return null;
     }
 
     public void setBenefitCurrency(String currency) {
-        // TODO: set correct currency !
-        BigDecimal amount = getBenefitAmount();
-
-        super.setBenefit(new Money(getBenefitAmount(), Money.Currency.EUR));
+        super.setBenefit(createValidMoneyFromPartialData(getBenefitAmount(), currency));
     }
 
     @Access(AccessType.PROPERTY)
@@ -103,23 +98,27 @@ public class ContractDAO extends Contract {
     }
 
     public void setPremiumAmount(BigDecimal amount) {
-        super.setPremium(new Money(amount, getPremiumCurrency()));
+        super.setPremium(createValidMoneyFromPartialData(amount, getPremiumCurrency()));
     }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "premium_currency")
-    public Money.Currency getPremiumCurrency() {
+    public String getPremiumCurrency() {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
         Money premium = super.getPremium();
         if (premium != null)
-            return premium.getCurrency();
+            return premium.getCurrency().toString();
         else
             return null;
     }
 
     public void setPremiumCurrency(String currency) {
-        // TODO: set correct currency !
-        super.setPremium(new Money(getPremiumAmount(), Money.Currency.EUR));
+        super.setPremium(createValidMoneyFromPartialData(getPremiumAmount(), currency));
     }
 
+    private Money createValidMoneyFromPartialData(BigDecimal amount, String currency) {
+        Money.Currency newCurrency = "USD".equals(currency) ? Money.Currency.USD : Money.Currency.EUR;
+        BigDecimal newAmount = amount != null ? amount : BigDecimal.valueOf(0);
+        return Money.valueOf(newAmount, newCurrency);
+    }
 }
