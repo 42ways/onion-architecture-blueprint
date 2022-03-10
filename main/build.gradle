@@ -12,6 +12,21 @@ dependencies {
     implementation project(':core')
 }
 
+task(runEnumDemo, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'de.fourtytwoways.onion.EnumDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runContractDemo, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'de.fourtytwoways.onion.ContractDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runPersonDemo, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'de.fourtytwoways.onion.PersonDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 application {
     // Define the main class for the application.
     mainClass = 'de.fourtytwoways.onion.ContractDemo'
