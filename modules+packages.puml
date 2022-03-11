@@ -42,10 +42,14 @@ usecases --> domain_usecases
 usecases -> domain_entities
 
 component INFRASTRUCTURE #lightblue {
-package storage
+package persistence as "e.g. JPA"
 package keys
 package documents
 package "cashing/payout"
+package UI
+
+package hibernate #lightgreen
+persistence -d-> hibernate
 }
 
 component MAIN #lightgray
