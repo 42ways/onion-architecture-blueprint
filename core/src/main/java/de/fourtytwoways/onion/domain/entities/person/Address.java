@@ -14,9 +14,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Address {
     private int id;
-    @NonNull private boolean primary;
-    @NonNull private String street;
-    @NonNull private String number;
-    @NonNull private String zipCode;
-    @NonNull private String city;
+    private final boolean primary;
+    @NonNull private final String street;
+    @NonNull private final String number;
+    @NonNull private final String zipCode;
+    @NonNull private final String city;
 }
