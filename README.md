@@ -34,6 +34,10 @@ to run the demo/test programs.
 The project comes with gradle build files, including the project module structure and dependencies as well as
 the external dependencies. See `gradle.settings` in the root directory and `gradle.build` in the modules.
 
+You can use Gradle via the included `gradlew` (Posix) or `gradlew.bat` (Windows) script without installing Gradle first, e.g.
+
+```gradlew build```
+
 See the [official Gradle documentation](https://docs.gradle.org/current/userguide/userguide.html) for further info.
 
 ### IntelliJ IDE
