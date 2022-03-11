@@ -25,7 +25,10 @@ title Onion Architecture Module Dependencies
 component CORE #orange {
 package domain_usecases
 package domain_entities
+package values
 domain_usecases -> domain_entities
+domain_usecases -> values
+domain_entities -> values
 }
 
 component APPLICATION #yellow {
