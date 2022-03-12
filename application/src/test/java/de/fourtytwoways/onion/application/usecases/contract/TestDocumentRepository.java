@@ -28,9 +28,9 @@ public class TestDocumentRepository implements DocumentRepository {
 
                 @Override
                 public void print() {
-                    String policy = "POLICY for " + contract.getProduct().getValue() + "\n" +
-                            "Benefit is " + contract.getBenefit() + "\n" +
-                            "Premium is " + contract.getPremium() + "\n";
+                    String policy = "Versicherungspolice für das Produkt " + contract.getProduct().getValue() + "\n" +
+                            "Die Leistung beträgt " + contract.getBenefit() + "\n" +
+                            "Der Beitrag beträgt " + contract.getPremium() + "\n";
                     printOutput.add(policy);
                 }
             });
@@ -44,10 +44,11 @@ public class TestDocumentRepository implements DocumentRepository {
 
                 @Override
                 public void print() {
-                    String first_page = "Dear customer,\n" +
-                            "we are happy to send you the policy for your new" +
-                            " contract of our first class "
-                            + contract.getProduct().getValue() + " as attachment\n";
+                    String first_page = "Lieber Kunde,\n" +
+                            "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres " +
+                            " Versicherungsvertrages des Produkts  "
+                            + contract.getProduct().getValue() + " übersenden zu können.\n" +
+                            "Herzlichst,\nIhre Onion First\n";
                     printOutput.add(first_page);
                 }
             });

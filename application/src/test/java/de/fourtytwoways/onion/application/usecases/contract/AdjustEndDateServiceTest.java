@@ -27,12 +27,13 @@ class AdjustEndDateServiceTest extends ContractServiceTestHelper {
         assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
 
         List<String> expectedPrintOutput =
-                ImmutableList.of("Dear customer,\n" +
-                                         "we are happy to send you the policy for your new contract of" +
-                                         " our first class MyTestProduct as attachment\n"
-                        , "POLICY for MyTestProduct\n" +
-                                         "Benefit is Money(amount=1182.60, currency=EUR)\n" +
-                                         "Premium is Money(amount=19.71, currency=EUR)\n");
+                ImmutableList.of("Lieber Kunde,\n" +
+                                         "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres  Versicherungsvertrages des Produkts  MyTestProduct übersenden zu können.\n" +
+                                         "Herzlichst,\n" +
+                                         "Ihre Onion First\n",
+                                 "Versicherungspolice für das Produkt MyTestProduct\n" +
+                                         "Die Leistung beträgt Money(amount=1182.60, currency=EUR)\n" +
+                                         "Der Beitrag beträgt Money(amount=19.71, currency=EUR)\n");
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());
     }
 

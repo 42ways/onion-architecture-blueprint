@@ -30,12 +30,13 @@ class ChangePremiumServiceTest extends ContractServiceTestHelper {
         assertEquals(Money.Currency.EUR, loadContract("0815").getBenefit().getCurrency());
 
         List<String> expectedPrintOutput =
-                ImmutableList.of("Dear customer,\n" +
-                                         "we are happy to send you the policy for your new contract of" +
-                                         " our first class MyTestProduct as attachment\n",
-                                 "POLICY for MyTestProduct\n" +
-                                         "Benefit is Money(amount=5310.58, currency=EUR)\n" +
-                                         "Premium is Money(amount=22.22, currency=EUR)\n");
+                ImmutableList.of("Lieber Kunde,\n" +
+                                         "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres  Versicherungsvertrages des Produkts  MyTestProduct übersenden zu können.\n" +
+                                         "Herzlichst,\n" +
+                                         "Ihre Onion First\n",
+                                 "Versicherungspolice für das Produkt MyTestProduct\n" +
+                                         "Die Leistung beträgt Money(amount=5310.58, currency=EUR)\n" +
+                                         "Der Beitrag beträgt Money(amount=22.22, currency=EUR)\n");
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());
     }
 

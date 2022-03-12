@@ -27,11 +27,13 @@ public class ExampleFirstPageDocument implements Document {
 
     @Override
     public void print() {
-        String policy = "Dear valued customer,\n" +
-                "we are more than happy to send you attached the documents regarding your contract\n" +
+        String policy = "Lieber Kunde,\n" +
+                "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres " +
+                " Versicherungsvertrages\n" +
                 contract.getContractNumber() + " - " + contract.getProduct().getValue() + "\n" +
-                "Please don't hesitate to contact us, if you have any questions\n" +
-                "Sincerely,\nYour Onion First Insurance Company\n";
+                " übersenden zu können.\n" +
+                "Bitte scheuen Sie sich nicht uns anzusprechen, sollten Sie irgendwelche Fragen haben.\n" +
+                "Herzlichst,\nIhre Onion First Versicherungsgesellschaft auf Gegenseitigkeit\n";
         System.out.println("---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)");
         System.out.print(policy);
         System.out.println("---------- END DOCUMENT OUTPUT (FIRST PAGE)");
