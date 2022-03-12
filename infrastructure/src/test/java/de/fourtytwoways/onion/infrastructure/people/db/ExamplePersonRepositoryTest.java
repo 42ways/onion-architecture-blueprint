@@ -69,6 +69,20 @@ class ExamplePersonRepositoryTest {
         assertEquals(1, personRepository.getPeopleByName("Tom", null).size());
         assertEquals(1, personRepository.getPeopleByName("Tom", "Flint").size());
         assertEquals(0, personRepository.getPeopleByName(null, "Stone").size());
+
+        Sex female = new Sex(1, "F", "Female");
+        Person wilma = new Person(11, "Wilma", "Flint",
+                          LocalDate.of(1967, 8, 9), female);
+        personRepository.savePerson(wilma);
+
+        assertEquals(1, personRepository.getPeopleByName("Wilma", "Flint").size());
+        assertEquals(1, personRepository.getPeopleByName("Tom", null).size());
+        assertEquals(1, personRepository.getPeopleByName("Wilma", null).size());
+        assertEquals(2, personRepository.getPeopleByName(null, "Flint").size());
+        assertEquals(2, personRepository.getPeopleByName(null, null).size());
+
+        Person dbWilma = personRepository.getPersonById(11);
+        personRepository.deletePerson(dbWilma);
     }
 
     @Test

@@ -14,7 +14,9 @@ import org.hibernate.Session;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
@@ -39,12 +41,14 @@ public class ExamplePersonRepository implements PersonRepository {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<PersonDAO> cr = cb.createQuery(PersonDAO.class);
             Root<PersonDAO> root = cr.from(PersonDAO.class);
+            List<Predicate> predicates = new ArrayList<>();
             if (name != null) {
-                cr.select(root).where(cb.equal(root.get("name"), name));
+                predicates.add(cb.equal(root.get("name"), name));
             }
             if (surname != null) {
-                cr.select(root).where(cb.equal(root.get("surname"), surname));
+                predicates.add(cb.equal(root.get("surname"), surname));
             }
+            cr.select(root).where(predicates.toArray(predicates.toArray(new Predicate[0])));
             Query query = session.createQuery(cr);
 
             List<PersonDAO> results = query.getResultList();
