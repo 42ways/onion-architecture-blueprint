@@ -5,6 +5,9 @@ import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 public interface DocumentRepository extends Repository {
+    default DocumentType getFirstPageType() {
+        return DocumentType.FIRST_PAGE;
+    }
     default DocumentType getPolicyType() {
         return DocumentType.POLICY;
     }

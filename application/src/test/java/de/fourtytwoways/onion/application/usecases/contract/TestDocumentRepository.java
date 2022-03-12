@@ -34,6 +34,24 @@ public class TestDocumentRepository implements DocumentRepository {
                     printOutput.add(policy);
                 }
             });
+        } else if (DocumentType.FIRST_PAGE.equals(type)) {
+            documents.add(new Document() {
+                @Override
+                public int getId() {return 1;}
+
+                @Override
+                public DocumentType getDocumentType() {return DocumentType.FIRST_PAGE;}
+
+                @Override
+                public void print() {
+                    String first_page = "Dear customer,\n" +
+                            "we are happy to send you the policy for your new" +
+                            " contract of our first class "
+                            + contract.getProduct().getValue() + " as attachment\n";
+                    printOutput.add(first_page);
+                }
+            });
+
         } else {
             throw new IllegalStateException("Unexpected value: " + type);
         }

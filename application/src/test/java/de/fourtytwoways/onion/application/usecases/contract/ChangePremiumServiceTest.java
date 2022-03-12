@@ -29,8 +29,11 @@ class ChangePremiumServiceTest extends ContractServiceTestHelper {
         assertEquals(BigDecimal.valueOf(5310.58), loadContract("0815").getBenefit().getAmount());
         assertEquals(Money.Currency.EUR, loadContract("0815").getBenefit().getCurrency());
 
-        List<String > expectedPrintOutput =
-                ImmutableList.of("POLICY for MyTestProduct\n" +
+        List<String> expectedPrintOutput =
+                ImmutableList.of("Dear customer,\n" +
+                                         "we are happy to send you the policy for your new contract of" +
+                                         " our first class MyTestProduct as attachment\n",
+                                 "POLICY for MyTestProduct\n" +
                                          "Benefit is Money(amount=5310.58, currency=EUR)\n" +
                                          "Premium is Money(amount=22.22, currency=EUR)\n");
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());

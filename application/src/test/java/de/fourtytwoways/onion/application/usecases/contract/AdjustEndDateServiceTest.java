@@ -26,8 +26,11 @@ class AdjustEndDateServiceTest extends ContractServiceTestHelper {
         assertEquals(Money.valueOf(1182.6).getAmount(), loadContract("0815").getBenefit().getAmount());
         assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
 
-        List<String > expectedPrintOutput =
-                ImmutableList.of("POLICY for MyTestProduct\n" +
+        List<String> expectedPrintOutput =
+                ImmutableList.of("Dear customer,\n" +
+                                         "we are happy to send you the policy for your new contract of" +
+                                         " our first class MyTestProduct as attachment\n"
+                        , "POLICY for MyTestProduct\n" +
                                          "Benefit is Money(amount=1182.60, currency=EUR)\n" +
                                          "Premium is Money(amount=19.71, currency=EUR)\n");
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());

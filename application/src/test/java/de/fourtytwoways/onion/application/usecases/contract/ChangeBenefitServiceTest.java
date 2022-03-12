@@ -14,20 +14,23 @@ class ChangeBenefitServiceTest extends ContractServiceTestHelper {
 
     @Test
     void changeBenefit() {
-        saveContract(createTestContract("0815"));
+        saveContract(createTestContract("4711"));
 
-        assertEquals(Money.valueOf(4711), loadContract("0815").getBenefit());
-        assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
+        assertEquals(Money.valueOf(4711), loadContract("4711").getBenefit());
+        assertEquals(Money.valueOf(19.71), loadContract("4711").getPremium());
 
         Contract changedContract =
-                new ChangeBenefitService().changeBenefit("0815", Money.valueOf(5310.58));
+                new ChangeBenefitService().changeBenefit("4711", Money.valueOf(5310.58));
         assertEquals(Money.valueOf(5310.58), changedContract.getBenefit());
 
-        assertEquals(Money.valueOf(5310.58), loadContract("0815").getBenefit());
-        assertEquals(Money.valueOf(22.22), loadContract("0815").getPremium());
+        assertEquals(Money.valueOf(5310.58), loadContract("4711").getBenefit());
+        assertEquals(Money.valueOf(22.22), loadContract("4711").getPremium());
 
-        List<String > expectedPrintOutput =
-                ImmutableList.of("POLICY for MyTestProduct\n" +
+        List<String> expectedPrintOutput =
+                ImmutableList.of("Dear customer,\n" +
+                                         "we are happy to send you the policy for your new contract of" +
+                                         " our first class MyTestProduct as attachment\n",
+                                 "POLICY for MyTestProduct\n" +
                                          "Benefit is Money(amount=5310.58, currency=EUR)\n" +
                                          "Premium is Money(amount=22.22, currency=EUR)\n");
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());

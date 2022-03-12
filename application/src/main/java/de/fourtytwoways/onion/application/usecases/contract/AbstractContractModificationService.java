@@ -16,6 +16,8 @@ abstract class AbstractContractModificationService {
             Contract modifiedContract = contractModificationFunction.apply(contract);
             contractRepository.saveContract(modifiedContract);
             DocumentRepository documentRepository = (DocumentRepository) RepositoryRegistry.getInstance().getRepository(DocumentRepository.class);
+            // TODO: In a real system, this would be managed by a rule based document component
+            documentRepository.createDocument(documentRepository.getFirstPageType(), modifiedContract);
             documentRepository.createDocument(documentRepository.getPolicyType(), modifiedContract);
             return modifiedContract;
         }

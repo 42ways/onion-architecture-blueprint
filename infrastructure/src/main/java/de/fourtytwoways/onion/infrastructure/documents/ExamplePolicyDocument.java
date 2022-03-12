@@ -17,7 +17,7 @@ public class ExamplePolicyDocument implements Document {
 
     @Override
     public int getId() {
-        return 0;
+        return id;
     }
 
     @Override

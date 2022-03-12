@@ -17,6 +17,10 @@ public class ExampleDocumentRepository implements DocumentRepository {
             // TODO: better way to generate document id!
             Document document = new ExamplePolicyDocument(++lastId, contract);
             document.print();
+        } else if (DocumentType.FIRST_PAGE.equals(type)) {
+            // TODO: better way to generate document id!
+            Document document = new ExampleFirstPageDocument(++lastId, contract);
+            document.print();
         } else {
             throw new IllegalStateException("Unexpected value: " + type);
         }
