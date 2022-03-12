@@ -13,13 +13,6 @@ footer {
 }
 </style>
 
-' skinparam linetype ortho
-' skinparam titleBorderRoundCorner 15
-' skinparam titleBorderThickness 2
-' skinparam titleBorderColor red
-' skinparam titleBackgroundColor Red
-
-
 title Onion Architecture Module Dependencies
 
 component CORE #orange {
@@ -52,11 +45,11 @@ package hibernate #lightgreen
 persistence -d-> hibernate
 }
 
-component MAIN #lightgray
+component DEMO #lightgray
 
-  MAIN -[#blue,bold]-> INFRASTRUCTURE
-' MAIN -[#blue,bold]-> APPLICATION
-' MAIN -[#blue,bold]-> CORE
+  DEMO -[#blue,bold]-> INFRASTRUCTURE
+' DEMO -[#blue,bold]-> APPLICATION
+' DEMO -[#blue,bold]-> CORE
 
   INFRASTRUCTURE -[#blue,bold]-> APPLICATION
 ' INFRASTRUCTURE -[#blue,bold]-> CORE

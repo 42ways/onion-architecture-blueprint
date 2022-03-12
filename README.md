@@ -42,9 +42,9 @@ The project configuration is stored in `.idea`, configured via the gradle files.
 
 ## Usage
 
-The module `main` includes some demo programs that are available as Gradle tasks `runEnumDemo`,
+The module `demo` includes some demo programs that are available as Gradle tasks `runEnumDemo`,
 `runPersonDemo` and `runContractDemo`.
 
-The demo programs use a H2 database configured to use file based storage in `main/.h2` (see configuration file
+The demo programs use a H2 database configured to use file based storage in `demo/.h2` (see configuration file
 `infrastructure/src/main/resources/hibernate.cfg.xml`).
 
