@@ -3,6 +3,7 @@ package de.fourtytwoways.onion.domain.usecases.contract;
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
+import de.fourtytwoways.onion.domain.values.enumeration.ComputationTarget;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -19,7 +20,7 @@ class ContractDurationChangeTest {
         new ContractCalculation().calculatePremium(contract);
         assertEquals(Money.valueOf(19.63), contract.getPremium());
         assertEquals(Money.valueOf(4711.00), contract.getBenefit());
-        new ContractDurationChange().adjustStartDate(contract, LocalDate.of(2032, 1, 1), false);
+        new ContractDurationChange().adjustStartDate(contract, LocalDate.of(2032, 1, 1), ComputationTarget.PREMIUM);
         assertEquals(Money.valueOf(39.26), contract.getPremium());
         assertEquals(Money.Currency.EUR, contract.getPremium().getCurrency());
         assertEquals(Money.valueOf(4711), contract.getBenefit());
@@ -40,7 +41,7 @@ class ContractDurationChangeTest {
         new ContractDurationChange().adjustEndDate(contract, LocalDate.of(2032, 1, 1));
         assertEquals(Money.valueOf(19.63, Money.Currency.USD), contract.getPremium());
         assertEquals(Money.valueOf(2355.60, Money.Currency.USD), contract.getBenefit());
-        new ContractDurationChange().adjustEndDate(contract, LocalDate.of(2042, 1, 1),false);
+        new ContractDurationChange().adjustEndDate(contract, LocalDate.of(2042, 1, 1),ComputationTarget.PREMIUM);
         assertEquals(Money.valueOf(9.82, Money.Currency.USD), contract.getPremium());
         assertEquals(Money.valueOf(2355.60, Money.Currency.USD), contract.getBenefit());
     }

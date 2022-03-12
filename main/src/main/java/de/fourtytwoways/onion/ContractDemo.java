@@ -10,6 +10,7 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
 import de.fourtytwoways.onion.domain.values.Money;
+import de.fourtytwoways.onion.domain.values.enumeration.ComputationTarget;
 import de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository;
 import de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
@@ -74,7 +75,7 @@ public class ContractDemo {
         System.out.println(c4);
         myContractRepository.saveContract(c4);
 
-        c4 = new ContractDurationChange().adjustStartDate(c4, LocalDate.of(2027, 4, 1), false);
+        c4 = new ContractDurationChange().adjustStartDate(c4, LocalDate.of(2027, 4, 1), ComputationTarget.PREMIUM);
         System.out.println(c4);
         myContractRepository.saveContract(c4);
 
