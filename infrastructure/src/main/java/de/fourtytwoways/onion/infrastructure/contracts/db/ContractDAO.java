@@ -20,7 +20,7 @@ public class ContractDAO extends Contract {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    ContractDAO() {
+    protected ContractDAO() {
     }
 
     public ContractDAO(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, Money benefit, Money premium) {

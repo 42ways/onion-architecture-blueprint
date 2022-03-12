@@ -20,7 +20,7 @@ public class BankAccountDAO {
     String iban;
     String bic;
 
-    BankAccountDAO() {
+    protected BankAccountDAO() {
     }
 
     BankAccountDAO(PersonDAO personDAO, BankAccount bankAccount) {

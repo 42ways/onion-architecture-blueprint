@@ -16,7 +16,7 @@ public class EnumValueDAO {
     String type;
     String value;
 
-    EnumValueDAO() {
+    protected EnumValueDAO() {
     }
 
     EnumValueDAO(int id, String key, EnumType type, String value) {

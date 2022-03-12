@@ -20,7 +20,7 @@ public class AddressDAO {
     String zipCode;
     String city;
 
-    AddressDAO() {
+    protected AddressDAO() {
     }
 
     AddressDAO(PersonDAO personDAO, Address address) {
@@ -32,4 +32,5 @@ public class AddressDAO {
         this.zipCode = address.getZipCode();
         this.city = address.getCity();
     }
+
 }
