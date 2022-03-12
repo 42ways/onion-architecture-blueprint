@@ -20,6 +20,7 @@ public class Person {
     @Getter @Setter private LocalDate birthday;
     @Getter @Setter private Sex sex;
     @Getter private final List<Address> addresses = new ArrayList<>();
+    @Getter private final List<BankAccount> bankAccounts = new ArrayList<>();
 
     public Person(int id, String name, String surname, LocalDate birthday, Sex sex) {
         this.id = id;
@@ -32,9 +33,13 @@ public class Person {
     public void addAddress(Address address) {
         addresses.add(address);
     }
-
     public void removeAddress(Address address) {
         addresses.remove(address);
     }
+
+    public void addBankAccount(BankAccount bankAccount) {
+        bankAccounts.add(bankAccount);
+    }
+    public void removeBankAccount(BankAccount bankAccount) { bankAccounts.remove(bankAccount); }
 
 }

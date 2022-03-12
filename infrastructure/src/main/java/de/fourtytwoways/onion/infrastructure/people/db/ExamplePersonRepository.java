@@ -3,6 +3,7 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
+import de.fourtytwoways.onion.domain.entities.person.BankAccount;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import de.fourtytwoways.onion.domain.entities.person.Address;
@@ -47,9 +48,14 @@ public class ExamplePersonRepository implements PersonRepository {
             Query query = session.createQuery(cr);
 
             List<PersonDAO> results = query.getResultList();
+
+            // Since we have to do LAZY loading for Bank Accounts, we have to do the mapping
+            // to the domain model while still having an open session
+            List<Person> people = results.stream().map(this::toPerson).toList();
+
             session.close();
 
-            return results.stream().map(this::toPerson).toList();
+            return people;
         }
     }
 
@@ -60,7 +66,13 @@ public class ExamplePersonRepository implements PersonRepository {
         Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
         for (AddressDAO addressDAO : personDAO.addressDAOS) {
             person.addAddress(new Address(addressDAO.id, addressDAO.isPrimary,
-                    addressDAO.street, addressDAO.number, addressDAO.zipCode, addressDAO.city));
+                                          addressDAO.street, addressDAO.number,
+                                          addressDAO.zipCode, addressDAO.city));
+        }
+        for (BankAccountDAO bankAccountDAO : personDAO.bankAccountDAOS) {
+            person.addBankAccount(new BankAccount(bankAccountDAO.id, bankAccountDAO.isPrimary,
+                                                  bankAccountDAO.accountHolderName, bankAccountDAO.bankName,
+                                                  bankAccountDAO.iban, bankAccountDAO.bic));
         }
         return person;
     }
@@ -80,7 +92,8 @@ public class ExamplePersonRepository implements PersonRepository {
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
-                    person.getBirthday(), person.getSex().getKey(), person.getAddresses());
+                                                person.getBirthday(), person.getSex().getKey(),
+                                                person.getAddresses(), person.getBankAccounts());
             sessionOperation.accept(session, personDAO);
             session.getTransaction().commit();
             session.close();

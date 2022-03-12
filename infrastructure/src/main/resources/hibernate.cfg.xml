@@ -14,6 +14,7 @@
         <!-- <property name="show_sql">true</property> -->
         <mapping class="de.fourtytwoways.onion.infrastructure.enums.provider.EnumValueDAO"/>
         <mapping class="de.fourtytwoways.onion.infrastructure.people.db.AddressDAO"/>
+        <mapping class="de.fourtytwoways.onion.infrastructure.people.db.BankAccountDAO"/>
         <mapping class="de.fourtytwoways.onion.infrastructure.people.db.PersonDAO"/>
         <mapping class="de.fourtytwoways.onion.infrastructure.contracts.db.ContractDAO"/>
     </session-factory>
