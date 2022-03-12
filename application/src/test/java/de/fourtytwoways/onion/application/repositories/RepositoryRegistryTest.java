@@ -13,6 +13,7 @@ class RepositoryRegistryTest {
         assertNotNull(myRegistry);
         assertEquals(RepositoryRegistry.class, myRegistry.getClass());
         RepositoryRegistry mySecondRegistry = RepositoryRegistry.getInstance();
+        //noinspection ConstantConditions
         assert myRegistry == mySecondRegistry;
     }
 
