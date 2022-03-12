@@ -10,7 +10,7 @@ public interface PersonRepository extends Repository {
 
     List<Person> getPeopleByName(String name, String surname);
 
-    boolean savePerson(Person person);
+    void savePerson(Person person);
 
-    boolean deletePerson(Person person);
+    void deletePerson(Person person);
 }

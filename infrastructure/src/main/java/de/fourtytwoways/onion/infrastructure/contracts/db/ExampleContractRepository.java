@@ -45,14 +45,13 @@ public class ExampleContractRepository implements ContractRepository {
     }
 
     @Override
-    public boolean saveContract(Contract contract) {
+    public void saveContract(Contract contract) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
             session.saveOrUpdate(contract);
             session.getTransaction().commit();
             session.close();
-            return true;
         }
     }
 }

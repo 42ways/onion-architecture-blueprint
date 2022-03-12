@@ -18,6 +18,7 @@ class RepositoryRegistryTest {
     }
 
     private static class MyRepository implements Repository {
+        @SuppressWarnings("SameReturnValue")
         public int getMagicNumber() { return 42; }
     }
 

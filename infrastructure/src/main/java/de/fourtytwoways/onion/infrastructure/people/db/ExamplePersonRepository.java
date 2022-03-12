@@ -82,16 +82,16 @@ public final class ExamplePersonRepository implements PersonRepository {
     }
 
     @Override
-    public boolean savePerson(Person person) {
-        return doPersonTransaction(person, Session::saveOrUpdate);
+    public void savePerson(Person person) {
+        doPersonTransaction(person, Session::saveOrUpdate);
     }
 
     @Override
-    public boolean deletePerson(Person person) {
-        return doPersonTransaction(person, Session::delete);
+    public void deletePerson(Person person) {
+        doPersonTransaction(person, Session::delete);
     }
 
-    private boolean doPersonTransaction(Person person, BiConsumer<Session, PersonDAO> sessionOperation) {
+    private void doPersonTransaction(Person person, BiConsumer<Session, PersonDAO> sessionOperation) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
@@ -101,7 +101,6 @@ public final class ExamplePersonRepository implements PersonRepository {
             sessionOperation.accept(session, personDAO);
             session.getTransaction().commit();
             session.close();
-            return true;
         }
     }
 }
