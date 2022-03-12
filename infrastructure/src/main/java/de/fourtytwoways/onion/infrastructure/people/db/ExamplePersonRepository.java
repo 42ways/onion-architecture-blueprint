@@ -3,11 +3,11 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
+import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.domain.entities.person.BankAccount;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
-import de.fourtytwoways.onion.domain.entities.person.Address;
-import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import org.hibernate.Session;
 

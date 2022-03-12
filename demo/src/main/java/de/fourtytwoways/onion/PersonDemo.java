@@ -6,11 +6,11 @@ import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.application.repositories.Repository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Address;
-import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
+import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
 import de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository;
-import de.fourtytwoways.onion.domain.entities.person.Person;
 
 import java.time.LocalDate;
 import java.util.List;

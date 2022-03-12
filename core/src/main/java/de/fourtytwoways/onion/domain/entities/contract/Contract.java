@@ -1,9 +1,11 @@
 package de.fourtytwoways.onion.domain.entities.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.domain.values.Money;
-import lombok.*;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

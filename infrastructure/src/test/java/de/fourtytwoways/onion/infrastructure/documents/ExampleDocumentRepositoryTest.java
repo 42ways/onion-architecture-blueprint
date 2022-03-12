@@ -15,7 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ExampleDocumentRepositoryTest {
     private final PrintStream standardOut = System.out;

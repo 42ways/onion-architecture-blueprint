@@ -11,11 +11,11 @@ import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.ComputationTarget;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository;
 import de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
-import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.values.enumeration.Product;
 
 import java.time.LocalDate;
 

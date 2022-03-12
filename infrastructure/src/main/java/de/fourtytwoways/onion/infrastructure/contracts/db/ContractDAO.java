@@ -1,11 +1,11 @@
 package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
