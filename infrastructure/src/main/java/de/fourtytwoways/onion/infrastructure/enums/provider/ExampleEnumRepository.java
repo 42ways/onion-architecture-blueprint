@@ -8,8 +8,8 @@ import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 import java.util.List;
 
 public class ExampleEnumRepository extends AbstractEnumRepository {
-    ExampleEnumProviderOne providerOne = new ExampleEnumProviderOne();
-    ExampleEnumProviderTwo providerTwo = new ExampleEnumProviderTwo();
+    final ExampleEnumProviderOne providerOne = new ExampleEnumProviderOne();
+    final ExampleEnumProviderTwo providerTwo = new ExampleEnumProviderTwo();
 
     @Override
     protected List<EnumValue> getEntriesImpl(EnumType enumType) {

@@ -7,6 +7,7 @@ import de.fourtytwoways.onion.domain.entities.person.BankAccount;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -19,18 +20,18 @@ public class PersonDAO {
     LocalDate birthday;
     String sex;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "personDAO")
-    List<AddressDAO> addressDAOS = new ArrayList<>();
+    final Collection<AddressDAO> addressDAOS = new ArrayList<>();
     // Using FetchType.EAGER here too would cause a MultipleBagFetchException in Hibernate
     // However, since we copy all person data into the domain model during loading the data
-    // for an use case, this shouldn't be a problem
+    // for a use case, this shouldn't be a problem
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "personDAO")
-    List<BankAccountDAO> bankAccountDAOS = new ArrayList<>();
+    final Collection<BankAccountDAO> bankAccountDAOS = new ArrayList<>();
 
     public PersonDAO() {
     }
 
     PersonDAO(int id, String name, String surname, LocalDate birthday, String sex,
-              List<Address> addresses, List<BankAccount> bankAccounts) {
+              Iterable<Address> addresses, Iterable<BankAccount> bankAccounts) {
         this.id = id;
         this.name = name;
         this.surname = surname;

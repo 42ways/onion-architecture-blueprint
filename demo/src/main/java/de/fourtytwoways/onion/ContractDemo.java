@@ -1,10 +1,7 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.ContractRepository;
-import de.fourtytwoways.onion.application.repositories.DocumentRepository;
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
-import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
+import de.fourtytwoways.onion.application.repositories.*;
 import de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
@@ -23,8 +20,8 @@ public class ContractDemo {
 
     public static void registerRepos() {
         EnumRepository enumRepository = new ExampleEnumRepository();
-        ContractRepository contractRepository = new ExampleContractRepository(enumRepository);
-        DocumentRepository documentRepository = new ExampleDocumentRepository();
+        Repository contractRepository = new ExampleContractRepository(enumRepository);
+        Repository documentRepository = new ExampleDocumentRepository();
 
         RepositoryRegistry.getInstance().
                 registerRepository(EnumRepository.class, enumRepository).
@@ -36,14 +33,14 @@ public class ContractDemo {
 
         registerRepos();
 
-        EnumRepository myEnumRepository = (EnumRepository)  RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
+        EnumRepository myEnumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
         ContractRepository myContractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
 
-        Product gemischteVersicherung = (Product) myEnumRepository.getEntryByKey(EnumType.PRODUCT, "GV").orElse(null);
+        Product endowmentInsurance = (Product) myEnumRepository.getEntryByKey(EnumType.PRODUCT, "GV").orElse(null);
 
         Contract c1 =
                 myContractRepository.createContract("42",
-                                                    gemischteVersicherung,
+                                                    endowmentInsurance,
                                                     LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
                                                     null /* calculate this later */,
                                                     Money.valueOf(666.));
@@ -56,7 +53,7 @@ public class ContractDemo {
         c2 = new ContractCalculation().calculateBenefit(c2);
         System.out.println(c2);
 
-        c2  = new ContractDurationChange().adjustEndDate(c2, LocalDate.of(2032, 3, 31));
+        c2 = new ContractDurationChange().adjustEndDate(c2, LocalDate.of(2032, 3, 31));
         System.out.println(c2);
         c2 = new ContractCalculation().calculateBenefit(c2);
         System.out.println(c2);
@@ -67,9 +64,9 @@ public class ContractDemo {
 
         Contract c4 =
                 myContractRepository.createContract("0815",
-                        gemischteVersicherung,
-                        LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
-                        Money.valueOf(4711), null /* calculate later */);
+                                                    endowmentInsurance,
+                                                    LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
+                                                    Money.valueOf(4711), null /* calculate later */);
         System.out.println(c4);
         c4 = new ContractCalculation().calculatePremium(c4);
         System.out.println(c4);

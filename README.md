@@ -1,6 +1,6 @@
 # Onion Architecture Blueprint
 
-This project is a blueprint for the so called "Onion Architecture", which is a very popular
+This project is a blueprint for the so-called "Onion Architecture", which is a very popular
 architectural pattern for domain driven design (DDD).
 
 The basic ideas were published as a

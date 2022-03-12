@@ -2,6 +2,7 @@ package de.fourtytwoways.onion.infrastructure.documents;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
+import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
@@ -43,7 +44,7 @@ class ExampleDocumentRepositoryTest {
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
                 Money.valueOf(4711), Money.valueOf(19.71));
-        ExampleDocumentRepository documentRepository = new ExampleDocumentRepository();
+        DocumentRepository documentRepository = new ExampleDocumentRepository();
         documentRepository.createDocument(DocumentType.FIRST_PAGE, contract);
         assertEquals("---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)\n" +
                              "Lieber Kunde,\n" +

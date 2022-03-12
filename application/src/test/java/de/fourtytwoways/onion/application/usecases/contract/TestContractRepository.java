@@ -11,12 +11,11 @@ import java.util.HashMap;
 
 class TestContractRepository implements ContractRepository {
 
-    HashMap<String, Contract> contractHashMap = new HashMap<>();
+    final HashMap<String, Contract> contractHashMap = new HashMap<>();
 
     @Override
     public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, Money benefit, Money premium) {
-        Contract myContract = new Contract(contractNumber, product, startDate, endDate, benefit, premium);
-        return myContract;
+        return new Contract(contractNumber, product, startDate, endDate, benefit, premium);
     }
 
     @Override

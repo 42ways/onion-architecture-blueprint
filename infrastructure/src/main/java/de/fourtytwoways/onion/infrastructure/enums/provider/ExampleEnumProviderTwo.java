@@ -55,7 +55,7 @@ public class ExampleEnumProviderTwo {
     // This seems to be ok for our demo implementation,
     // in real life system we may want to have better error handling
     @SneakyThrows
-    private List<EnumValue> convertToDomainObject(List<EnumValueDAO> enumValueDAOs, Class<? extends EnumValue> targetClass) {
+    private List<EnumValue> convertToDomainObject(Iterable<EnumValueDAO> enumValueDAOs, Class<? extends EnumValue> targetClass) {
         List<EnumValue> domainEnums = new ArrayList<>();
         Constructor<? extends EnumValue> constructor = targetClass.getConstructor(int.class, String.class, String.class);
         for (EnumValueDAO r : enumValueDAOs) {
