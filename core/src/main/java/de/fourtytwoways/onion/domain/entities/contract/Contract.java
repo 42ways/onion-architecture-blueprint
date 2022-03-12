@@ -28,6 +28,6 @@ public class Contract {
 
     public BigDecimal getDurationInMonths() {
         Period duration = getDuration();
-        return BigDecimal.valueOf(duration.getYears() * 12 + duration.getMonths());
+        return BigDecimal.valueOf(duration.getYears() * 12L + duration.getMonths());
     }
 }
