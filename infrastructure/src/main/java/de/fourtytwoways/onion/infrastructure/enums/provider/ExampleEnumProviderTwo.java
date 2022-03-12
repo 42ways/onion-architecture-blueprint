@@ -6,12 +6,14 @@ import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.domain.values.enumeration.Tariff;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
+import lombok.SneakyThrows;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,20 +44,24 @@ public class ExampleEnumProviderTwo {
 
     List<EnumValue> getProducts() {
         List<EnumValueDAO> results = getEnumValues(EnumType.PRODUCT);
-        List<EnumValue> products = new ArrayList<>();
-        for (EnumValueDAO r : results) {
-            products.add(new Product(r.id, r.key, r.value));
-        }
-        return products;
+        return convertToDomainObject(results, Product.class);
     }
 
     List<EnumValue> getTariffs() {
         List<EnumValueDAO> results = getEnumValues(EnumType.TARIFF);
-        List<EnumValue> tariffs = new ArrayList<>();
-        for (EnumValueDAO r : results) {
-            tariffs.add(new Tariff(r.id, r.key, r.value));
+        return convertToDomainObject(results, Tariff.class);
+    }
+
+    // This seems to be ok for our demo implementation,
+    // in real life system we may want to have better error handling
+    @SneakyThrows
+    private List<EnumValue> convertToDomainObject(List<EnumValueDAO> enumValueDAOs, Class<? extends EnumValue> targetClass) {
+        List<EnumValue> domainEnums = new ArrayList<>();
+        Constructor<? extends EnumValue> constructor = targetClass.getConstructor(int.class, String.class, String.class);
+        for (EnumValueDAO r : enumValueDAOs) {
+            domainEnums.add(constructor.newInstance(r.id, r.key, r.value));
         }
-        return tariffs;
+        return domainEnums;
     }
 
     private List<EnumValueDAO> getEnumValues(EnumType type) {
