@@ -72,7 +72,7 @@ public class ExampleEnumProviderTwo {
             cr.select(root).where(cb.equal(root.get("type"), type.name()));
             Query query = session.createQuery(cr);
 
-            List<EnumValueDAO> results = query.getResultList();
+            @SuppressWarnings("unchecked") List<EnumValueDAO> results = query.getResultList();
             session.close();
 
             return results;

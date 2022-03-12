@@ -37,7 +37,7 @@ public class ExampleContractRepository implements ContractRepository {
             cr.select(root).where(cb.equal(root.get("contractNumber"), contractNumber));
             Query query = session.createQuery(cr);
 
-            List<ContractDAO> results = query.getResultList();
+            @SuppressWarnings("unchecked") List<ContractDAO> results = query.getResultList();
             session.close();
 
             return results.stream().findFirst().orElse(null);

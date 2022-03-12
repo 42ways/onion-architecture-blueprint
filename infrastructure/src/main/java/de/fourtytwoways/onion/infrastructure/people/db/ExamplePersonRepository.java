@@ -51,7 +51,7 @@ public class ExamplePersonRepository implements PersonRepository {
             cr.select(root).where(predicates.toArray(predicates.toArray(new Predicate[0])));
             Query query = session.createQuery(cr);
 
-            List<PersonDAO> results = query.getResultList();
+            @SuppressWarnings("unchecked") List<PersonDAO> results = query.getResultList();
 
             // Since we have to do LAZY loading for Bank Accounts, we have to do the mapping
             // to the domain model while still having an open session
