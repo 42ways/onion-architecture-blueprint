@@ -7,6 +7,7 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
+import de.fourtytwoways.onion.infrastructure.ExampleTestRepositoryRegistration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,8 @@ class ExampleDocumentRepositoryTest {
 
     @BeforeEach
     public void setUp() {
+        ExampleTestRepositoryRegistration.registerRepos();
+
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -33,8 +36,6 @@ class ExampleDocumentRepositoryTest {
 
     @Test
     void createDocument() {
-        ExampleTestRepositoryRegistration.registerRepos();
-
         Contract contract = ((ContractRepository)
                 RepositoryRegistry.getInstance().getRepository(ContractRepository.class)).createContract(
                 "0815",
