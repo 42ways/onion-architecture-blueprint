@@ -27,13 +27,17 @@ class ChangeBenefitServiceTest extends ContractServiceTestHelper {
         assertEquals(Money.valueOf(22.22), loadContract("4711").getPremium());
 
         List<String> expectedPrintOutput =
-                ImmutableList.of("Lieber Kunde,\n" +
-                                         "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres  Versicherungsvertrages des Produkts  MyTestProduct übersenden zu können.\n" +
-                                         "Herzlichst,\n" +
-                                         "Ihre Onion First\n",
-                                 "Versicherungspolice für das Produkt MyTestProduct\n" +
-                                         "Die Leistung beträgt Money(amount=5310.58, currency=EUR)\n" +
-                                         "Der Beitrag beträgt Money(amount=22.22, currency=EUR)\n");
+                ImmutableList.of("""
+                                         Lieber Kunde,
+                                         wir freuen uns, Ihnen im Anhang die Unterlagen Ihres Versicherungsvertrages des Produkts MyTestProduct übersenden zu können.
+                                         Herzlichst,
+                                         Ihre Onion First
+                                         """,
+                                 """
+                                         Versicherungspolice für das Produkt MyTestProduct
+                                         Die Leistung beträgt Money(amount=5310.58, currency=EUR)
+                                         Der Beitrag beträgt Money(amount=22.22, currency=EUR)
+                                         """);
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());
     }
 

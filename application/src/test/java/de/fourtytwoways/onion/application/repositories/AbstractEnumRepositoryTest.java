@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AbstractEnumRepositoryTest {
+final class AbstractEnumRepositoryTest {
 
     private static class TestEnumRepository extends AbstractEnumRepository {
         @Override

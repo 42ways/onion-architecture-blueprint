@@ -45,8 +45,8 @@ public class TestDocumentRepository implements DocumentRepository {
                 @Override
                 public void print() {
                     String first_page = "Lieber Kunde,\n" +
-                            "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres " +
-                            " Versicherungsvertrages des Produkts  "
+                            "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres" +
+                            " Versicherungsvertrages des Produkts "
                             + contract.getProduct().getValue() + " übersenden zu können.\n" +
                             "Herzlichst,\nIhre Onion First\n";
                     printOutput.add(first_page);

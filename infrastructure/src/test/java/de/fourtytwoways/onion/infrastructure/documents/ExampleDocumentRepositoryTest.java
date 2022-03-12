@@ -46,14 +46,16 @@ class ExampleDocumentRepositoryTest {
                 Money.valueOf(4711), Money.valueOf(19.71));
         DocumentRepository documentRepository = new ExampleDocumentRepository();
         documentRepository.createDocument(DocumentType.FIRST_PAGE, contract);
-        assertEquals("---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)\n" +
-                             "Lieber Kunde,\n" +
-                             "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres  Versicherungsvertrages\n" +
-                             "0815 - MyTestProduct\n" +
-                             " übersenden zu können.\n" +
-                             "Bitte scheuen Sie sich nicht uns anzusprechen, sollten Sie irgendwelche Fragen haben.\n" +
-                             "Herzlichst,\n" +
-                             "Ihre Onion First Versicherungsgesellschaft auf Gegenseitigkeit\n" +
-                             "---------- END DOCUMENT OUTPUT (FIRST PAGE)\n", outputStreamCaptor.toString());
+        assertEquals("""
+                             ---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)
+                             Lieber Kunde,
+                             wir freuen uns, Ihnen im Anhang die Unterlagen Ihres  Versicherungsvertrages
+                             0815 - MyTestProduct
+                              übersenden zu können.
+                             Bitte scheuen Sie sich nicht uns anzusprechen, sollten Sie irgendwelche Fragen haben.
+                             Herzlichst,
+                             Ihre Onion First Versicherungsgesellschaft auf Gegenseitigkeit
+                             ---------- END DOCUMENT OUTPUT (FIRST PAGE)
+                             """, outputStreamCaptor.toString());
     }
 }
