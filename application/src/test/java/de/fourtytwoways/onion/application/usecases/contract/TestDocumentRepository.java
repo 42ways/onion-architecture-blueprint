@@ -8,10 +8,11 @@ import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class TestDocumentRepository implements DocumentRepository {
-    private final List<Document> documents = new ArrayList<>();
+    private final Collection<Document> documents = new ArrayList<>();
     private final List<String> printOutput = new ArrayList<>();
 
     @Override
