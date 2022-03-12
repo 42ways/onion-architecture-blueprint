@@ -21,7 +21,7 @@ class TestContractRepository implements ContractRepository {
 
     @Override
     public Contract getContractByNumber(String contractNumber) {
-        return (Contract) contractHashMap.get(contractNumber);
+        return contractHashMap.get(contractNumber);
     }
 
     @Override
