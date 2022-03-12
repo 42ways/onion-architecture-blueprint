@@ -7,6 +7,7 @@ import lombok.Value;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@SuppressWarnings("ClassCanBeRecord")
 @Value
 public class Money {
     private final static int SCALE = 2;

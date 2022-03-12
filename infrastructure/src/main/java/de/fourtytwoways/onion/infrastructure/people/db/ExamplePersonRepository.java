@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
+@SuppressWarnings("ClassCanBeRecord")
 public final class ExamplePersonRepository implements PersonRepository {
     private final EnumRepository enumRepository;
 
