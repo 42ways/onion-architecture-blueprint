@@ -21,5 +21,6 @@ dependencies {
 }
 
 tasks.named('test') {
+    //noinspection GrUnresolvedAccess
     useJUnitPlatform()
 }
