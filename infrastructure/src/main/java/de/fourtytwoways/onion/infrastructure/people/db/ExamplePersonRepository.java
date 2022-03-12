@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class ExamplePersonRepository implements PersonRepository {
+public final class ExamplePersonRepository implements PersonRepository {
     private final EnumRepository enumRepository;
 
     public ExamplePersonRepository(EnumRepository enumRepository) {
