@@ -1,7 +1,5 @@
 package de.fourtytwoways.onion.domain.values;
-
-
-// Copyright (c) 2022 Thomas Herrmann, 42ways GmbH
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import org.junit.jupiter.api.Test;
 

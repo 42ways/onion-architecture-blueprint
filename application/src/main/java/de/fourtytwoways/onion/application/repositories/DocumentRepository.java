@@ -1,5 +1,5 @@
 package de.fourtytwoways.onion.application.repositories;
-// Copyright (c) 2022 Thomas Herrmann, 42ways GmbH
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;

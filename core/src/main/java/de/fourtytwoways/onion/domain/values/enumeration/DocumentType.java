@@ -1,5 +1,5 @@
 package de.fourtytwoways.onion.domain.values.enumeration;
-// Copyright (c) 2022 Thomas Herrmann, 42ways GmbH
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 public class DocumentType extends AbstractEnumValue {
     // TODO: Is this old style of defining fixed application specific enums acceptable?

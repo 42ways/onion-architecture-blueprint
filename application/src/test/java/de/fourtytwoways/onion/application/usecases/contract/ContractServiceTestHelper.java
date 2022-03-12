@@ -1,4 +1,5 @@
-package de.fourtytwoways.onion.application.usecases.contract;// Copyright (c) 2022 Thomas Herrmann, 42ways GmbH
+package de.fourtytwoways.onion.application.usecases.contract;
+// (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.application.repositories.DocumentRepository;
