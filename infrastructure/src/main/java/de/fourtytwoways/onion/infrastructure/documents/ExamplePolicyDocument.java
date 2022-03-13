@@ -29,8 +29,10 @@ public class ExamplePolicyDocument implements Document {
     public void print() {
         String policy = "VERSICHERUNGPOLICE " + contract.getContractNumber() +
                 " über " + contract.getProduct().getValue() + "\n" +
-                "Die Gesamtleistung beträgt " + contract.getBenefit() + "\n" +
-                "Der Beitrag beträgt " + contract.getPremium() + "\n";
+                "Die Gesamtleistung beträgt " +
+                contract.getBenefit().getAmount() + " " + contract.getBenefit().getCurrency() + "\n" +
+                "Der Beitrag beträgt " +
+                contract.getPremium().getAmount() + " " + contract.getPremium().getCurrency() + "\n";
         System.out.println("---------- BEGIN DOCUMENT OUTPUT");
         System.out.print(policy);
         System.out.println("---------- END DOCUMENT OUTPUT");

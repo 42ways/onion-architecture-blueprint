@@ -84,8 +84,8 @@ class ExampleDocumentRepositoryTest {
         assertEquals("""
                              ---------- BEGIN DOCUMENT OUTPUT
                              VERSICHERUNGPOLICE 0815 über MyTestProduct
-                             Die Gesamtleistung beträgt Money(amount=4711.00, currency=EUR)
-                             Der Beitrag beträgt Money(amount=19.71, currency=EUR)
+                             Die Gesamtleistung beträgt 4711.00 EUR
+                             Der Beitrag beträgt 19.71 EUR
                              ---------- END DOCUMENT OUTPUT
                              """, outputStreamCaptor.toString());
     }
