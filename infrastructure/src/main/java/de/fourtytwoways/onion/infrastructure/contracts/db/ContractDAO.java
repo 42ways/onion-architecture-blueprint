@@ -73,8 +73,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setBeneficiaryId(int beneficiaryId) {
-        Person beneficiary = getPersonRepository().getPersonById(beneficiaryId);
-        this.beneficiary = beneficiary;
+        this.beneficiary = getPersonRepository().getPersonById(beneficiaryId);
     }
 
     @Access(AccessType.PROPERTY)
