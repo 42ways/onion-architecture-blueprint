@@ -31,7 +31,7 @@ public class ExampleFirstPageDocument implements Document {
                 "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres " +
                 " Versicherungsvertrages\n" +
                 contract.getContractNumber() + " - " + contract.getProduct().getValue() + "\n" +
-                " übersenden zu können.\n" +
+                "übersenden zu können.\n" +
                 "Bitte scheuen Sie sich nicht uns anzusprechen, sollten Sie irgendwelche Fragen haben.\n" +
                 "Herzlichst,\nIhre Onion First Versicherungsgesellschaft auf Gegenseitigkeit\n";
         System.out.println("---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)");

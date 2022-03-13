@@ -11,16 +11,18 @@ public class ExampleDocumentRepository implements DocumentRepository {
     private static int lastId = 0;
 
     @Override
-    public void createDocument(EnumValue type, Object contentObject) {
+    public Document createDocument(EnumValue type, Object contentObject) {
         Contract contract = (Contract) contentObject;
         if (DocumentType.POLICY.equals(type)) {
             // TODO: better way to generate document id!
-            Document document = new ExamplePolicyDocument(++lastId, contract);
-            document.print();
+            Document policy = new ExamplePolicyDocument(++lastId, contract);
+            policy.print();
+            return policy;
         } else if (DocumentType.FIRST_PAGE.equals(type)) {
             // TODO: better way to generate document id!
-            Document document = new ExampleFirstPageDocument(++lastId, contract);
-            document.print();
+            Document firstPage = new ExampleFirstPageDocument(++lastId, contract);
+            firstPage.print();
+            return firstPage;
         } else {
             throw new IllegalStateException("Unexpected value: " + type);
         }

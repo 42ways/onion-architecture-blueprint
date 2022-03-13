@@ -16,10 +16,10 @@ public class TestDocumentRepository implements DocumentRepository {
     private final List<String> printOutput = new ArrayList<>();
 
     @Override
-    public void createDocument(EnumValue type, Object contentObject) {
+    public Document createDocument(EnumValue type, Object contentObject) {
         Contract contract = (Contract) contentObject;
         if (DocumentType.POLICY.equals(type)) {
-            documents.add(new Document() {
+            Document policy = new Document() {
                 @Override
                 public int getId() {return 42;}
 
@@ -33,9 +33,11 @@ public class TestDocumentRepository implements DocumentRepository {
                             "Der Beitrag beträgt " + contract.getPremium() + "\n";
                     printOutput.add(policy);
                 }
-            });
+            };
+            documents.add(policy);
+            return policy;
         } else if (DocumentType.FIRST_PAGE.equals(type)) {
-            documents.add(new Document() {
+            Document firstPage = new Document() {
                 @Override
                 public int getId() {return 1;}
 
@@ -51,8 +53,9 @@ public class TestDocumentRepository implements DocumentRepository {
                             "Herzlichst,\nIhre Onion First\n";
                     printOutput.add(first_page);
                 }
-            });
-
+            };
+            documents.add(firstPage);
+            return firstPage;
         } else {
             throw new IllegalStateException("Unexpected value: " + type);
         }
