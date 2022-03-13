@@ -19,8 +19,8 @@ import java.util.List;
 public class PersonDemo {
 
     public static void registerRepos() {
-        EnumRepository enumRepository = new ExampleEnumRepository();
-        Repository personRepository = new ExamplePersonRepository(enumRepository);
+        Repository enumRepository = new ExampleEnumRepository();
+        Repository personRepository = new ExamplePersonRepository();
 
         RepositoryRegistry.getInstance().
                 registerRepository(EnumRepository.class, enumRepository).

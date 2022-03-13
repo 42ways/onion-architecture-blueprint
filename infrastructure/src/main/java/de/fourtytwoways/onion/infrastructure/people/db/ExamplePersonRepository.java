@@ -3,6 +3,7 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
+import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.domain.entities.person.BankAccount;
 import de.fourtytwoways.onion.domain.entities.person.Person;
@@ -20,14 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-@SuppressWarnings("ClassCanBeRecord")
 public final class ExamplePersonRepository implements PersonRepository {
-    private final EnumRepository enumRepository;
-
-    public ExamplePersonRepository(EnumRepository enumRepository) {
-        // TODO: Is this a good strategy? Could query EnumRepository when we need it...
-        this.enumRepository = enumRepository;
-    }
 
     @Override
     public Person getPersonById(int id) {
@@ -67,7 +61,7 @@ public final class ExamplePersonRepository implements PersonRepository {
     private Person toPerson(PersonDAO personDAO) {
         if (personDAO == null)
             return null;
-        Sex sex = (Sex) enumRepository.getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
+        Sex sex = (Sex) this.getEnumRepository().getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
         Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
         for (AddressDAO addressDAO : personDAO.addressDAOS) {
             person.addAddress(new Address(addressDAO.id, addressDAO.isPrimary,
@@ -91,6 +85,13 @@ public final class ExamplePersonRepository implements PersonRepository {
     @Override
     public void deletePerson(Person person) {
         doPersonTransaction(person, Session::delete);
+    }
+
+    private EnumRepository enumRepository;
+    private EnumRepository getEnumRepository() {
+        if (enumRepository == null)
+            enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
+        return enumRepository;
     }
 
     private void doPersonTransaction(Person person, BiConsumer<Session, PersonDAO> sessionOperation) {

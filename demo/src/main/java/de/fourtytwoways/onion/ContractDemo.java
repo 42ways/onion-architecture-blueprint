@@ -19,8 +19,8 @@ import java.time.LocalDate;
 public class ContractDemo {
 
     public static void registerRepos() {
-        EnumRepository enumRepository = new ExampleEnumRepository();
-        Repository contractRepository = new ExampleContractRepository(enumRepository);
+        Repository enumRepository = new ExampleEnumRepository();
+        Repository contractRepository = new ExampleContractRepository();
         Repository documentRepository = new ExampleDocumentRepository();
 
         RepositoryRegistry.getInstance().

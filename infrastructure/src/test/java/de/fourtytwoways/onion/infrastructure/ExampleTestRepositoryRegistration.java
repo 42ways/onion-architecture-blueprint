@@ -9,9 +9,9 @@ import de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository;
 
 public class ExampleTestRepositoryRegistration {
     public static void registerRepos() {
-        EnumRepository enumRepository = new ExampleEnumRepository();
-        Repository personRepository = new ExamplePersonRepository(enumRepository);
-        Repository contractRepository = new ExampleContractRepository(enumRepository);
+        Repository enumRepository = new ExampleEnumRepository();
+        Repository personRepository = new ExamplePersonRepository();
+        Repository contractRepository = new ExampleContractRepository();
         Repository documentRepository = new ExampleDocumentRepository();
 
         RepositoryRegistry.getInstance().

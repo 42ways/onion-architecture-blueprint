@@ -2,6 +2,7 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
@@ -14,7 +15,14 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "CONTRACTS")
 public class ContractDAO extends Contract {
-    static EnumRepository enumRepository;
+
+    private static EnumRepository enumRepository;
+    private static EnumRepository getEnumRepository() {
+        if (enumRepository == null) {
+            enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
+        }
+        return enumRepository;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,7 +48,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setProductId(String productId) {
-        Product product = (Product) enumRepository.getEntryByKey(EnumType.PRODUCT, productId).orElse(null);
+        Product product = (Product) getEnumRepository().getEntryByKey(EnumType.PRODUCT, productId).orElse(null);
         super.setProduct(product);
     }
 

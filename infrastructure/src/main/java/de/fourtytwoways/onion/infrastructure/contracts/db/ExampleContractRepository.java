@@ -2,7 +2,6 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
@@ -17,11 +16,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ExampleContractRepository implements ContractRepository {
-
-    public ExampleContractRepository(EnumRepository enumRepository) {
-        // TODO: Is this a good strategy? Could query EnumRepository in ContractDAO when we need it...
-        ContractDAO.enumRepository = enumRepository;
-    }
 
     @Override
     public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, Money benefit, Money premium) {

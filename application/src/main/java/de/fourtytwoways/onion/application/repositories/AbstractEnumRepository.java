@@ -18,6 +18,7 @@ public abstract class AbstractEnumRepository implements EnumRepository {
                                                                enumEntry.getId() == enumId).findFirst();
     }
 
+    @Override
     public Optional<EnumValue> getEntryByKey(EnumType enumType, String enumKey) {
         return getAllEntries(enumType).stream().filter(enumEntry ->
                                                                enumKey.equals(enumEntry.getKey())).findFirst();
