@@ -71,7 +71,7 @@ class ExamplePersonRepositoryTest {
         Sex female = new Sex(1, "F", "Female");
         Person wilma = new Person(11, "Wilma", "Flint",
                           LocalDate.of(1967, 8, 9), female);
-        personRepository.savePerson(wilma);
+        Person storedWilma = personRepository.savePerson(wilma);
 
         assertEquals(1, personRepository.getPeopleByName("Wilma", "Flint").size());
         assertEquals(1, personRepository.getPeopleByName("Tom", null).size());
@@ -88,14 +88,12 @@ class ExamplePersonRepositoryTest {
         PersonRepository personRepository =
                 (PersonRepository) RepositoryRegistry.getInstance().getRepository(PersonRepository.class);
 
-        Person p = firstTestPerson();
-        p.addAddress(firstAddress());
-        p.addBankAccount(firstBankAccount());
+        Person p = firstTestPerson().addAddress(firstAddress()).addBankAccount(firstBankAccount());
 
-        personRepository.savePerson(p);
+        Person storedP = personRepository.savePerson(p);
         assertEquals(1, personRepository.getPeopleByName(null, null).size());
 
-        Person dbPerson = personRepository.getPersonById(p.getId());
+        Person dbPerson = personRepository.getPersonById(storedP.getId());
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=XX, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown)]," +
@@ -103,15 +101,15 @@ class ExamplePersonRepositoryTest {
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
                      neutralizeIds(dbPerson.toString()));
 
-        dbPerson.addBankAccount(secondBankAccount());
-        dbPerson.addAddress(secondAddress());
+        Person modifiedDbPerson = dbPerson.addBankAccount(secondBankAccount()).addAddress(secondAddress());
 
-        personRepository.savePerson(dbPerson);
+        Person storedPerson = personRepository.savePerson(modifiedDbPerson);
         assertEquals(1, personRepository.getPeopleByName(null, null).size());
 
         Person reloadedPerson = personRepository.getPersonById(p.getId());
         assertEquals(2, reloadedPerson.getAddresses().size());
         assertEquals(2, reloadedPerson.getBankAccounts().size());
+        assertEquals(storedPerson.toString(), reloadedPerson.toString());
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=XX, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown)," +
@@ -141,9 +139,7 @@ class ExamplePersonRepositoryTest {
         PersonRepository personRepository =
                 (PersonRepository) RepositoryRegistry.getInstance().getRepository(PersonRepository.class);
 
-        Person p = firstTestPerson();
-        p.addAddress(firstAddress());
-        p.addBankAccount(firstBankAccount());
+        Person p = firstTestPerson().addAddress(firstAddress()).addBankAccount(firstBankAccount());
 
         personRepository.savePerson(p);
     }

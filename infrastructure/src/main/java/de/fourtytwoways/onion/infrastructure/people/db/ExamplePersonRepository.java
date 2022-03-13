@@ -83,8 +83,9 @@ public final class ExamplePersonRepository implements PersonRepository {
     }
 
     @Override
-    public void savePerson(Person person) {
+    public Person savePerson(Person person) {
         doPersonTransaction(person, Session::saveOrUpdate);
+        return getPersonById(person.getId());
     }
 
     @Override

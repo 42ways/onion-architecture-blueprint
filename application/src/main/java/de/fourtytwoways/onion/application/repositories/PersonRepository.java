@@ -10,7 +10,7 @@ public interface PersonRepository extends Repository {
 
     List<Person> getPeopleByName(String name, String surname);
 
-    void savePerson(Person person);
+    Person savePerson(Person person);
 
     void deletePerson(Person person);
 }
