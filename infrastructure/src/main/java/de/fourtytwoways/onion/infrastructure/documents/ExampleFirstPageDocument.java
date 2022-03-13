@@ -27,9 +27,7 @@ public class ExampleFirstPageDocument implements Document {
 
     @Override
     public void print() {
-        System.err.println("----------------");
-        System.err.println(contract);
-        String policy = "Lieber " + contract.getBeneficiary().getSex().getValue() + " " +
+        String policy = ("M".equals(contract.getBeneficiary().getSex().getKey()) ? "Lieber Herr " : "Liebe Frau ") +
                 contract.getBeneficiary().getName() + " " + contract.getBeneficiary().getSurname() + ",\n" +
                 "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres " +
                 " Versicherungsvertrages\n" +

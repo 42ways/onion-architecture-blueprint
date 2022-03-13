@@ -45,7 +45,7 @@ class ExampleDocumentRepositoryTest {
                 "0815",
                 new Product(42, "TEST", "MyTestProduct"),
                 new Person(1, "Freddy", "Krüger",
-                           LocalDate.of(1987, 6, 5), new Sex(1, "M", "Herr")),
+                           LocalDate.of(1987, 6, 5), new Sex(1, "M", "Male")),
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
                 Money.valueOf(4711), Money.valueOf(19.71));
