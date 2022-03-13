@@ -2,25 +2,21 @@ package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@EqualsAndHashCode
-@ToString
+@Data
 public class Person {
-    @Getter private final int id;
-    @Getter @Setter private String name;
-    @Getter @Setter private String surname;
-    @Getter @Setter private LocalDate birthday;
-    @Getter @Setter private Sex sex;
-    @Getter private final List<Address> addresses = new ArrayList<>();
-    @Getter private final List<BankAccount> bankAccounts = new ArrayList<>();
+    private final int id;
+    private String name;
+    private String surname;
+    private LocalDate birthday;
+    private Sex sex;
+    private final List<Address> addresses = new ArrayList<>();
+    private final List<BankAccount> bankAccounts = new ArrayList<>();
 
     public Person(int id, String name, String surname, LocalDate birthday, Sex sex) {
         this.id = id;
@@ -30,16 +26,24 @@ public class Person {
         this.setSex(sex);
     }
 
-    public void addAddress(Address address) {
+    public Person addAddress(Address address) {
         addresses.add(address);
-    }
-    public void removeAddress(Address address) {
-        addresses.remove(address);
+        return this;
     }
 
-    public void addBankAccount(BankAccount bankAccount) {
-        bankAccounts.add(bankAccount);
+    public Person removeAddress(Address address) {
+        addresses.remove(address);
+        return this;
     }
-    public void removeBankAccount(BankAccount bankAccount) { bankAccounts.remove(bankAccount); }
+
+    public Person addBankAccount(BankAccount bankAccount) {
+        bankAccounts.add(bankAccount);
+        return this;
+    }
+
+    public Person removeBankAccount(BankAccount bankAccount) {
+        bankAccounts.remove(bankAccount);
+        return this;
+    }
 
 }

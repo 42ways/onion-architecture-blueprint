@@ -38,111 +38,111 @@ class PersonTest {
 
     @Test
     void addAddress() {
-        Person p = createTestPerson();
-        assertEquals(0, p.getAddresses().size());
-        p.addAddress(firstAddress());
-        assertEquals(1, p.getAddresses().size());
+        Person p1 = createTestPerson();
+        assertEquals(0, p1.getAddresses().size());
+
+        Person p2 = p1.addAddress(firstAddress());
+        assertEquals(1, p2.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)], bankAccounts=[])",
-                     p.toString());
-        p.addAddress(secondAddress());
-        assertEquals(2, p.getAddresses().size());
+                     p2.toString());
+
+        Person p3 = p2.addAddress(secondAddress());
+        assertEquals(2, p3.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)," +
                              " Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)], bankAccounts=[])",
-                     p.toString());
+                     p3.toString());
     }
 
     @Test
     void removeAddress() {
-        Person p = createTestPerson();
-        p.addAddress(firstAddress());
-        p.addAddress(secondAddress());
-        assertEquals(2, p.getAddresses().size());
+        Person p1 = createTestPerson().addAddress(firstAddress()).addAddress(secondAddress());
+        assertEquals(2, p1.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)," +
                              " Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)], bankAccounts=[])",
-                     p.toString());
-        p.removeAddress(firstAddress());
-        assertEquals(1, p.getAddresses().size());
+                     p1.toString());
+
+        Person p2 = p1.removeAddress(firstAddress());
+        assertEquals(1, p2.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)], bankAccounts=[])",
-                     p.toString());
+                     p2.toString());
     }
 
     @Test
     void addBankAccount() {
-        Person p = createTestPerson();
-        p.addBankAccount(firstBankAccount());
-        assertEquals(1, p.getBankAccounts().size());
+        Person p1 = createTestPerson().addBankAccount(firstBankAccount());
+        assertEquals(1, p1.getBankAccounts().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount(id=0, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
-                     p.toString());
-        p.addBankAccount(secondBankAccount());
-        assertEquals(2, p.getBankAccounts().size());
+                     p1.toString());
+
+        Person p2 = p1.addBankAccount(secondBankAccount());
+        assertEquals(2, p2.getBankAccounts().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount(id=0, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)," +
                              " BankAccount(id=0, primary=false, accountHolderName=Flint familiy account," +
                              " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV)])",
-                     p.toString());
+                     p2.toString());
     }
 
     @Test
     void removeBankAccount() {
-        Person p = createTestPerson();
-        p.addBankAccount(firstBankAccount());
-        p.addBankAccount(secondBankAccount());
-        assertEquals(2, p.getBankAccounts().size());
+        Person p1 = createTestPerson().addBankAccount(firstBankAccount()).addBankAccount(secondBankAccount());
+        assertEquals(2, p1.getBankAccounts().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount(id=0, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)," +
                              " BankAccount(id=0, primary=false, accountHolderName=Flint familiy account," +
                              " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV)])",
-                     p.toString());
-        p.removeBankAccount(firstBankAccount());
-        assertEquals(1, p.getBankAccounts().size());
+                     p1.toString());
+
+        Person p2 = p1.removeBankAccount(firstBankAccount());
+        assertEquals(1, p2.getBankAccounts().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount(id=0, primary=false, accountHolderName=Flint familiy account," +
                              " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV)])",
-                     p.toString());
+                     p2.toString());
     }
 
     @Test
     void addAddressesAndBankAccounts() {
-        Person p = createTestPerson();
+        Person p1 = createTestPerson();
 
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06," +
                              " sex=Sex(2, M, Male), addresses=[], bankAccounts=[])",
-                     p.toString());
+                     p1.toString());
 
-        p.addAddress(firstAddress());
-        assertEquals(1, p.getAddresses().size());
-        assertEquals(0, p.getBankAccounts().size());
+        Person p2 = p1.addAddress(firstAddress());
+        assertEquals(1, p2.getAddresses().size());
+        assertEquals(0, p2.getBankAccounts().size());
 
-        p.addBankAccount(firstBankAccount());
-        assertEquals(1, p.getAddresses().size());
-        assertEquals(1, p.getBankAccounts().size());
+        Person p3 = p2.addBankAccount(firstBankAccount());
+        assertEquals(1, p3.getAddresses().size());
+        assertEquals(1, p3.getBankAccounts().size());
 
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address(id=0, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown)]," +
                              " bankAccounts=[BankAccount(id=0, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
-                     p.toString());
+                     p3.toString());
 
-        p.addBankAccount(secondBankAccount());
-        assertEquals(1, p.getAddresses().size());
-        assertEquals(2, p.getBankAccounts().size());
+        Person p4 = p3.addBankAccount(secondBankAccount());
+        assertEquals(1, p4.getAddresses().size());
+        assertEquals(2, p4.getBankAccounts().size());
 
-        p.addAddress(secondAddress());
-        assertEquals(2, p.getAddresses().size());
-        assertEquals(2, p.getBankAccounts().size());
+        Person p5 = p4.addAddress(secondAddress());
+        assertEquals(2, p5.getAddresses().size());
+        assertEquals(2, p5.getBankAccounts().size());
 
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=" +
@@ -153,12 +153,12 @@ class PersonTest {
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)," +
                              " BankAccount(id=0, primary=false, accountHolderName=Flint familiy account," +
                              " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV)])",
-                     p.toString());
+                     p5.toString());
     }
 
     @Test
     void testToString() {
-        Person p = createTestPerson();
-        assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male), addresses=[], bankAccounts=[])", p.toString());
+        Person p1 = createTestPerson();
+        assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male), addresses=[], bankAccounts=[])", p1.toString());
     }
 }
