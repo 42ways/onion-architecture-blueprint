@@ -13,7 +13,7 @@ class ContractCalculationTest {
 
     @Test
     void calculatePremium() {
-        Contract contract = new Contract("4711", null,
+        Contract contract = new Contract("4711", null, null,
                                          LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
                                          Money.valueOf(4711, Money.Currency.EUR), null);
         assertNull(contract.getPremium());
@@ -24,7 +24,7 @@ class ContractCalculationTest {
 
     @Test
     void calculateBenefit() {
-        Contract contract = new Contract("4711", null,
+        Contract contract = new Contract("4711", null, null,
                 LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
                 null, Money.valueOf(47.11, Money.Currency.USD));
         assertNull(contract.getBenefit());

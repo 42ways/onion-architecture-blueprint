@@ -14,7 +14,7 @@ class ContractDurationChangeTest {
 
     @Test
     void adjustStartDate() {
-        Contract contract = new Contract("4711", null,
+        Contract contract = new Contract("4711", null, null,
                                          LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
                                          Money.valueOf(4711, Money.Currency.EUR), null);
         new ContractCalculation().calculatePremium(contract);
@@ -32,7 +32,7 @@ class ContractDurationChangeTest {
 
     @Test
     void adjustEndDate() {
-        Contract contract = new Contract("4711", null,
+        Contract contract = new Contract("4711", null, null,
                                          LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
                                          Money.valueOf(4711, Money.Currency.USD), null);
         new ContractCalculation().calculatePremium(contract);

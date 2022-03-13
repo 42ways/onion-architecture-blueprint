@@ -2,8 +2,10 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
@@ -17,11 +19,21 @@ import java.time.LocalDate;
 public class ContractDAO extends Contract {
 
     private static EnumRepository enumRepository;
+
     private static EnumRepository getEnumRepository() {
         if (enumRepository == null) {
             enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
         }
         return enumRepository;
+    }
+
+    private static PersonRepository personRepository;
+
+    private static PersonRepository getPersonRepository() {
+        if (personRepository == null) {
+            personRepository = (PersonRepository) RepositoryRegistry.getInstance().getRepository(PersonRepository.class);
+        }
+        return personRepository;
     }
 
     @Id
@@ -31,8 +43,8 @@ public class ContractDAO extends Contract {
     protected ContractDAO() {
     }
 
-    public ContractDAO(String contractNumber, Product product, LocalDate beginDate, LocalDate endDate, Money benefit, Money premium) {
-        super(contractNumber, product, beginDate, endDate, benefit, premium);
+    public ContractDAO(String contractNumber, Product product, Person beneficiary, LocalDate beginDate, LocalDate endDate, Money benefit, Money premium) {
+        super(contractNumber, product, beneficiary, beginDate, endDate, benefit, premium);
     }
 
     @Access(AccessType.PROPERTY)
@@ -44,12 +56,25 @@ public class ContractDAO extends Contract {
     @Access(AccessType.PROPERTY)
     @Column(name = "productId")
     public String getProductId() {
-        return super.getProduct().getKey();
+        Product product = getProduct();
+        return product == null ? null : product.getKey();
     }
 
     public void setProductId(String productId) {
         Product product = (Product) getEnumRepository().getEntryByKey(EnumType.PRODUCT, productId).orElse(null);
         super.setProduct(product);
+    }
+
+    @Access(AccessType.PROPERTY)
+    @Column(name = "beneficiaryId")
+    public int getBeneficiaryId() {
+        Person beneficiaryPerson = super.getBeneficiary();
+        return beneficiaryPerson == null ? 0 : beneficiaryPerson.getId();
+    }
+
+    public void setBeneficiaryId(int beneficiaryId) {
+        Person beneficiary = getPersonRepository().getPersonById(beneficiaryId);
+        this.beneficiary = beneficiary;
     }
 
     @Access(AccessType.PROPERTY)
@@ -68,7 +93,7 @@ public class ContractDAO extends Contract {
     @Column(name = "benefit_amount")
     public BigDecimal getBenefitAmount() {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money benefit = super.getBenefit();
+        Money benefit = getBenefit();
         if (benefit != null)
             return benefit.getAmount();
         else
@@ -76,14 +101,14 @@ public class ContractDAO extends Contract {
     }
 
     public void setBenefitAmount(BigDecimal amount) {
-        super.setBenefit(createValidMoneyFromPartialData(amount, getBenefitCurrency()));
+        setBenefit(createValidMoneyFromPartialData(amount, getBenefitCurrency()));
     }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "benefit_currency")
     public String getBenefitCurrency() {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money benefit = super.getBenefit();
+        Money benefit = getBenefit();
         if (benefit != null)
             return benefit.getCurrency().toString();
         else
@@ -91,14 +116,14 @@ public class ContractDAO extends Contract {
     }
 
     public void setBenefitCurrency(String currency) {
-        super.setBenefit(createValidMoneyFromPartialData(getBenefitAmount(), currency));
+        setBenefit(createValidMoneyFromPartialData(getBenefitAmount(), currency));
     }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "premium_amount")
     public BigDecimal getPremiumAmount() {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money premium = super.getPremium();
+        Money premium = getPremium();
         if (premium != null)
             return premium.getAmount();
         else
@@ -106,14 +131,14 @@ public class ContractDAO extends Contract {
     }
 
     public void setPremiumAmount(BigDecimal amount) {
-        super.setPremium(createValidMoneyFromPartialData(amount, getPremiumCurrency()));
+        setPremium(createValidMoneyFromPartialData(amount, getPremiumCurrency()));
     }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "premium_currency")
     public String getPremiumCurrency() {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money premium = super.getPremium();
+        Money premium = getPremium();
         if (premium != null)
             return premium.getCurrency().toString();
         else
@@ -121,7 +146,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setPremiumCurrency(String currency) {
-        super.setPremium(createValidMoneyFromPartialData(getPremiumAmount(), currency));
+        setPremium(createValidMoneyFromPartialData(getPremiumAmount(), currency));
     }
 
     private Money createValidMoneyFromPartialData(BigDecimal amount, String currency) {

@@ -1,13 +1,12 @@
 package de.fourtytwoways.onion.application.usecases.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.ContractRepository;
-import de.fourtytwoways.onion.application.repositories.DocumentRepository;
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
-import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
+import de.fourtytwoways.onion.application.repositories.*;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
+import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.time.LocalDate;
@@ -32,11 +31,22 @@ abstract public class ContractServiceTestHelper {
                 RepositoryRegistry.getInstance().getRepository(ContractRepository.class)).getContractByNumber(s);
     }
 
+    private Person createTestPerson() {
+        Sex male = new Sex(2, "M", "Male");
+        return new Person(42, "Tom", "Flint",
+                          LocalDate.of(1966, 6, 6), male);
+    }
+
+    private Product createTestProduct() {
+        return new Product(42, "TEST", "MyTestProduct");
+    }
+
     protected Contract createTestContract(String contractNumber) {
         return ((ContractRepository)
                 RepositoryRegistry.getInstance().getRepository(ContractRepository.class)).createContract(
                 contractNumber,
-                new Product(42, "TEST", "MyTestProduct"),
+                createTestProduct(),
+                createTestPerson(),
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
                 Money.valueOf(4711), Money.valueOf(19.71));

@@ -15,24 +15,24 @@ class ContractTest {
     @Test
     void testToString() {
         Contract contract =
-                new Contract("4711", null,
+                new Contract("4711", null, null,
                              LocalDate.of(2022, 1, 1),
                              LocalDate.of(2042, 1, 1),
                              Money.valueOf(47.11, Money.Currency.EUR),
                              Money.valueOf(08.15, Money.Currency.EUR));
-        assertEquals("Contract(contractNumber=4711, product=null, startDate=2022-01-01, endDate=2042-01-01," +
+        assertEquals("Contract(contractNumber=4711, product=null, beneficiary=null, startDate=2022-01-01, endDate=2042-01-01," +
                              " benefit=Money(amount=47.11, currency=EUR), premium=Money(amount=8.15, currency=EUR))",
                      contract.toString());
     }
 
     @Test
     void testEquals() {
-        Contract contract1 = new Contract("4711", null,
+        Contract contract1 = new Contract("4711", null, null,
                                           LocalDate.of(2022, 1, 1),
                                           LocalDate.of(2042, 1, 1),
                                           Money.valueOf(47.11, Money.Currency.EUR),
                                           Money.valueOf(08.15, Money.Currency.EUR));
-        Contract contract2 = new Contract("4711", null,
+        Contract contract2 = new Contract("4711", null, null,
                                           LocalDate.of(2022, 1, 1),
                                           LocalDate.of(2042, 1, 1),
                                           Money.valueOf(47.11),
@@ -42,17 +42,17 @@ class ContractTest {
 
     @Test
     void getDuration() {
-        Contract contract = new Contract("0815", null,
+        Contract contract = new Contract("0815", null, null,
                                          LocalDate.of(2022, 1, 1),
                                          LocalDate.of(2042, 1, 1),
                                          Money.valueOf(47.11), Money.valueOf(08.15));
         assertEquals(Period.of(20, 0, 0), contract.getDuration());
-        contract = new Contract("0815", null,
+        contract = new Contract("0815", null, null,
                                 LocalDate.of(2022, 1, 1),
                                 LocalDate.of(2042, 4, 1),
                                 Money.valueOf(47.11), Money.valueOf(08.15));
         assertEquals(Period.of(20, 3, 0), contract.getDuration());
-        contract = new Contract("0815", null,
+        contract = new Contract("0815", null, null,
                                 LocalDate.of(2022, 1, 1),
                                 LocalDate.of(2041, 4, 11),
                                 Money.valueOf(47.11), Money.valueOf(08.15));
@@ -61,17 +61,17 @@ class ContractTest {
 
     @Test
     void getDurationInMonths() {
-        Contract contract = new Contract("0815", null,
+        Contract contract = new Contract("0815", null, null,
                                          LocalDate.of(2022, 1, 1),
                                          LocalDate.of(2042, 1, 1),
                                          Money.valueOf(47.11), Money.valueOf(08.15));
         assertEquals(BigDecimal.valueOf(240), contract.getDurationInMonths());
-        contract = new Contract("0815", null,
+        contract = new Contract("0815", null, null,
                                 LocalDate.of(2022, 1, 1),
                                 LocalDate.of(2042, 4, 1),
                                 Money.valueOf(47.11), Money.valueOf(08.15));
         assertEquals(BigDecimal.valueOf(243), contract.getDurationInMonths());
-        contract = new Contract("0815", null,
+        contract = new Contract("0815", null, null,
                                 LocalDate.of(2022, 1, 1),
                                 LocalDate.of(2041, 4, 11),
                                 Money.valueOf(47.11), Money.valueOf(08.15));

@@ -3,6 +3,7 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
@@ -18,8 +19,8 @@ import java.util.List;
 public class ExampleContractRepository implements ContractRepository {
 
     @Override
-    public Contract createContract(String contractNumber, Product product, LocalDate startDate, LocalDate endDate, Money benefit, Money premium) {
-        return new ContractDAO(contractNumber, product, startDate, endDate, benefit, premium);
+    public Contract createContract(String contractNumber, Product product, Person beneficiary, LocalDate startDate, LocalDate endDate, Money benefit, Money premium) {
+        return new ContractDAO(contractNumber, product, beneficiary, startDate, endDate, benefit, premium);
     }
 
     @Override

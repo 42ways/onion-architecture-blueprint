@@ -27,7 +27,10 @@ public class ExampleFirstPageDocument implements Document {
 
     @Override
     public void print() {
-        String policy = "Lieber Kunde,\n" +
+        System.err.println("----------------");
+        System.err.println(contract);
+        String policy = "Lieber " + contract.getBeneficiary().getSex().getValue() + " " +
+                contract.getBeneficiary().getName() + " " + contract.getBeneficiary().getSurname() + ",\n" +
                 "wir freuen uns, Ihnen im Anhang die Unterlagen Ihres " +
                 " Versicherungsvertrages\n" +
                 contract.getContractNumber() + " - " + contract.getProduct().getValue() + "\n" +
