@@ -12,5 +12,5 @@ public interface ContractRepository extends Repository {
 
     Contract getContractByNumber(String contractNumber);
 
-    void saveContract(Contract contract);
+    Contract saveContract(Contract contract);
 }

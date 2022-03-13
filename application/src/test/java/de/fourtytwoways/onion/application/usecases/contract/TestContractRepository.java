@@ -24,7 +24,8 @@ class TestContractRepository implements ContractRepository {
     }
 
     @Override
-    public void saveContract(Contract contract) {
+    public Contract saveContract(Contract contract) {
         contractHashMap.put(contract.getContractNumber(), contract);
+        return contract;
     }
 }

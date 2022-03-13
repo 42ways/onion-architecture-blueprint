@@ -45,7 +45,7 @@ public class ExampleContractRepository implements ContractRepository {
     }
 
     @Override
-    public void saveContract(Contract contract) {
+    public Contract saveContract(Contract contract) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
@@ -53,5 +53,6 @@ public class ExampleContractRepository implements ContractRepository {
             session.getTransaction().commit();
             session.close();
         }
+        return getContractByNumber(contract.getContractNumber());
     }
 }
