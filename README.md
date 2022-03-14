@@ -14,13 +14,17 @@ of major Onion Architecture and Clean Architecture principles.
 To show the relevant patterns, the project has as few as possible dependencies.
 The implemented functions and use cases are kept very simple for the sane reason.
 
-To make the code dependencies explicit, the project is split up into Java modules
-with restricted access between the modules.
-Real live projects would probably split these modules into different repositories.
+To make the code dependencies explicit, the project is just split up into several
+Java modules with restricted access between the modules.
+Real live projects would probably split these modules into different repositories and/or
+introduce an even further seperation into packages, mudules and source code repositories.
 
-The dependencies between the modules are:
+The following diagrams visualize the actual component dependencies of this project based on the implemented
+java modules in comparison to the "pure" onion diagram that can be found in most articles and books
+about this architectural pattern.
 
 ![Onion Architecture Module Dependencies](modules.png)
+![Onion Architecture Diagram](ONION-architecture-10000ft.png)
 
 ## Dependencies and setup
 
