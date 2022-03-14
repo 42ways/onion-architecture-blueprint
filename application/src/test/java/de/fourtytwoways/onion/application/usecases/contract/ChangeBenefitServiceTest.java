@@ -35,8 +35,8 @@ class ChangeBenefitServiceTest extends ContractServiceTestHelper {
                                          """,
                                  """
                                          Versicherungspolice für das Produkt MyTestProduct
-                                         Die Leistung beträgt Money(amount=5310.58, currency=EUR)
-                                         Der Beitrag beträgt Money(amount=22.22, currency=EUR)
+                                         Die Leistung beträgt 5310.58 EUR
+                                         Der Beitrag beträgt 22.22 EUR
                                          """);
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());
     }

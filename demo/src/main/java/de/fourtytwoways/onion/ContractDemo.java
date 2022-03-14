@@ -93,7 +93,7 @@ public class ContractDemo {
         System.out.println(c6);
 
         Contract c7 = new ChangePremiumService().
-                changePremium("42", Money.valueOf(3216.8, Money.Currency.USD));
+                changePremium("42", Money.valueOf(3216.8, Money.USD));
         System.out.println(c7);
 
         Contract c8 = myContractRepository.getContractByNumber("42");

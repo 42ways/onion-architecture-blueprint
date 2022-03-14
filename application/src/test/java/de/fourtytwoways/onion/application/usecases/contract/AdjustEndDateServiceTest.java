@@ -21,9 +21,9 @@ class AdjustEndDateServiceTest extends ContractServiceTestHelper {
         assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
 
         Contract changedContract = new AdjustEndDateService().adjustEndDate("0815", LocalDate.of(2027, 4, 1));
-        assertEquals(Money.valueOf(1182.6).getAmount(), changedContract.getBenefit().getAmount());
+        assertEquals(Money.valueOf(1182.6).amount(), changedContract.getBenefit().amount());
 
-        assertEquals(Money.valueOf(1182.6).getAmount(), loadContract("0815").getBenefit().getAmount());
+        assertEquals(Money.valueOf(1182.6).amount(), loadContract("0815").getBenefit().amount());
         assertEquals(Money.valueOf(19.71), loadContract("0815").getPremium());
 
         List<String> expectedPrintOutput =
@@ -35,8 +35,8 @@ class AdjustEndDateServiceTest extends ContractServiceTestHelper {
                                          """,
                                  """
                                          Versicherungspolice für das Produkt MyTestProduct
-                                         Die Leistung beträgt Money(amount=1182.60, currency=EUR)
-                                         Der Beitrag beträgt Money(amount=19.71, currency=EUR)
+                                         Die Leistung beträgt 1182.60 EUR
+                                         Der Beitrag beträgt 19.71 EUR
                                          """);
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());
     }

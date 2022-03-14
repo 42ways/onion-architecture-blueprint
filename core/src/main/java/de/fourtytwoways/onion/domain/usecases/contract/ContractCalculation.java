@@ -21,16 +21,16 @@ public class ContractCalculation {
     public Contract calculatePremium(@NonNull Contract contract) {
         BigDecimal durationInMonths = contract.getDurationInMonths();
         contract.setPremium(
-                new Money(contract.getBenefit().getAmount().divide(durationInMonths, 2, RoundingMode.HALF_UP),
-                          contract.getBenefit().getCurrency()));
+                new Money(contract.getBenefit().amount().divide(durationInMonths, 2, RoundingMode.HALF_UP),
+                          contract.getBenefit().currency()));
         return contract;
     }
 
     public Contract calculateBenefit(@NonNull Contract contract) {
         BigDecimal durationInMonths = contract.getDurationInMonths();
         contract.setBenefit(
-                new Money(contract.getPremium().getAmount().multiply(durationInMonths),
-                          contract.getPremium().getCurrency()));
+                new Money(contract.getPremium().amount().multiply(durationInMonths),
+                          contract.getPremium().currency()));
         return contract;
     }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Currency;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,21 +14,22 @@ class MoneyTest {
     @Test
     void valueOf() {
         Money m1 = Money.valueOf(1.0);
-        assertEquals(Money.valueOf(BigDecimal.valueOf(1.), Money.Currency.EUR), m1);
-        assertEquals(Money.valueOf(1., Money.Currency.EUR), m1);
-        assertEquals(Money.valueOf(1, Money.Currency.EUR), m1);
+        Currency eur = Currency.getInstance("EUR");
+        assertEquals(Money.valueOf(BigDecimal.valueOf(1.), eur), m1);
+        assertEquals(Money.valueOf(1., eur), m1);
+        assertEquals(Money.valueOf(1, eur), m1);
 
-        Money m2 = Money.valueOf(1.0, Money.Currency.USD);
-        assertEquals(Money.valueOf(1, Money.Currency.USD), m2);
+        Money m2 = Money.valueOf(1.0, Currency.getInstance("USD"));
+        assertEquals(Money.valueOf(1, Currency.getInstance("USD")), m2);
         assertNotEquals(m1, m2);
-        assertNotEquals(Money.valueOf(BigDecimal.valueOf(1.), Money.Currency.EUR), m2);
-        assertNotEquals(Money.valueOf(1., Money.Currency.EUR), m2);
-        assertNotEquals(Money.valueOf(1, Money.Currency.EUR), m2);
+        assertNotEquals(Money.valueOf(BigDecimal.valueOf(1.), eur), m2);
+        assertNotEquals(Money.valueOf(1., eur), m2);
+        assertNotEquals(Money.valueOf(1, eur), m2);
 
         Money m3 = Money.valueOf(1.2345);
-        assertEquals(BigDecimal.valueOf(1.23), m3.getAmount());
+        assertEquals(BigDecimal.valueOf(1.23), m3.amount());
         Money m4 = Money.valueOf(1234.5678);
-        assertEquals(BigDecimal.valueOf(1234.57), m4.getAmount());
+        assertEquals(BigDecimal.valueOf(1234.57), m4.amount());
     }
 
     @Test
@@ -35,7 +37,7 @@ class MoneyTest {
         Money m1 = Money.valueOf(1.2);
         Money m2 = Money.valueOf(3.4);
         assertEquals(Money.valueOf(4.6), m1.add(m2));
-        Money m3 = Money.valueOf(3.4, Money.Currency.USD);
+        Money m3 = Money.valueOf(3.4, Currency.getInstance("USD"));
         assertThrows(IllegalArgumentException.class, () -> m1.add(m3));
     }
 
@@ -44,7 +46,7 @@ class MoneyTest {
         Money m1 = Money.valueOf(1.2);
         Money m2 = Money.valueOf(3.4);
         assertEquals(Money.valueOf(-2.2), m1.subtract(m2));
-        Money m3 = Money.valueOf(3.4, Money.Currency.USD);
+        Money m3 = Money.valueOf(3.4, Currency.getInstance("USD"));
         assertThrows(IllegalArgumentException.class, () -> m1.subtract(m3));
     }
 
@@ -53,7 +55,7 @@ class MoneyTest {
         Money m1 = Money.valueOf(1.2);
         Money m2 = Money.valueOf(3.4);
         assertEquals(Money.valueOf(4.08), m1.multiply(m2));
-        Money m3 = Money.valueOf(3.4, Money.Currency.USD);
+        Money m3 = Money.valueOf(3.4, Currency.getInstance("USD"));
         assertThrows(IllegalArgumentException.class, () -> m1.multiply(m3));
     }
 
@@ -62,22 +64,22 @@ class MoneyTest {
         Money m1 = Money.valueOf(1.2);
         Money m2 = Money.valueOf(3.4);
         assertEquals(Money.valueOf(0.35), m1.divide(m2));
-        Money m3 = Money.valueOf(3.4, Money.Currency.USD);
+        Money m3 = Money.valueOf(3.4, Currency.getInstance("USD"));
         assertThrows(IllegalArgumentException.class, () -> m1.divide(m3));
     }
 
     @Test
-    void getAmount() {
+    void amount() {
         Money m1 = Money.valueOf(1.2);
-        assertEquals(BigDecimal.valueOf(1.2).setScale(2, RoundingMode.HALF_UP), m1.getAmount());
+        assertEquals(BigDecimal.valueOf(1.2).setScale(2, RoundingMode.HALF_UP), m1.amount());
     }
 
     @Test
-    void getCurrency() {
+    void currency() {
         Money m1 = Money.valueOf(1.2);
-        assertEquals(Money.Currency.EUR, m1.getCurrency());
-        Money m2 = Money.valueOf(1.2, Money.Currency.USD);
-        assertEquals(Money.Currency.USD, m2.getCurrency());
+        assertEquals(Currency.getInstance("EUR"), m1.currency());
+        Money m2 = Money.valueOf(1.2, Currency.getInstance("USD"));
+        assertEquals(Currency.getInstance("USD"), m2.currency());
     }
 
 }

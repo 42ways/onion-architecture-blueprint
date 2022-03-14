@@ -18,10 +18,10 @@ class ContractTest {
                 new Contract("4711", null, null,
                              LocalDate.of(2022, 1, 1),
                              LocalDate.of(2042, 1, 1),
-                             Money.valueOf(47.11, Money.Currency.EUR),
-                             Money.valueOf(08.15, Money.Currency.EUR));
+                             Money.valueOf(47.11, Money.EUR),
+                             Money.valueOf(08.15, Money.EUR));
         assertEquals("Contract(contractNumber=4711, product=null, beneficiary=null, startDate=2022-01-01, endDate=2042-01-01," +
-                             " benefit=Money(amount=47.11, currency=EUR), premium=Money(amount=8.15, currency=EUR))",
+                             " benefit=Money[amount=47.11, currency=EUR], premium=Money[amount=8.15, currency=EUR])",
                      contract.toString());
     }
 
@@ -30,8 +30,8 @@ class ContractTest {
         Contract contract1 = new Contract("4711", null, null,
                                           LocalDate.of(2022, 1, 1),
                                           LocalDate.of(2042, 1, 1),
-                                          Money.valueOf(47.11, Money.Currency.EUR),
-                                          Money.valueOf(08.15, Money.Currency.EUR));
+                                          Money.valueOf(47.11, Money.EUR),
+                                          Money.valueOf(08.15, Money.EUR));
         Contract contract2 = new Contract("4711", null, null,
                                           LocalDate.of(2022, 1, 1),
                                           LocalDate.of(2042, 1, 1),

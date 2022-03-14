@@ -29,8 +29,10 @@ public class TestDocumentRepository implements DocumentRepository {
                 @Override
                 public void print() {
                     String policy = "Versicherungspolice für das Produkt " + contract.getProduct().getValue() + "\n" +
-                            "Die Leistung beträgt " + contract.getBenefit() + "\n" +
-                            "Der Beitrag beträgt " + contract.getPremium() + "\n";
+                            "Die Leistung beträgt " +
+                            contract.getBenefit().amount() + " " + contract.getBenefit().currency() + "\n" +
+                            "Der Beitrag beträgt " +
+                            contract.getPremium().amount() + " " + contract.getPremium().currency() + "\n";
                     printOutput.add(policy);
                 }
             };

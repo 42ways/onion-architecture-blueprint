@@ -13,6 +13,7 @@ import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Currency;
 
 @Entity
 @Table(name = "CONTRACTS")
@@ -94,7 +95,7 @@ public class ContractDAO extends Contract {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
         Money benefit = getBenefit();
         if (benefit != null)
-            return benefit.getAmount();
+            return benefit.amount();
         else
             return null;
     }
@@ -109,7 +110,7 @@ public class ContractDAO extends Contract {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
         Money benefit = getBenefit();
         if (benefit != null)
-            return benefit.getCurrency().toString();
+            return benefit.currency().toString();
         else
             return null;
     }
@@ -124,7 +125,7 @@ public class ContractDAO extends Contract {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
         Money premium = getPremium();
         if (premium != null)
-            return premium.getAmount();
+            return premium.amount();
         else
             return null;
     }
@@ -139,7 +140,7 @@ public class ContractDAO extends Contract {
         // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
         Money premium = getPremium();
         if (premium != null)
-            return premium.getCurrency().toString();
+            return premium.currency().getCurrencyCode();
         else
             return null;
     }
@@ -149,8 +150,8 @@ public class ContractDAO extends Contract {
     }
 
     private Money createValidMoneyFromPartialData(BigDecimal amount, String currency) {
-        Money.Currency newCurrency = "USD".equals(currency) ? Money.Currency.USD : Money.Currency.EUR;
         BigDecimal newAmount = amount != null ? amount : BigDecimal.valueOf(0);
+        Currency newCurrency = currency != null ? Currency.getInstance(currency) : Money.defaultCurrency;
         return Money.valueOf(newAmount, newCurrency);
     }
 }

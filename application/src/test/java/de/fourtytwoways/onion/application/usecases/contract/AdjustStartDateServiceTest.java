@@ -35,8 +35,8 @@ class AdjustStartDateServiceTest extends ContractServiceTestHelper {
                                          """,
                                  """
                                          Versicherungspolice für das Produkt MyTestProduct
-                                         Die Leistung beträgt Money(amount=3528.09, currency=EUR)
-                                         Der Beitrag beträgt Money(amount=19.71, currency=EUR)
+                                         Die Leistung beträgt 3528.09 EUR
+                                         Der Beitrag beträgt 19.71 EUR
                                          """);
         assertEquals(expectedPrintOutput, getDocumentPrintOutput());
     }
