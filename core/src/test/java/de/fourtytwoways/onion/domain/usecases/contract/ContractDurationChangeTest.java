@@ -17,7 +17,7 @@ class ContractDurationChangeTest {
         Contract contract = new Contract("4711", null, null,
                                          LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
                                          Money.valueOf(4711, Money.EUR), null);
-        new ContractCalculation().calculatePremium(contract);
+        new ContractCalculation().calculate(contract, ComputationTarget.PREMIUM);
         assertEquals(Money.valueOf(19.63), contract.getPremium());
         assertEquals(Money.valueOf(4711.00), contract.getBenefit());
         new ContractDurationChange().adjustStartDate(contract, LocalDate.of(2032, 1, 1), ComputationTarget.PREMIUM);
@@ -35,7 +35,7 @@ class ContractDurationChangeTest {
         Contract contract = new Contract("4711", null, null,
                                          LocalDate.of(2022, 1, 1), LocalDate.of(2042, 1, 1),
                                          Money.valueOf(4711, Money.USD), null);
-        new ContractCalculation().calculatePremium(contract);
+        new ContractCalculation().calculate(contract, ComputationTarget.PREMIUM);
         assertEquals(Money.valueOf(19.63, Money.USD), contract.getPremium());
         assertEquals(Money.valueOf(4711, Money.USD), contract.getBenefit());
         new ContractDurationChange().adjustEndDate(contract, LocalDate.of(2032, 1, 1));

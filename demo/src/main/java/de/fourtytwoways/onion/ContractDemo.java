@@ -59,12 +59,12 @@ public class ContractDemo {
         Contract c2 = myContractRepository.getContractByNumber("42");
         System.out.println(c2);
 
-        c2 = new ContractCalculation().calculateBenefit(c2);
+        c2 = new ContractCalculation().calculate(c2, ComputationTarget.BENEFIT);
         System.out.println(c2);
 
         c2 = new ContractDurationChange().adjustEndDate(c2, LocalDate.of(2032, 3, 31));
         System.out.println(c2);
-        c2 = new ContractCalculation().calculateBenefit(c2);
+        c2 = new ContractCalculation().calculate(c2, ComputationTarget.BENEFIT);
         System.out.println(c2);
         myContractRepository.saveContract(c2);
 
@@ -78,7 +78,7 @@ public class ContractDemo {
                                                     LocalDate.of(2022, 4, 1), LocalDate.of(2042, 3, 31),
                                                     Money.valueOf(4711), null /* calculate later */);
         System.out.println(c4);
-        c4 = new ContractCalculation().calculatePremium(c4);
+        c4 = new ContractCalculation().calculate(c4, ComputationTarget.PREMIUM);
         System.out.println(c4);
         myContractRepository.saveContract(c4);
 

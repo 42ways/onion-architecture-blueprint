@@ -12,13 +12,13 @@ import java.math.RoundingMode;
 public class ContractCalculation {
     public Contract calculate(@NonNull Contract contract, ComputationTarget computationTarget) {
         switch (computationTarget) {
-            case BENEFIT -> {return new ContractCalculation().calculateBenefit(contract);}
-            case PREMIUM -> {return new ContractCalculation().calculatePremium(contract);}
+            case BENEFIT -> {return calculateBenefit(contract);}
+            case PREMIUM -> {return calculatePremium(contract);}
             default -> throw new IllegalArgumentException("Invalid computation target");
         }
     }
 
-    public Contract calculatePremium(@NonNull Contract contract) {
+    private Contract calculatePremium(@NonNull Contract contract) {
         BigDecimal durationInMonths = contract.getDurationInMonths();
         contract.setPremium(
                 new Money(contract.getBenefit().amount().divide(durationInMonths, 2, RoundingMode.HALF_UP),
@@ -26,7 +26,7 @@ public class ContractCalculation {
         return contract;
     }
 
-    public Contract calculateBenefit(@NonNull Contract contract) {
+    private Contract calculateBenefit(@NonNull Contract contract) {
         BigDecimal durationInMonths = contract.getDurationInMonths();
         contract.setBenefit(
                 new Money(contract.getPremium().amount().multiply(durationInMonths),
