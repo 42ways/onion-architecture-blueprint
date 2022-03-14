@@ -12,12 +12,12 @@ Java Software Architecture Patterns in general, esp. to get a feeling for advant
 of major Onion Architecture and Clean Architecture principles.
 
 To show the relevant patterns, the project has as few as possible dependencies.
-The implemented functions and use cases are kept very simple for the sane reason.
+The implemented functions and use cases are kept very simple for the same reason.
 
-To make the code dependencies explicit, the project is just split up into several
+To make the code dependencies explicit, the project is split up into several
 Java modules with restricted access between the modules.
-Real live projects would probably split these modules into different repositories and/or
-introduce an even further seperation into packages, mudules and source code repositories.
+Real live projects would probably separate these modules into different repositories and/or
+introduce an even further separation into packages, modules and source code repositories.
 
 The following diagrams visualize the actual component dependencies of this project based on the implemented
 java modules in comparison to the "pure" onion diagram that can be found in most articles and books
