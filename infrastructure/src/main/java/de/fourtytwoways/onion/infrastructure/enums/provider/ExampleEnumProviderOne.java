@@ -28,6 +28,7 @@ public class ExampleEnumProviderOne {
     List<EnumValue> getDocumentTypes() {
         // TODO: This is a fixed enumeration type and should probably be defined in application or core layer!
         List<EnumValue> documentTypes = new ArrayList<>();
+        documentTypes.add(DocumentType.FIRST_PAGE);
         documentTypes.add(DocumentType.POLICY);
         return documentTypes;
     }
