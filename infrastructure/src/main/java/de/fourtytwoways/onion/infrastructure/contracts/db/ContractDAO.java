@@ -14,6 +14,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
+import java.util.Optional;
 
 @Entity
 @Table(name = "CONTRACTS")
@@ -92,12 +93,7 @@ public class ContractDAO extends Contract {
     @Access(AccessType.PROPERTY)
     @Column(name = "benefit_amount")
     public BigDecimal getBenefitAmount() {
-        // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money benefit = getBenefit();
-        if (benefit != null)
-            return benefit.amount();
-        else
-            return null;
+        return Optional.ofNullable(getBenefit()).map(Money::amount).orElse(null);
     }
 
     public void setBenefitAmount(BigDecimal amount) {
@@ -107,12 +103,7 @@ public class ContractDAO extends Contract {
     @Access(AccessType.PROPERTY)
     @Column(name = "benefit_currency")
     public String getBenefitCurrency() {
-        // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money benefit = getBenefit();
-        if (benefit != null)
-            return benefit.currency().toString();
-        else
-            return null;
+        return Optional.ofNullable(getBenefit()).map(Money::currency).map(Currency::getCurrencyCode).orElse(null);
     }
 
     public void setBenefitCurrency(String currency) {
@@ -122,12 +113,7 @@ public class ContractDAO extends Contract {
     @Access(AccessType.PROPERTY)
     @Column(name = "premium_amount")
     public BigDecimal getPremiumAmount() {
-        // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money premium = getPremium();
-        if (premium != null)
-            return premium.amount();
-        else
-            return null;
+        return Optional.ofNullable(getPremium()).map(Money::amount).orElse(null);
     }
 
     public void setPremiumAmount(BigDecimal amount) {
@@ -137,12 +123,7 @@ public class ContractDAO extends Contract {
     @Access(AccessType.PROPERTY)
     @Column(name = "premium_currency")
     public String getPremiumCurrency() {
-        // TODO: This is super ugly! There has to be a better way in Java to handle NULL values in call chain...
-        Money premium = getPremium();
-        if (premium != null)
-            return premium.currency().getCurrencyCode();
-        else
-            return null;
+        return Optional.ofNullable(getPremium()).map(Money::currency).map(Currency::getCurrencyCode).orElse(null);
     }
 
     public void setPremiumCurrency(String currency) {
