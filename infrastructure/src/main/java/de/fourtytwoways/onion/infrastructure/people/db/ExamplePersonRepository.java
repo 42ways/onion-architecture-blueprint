@@ -10,6 +10,7 @@ import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
+import lombok.NonNull;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
@@ -58,24 +59,6 @@ public final class ExamplePersonRepository implements PersonRepository {
         }
     }
 
-    private Person toPerson(PersonDAO personDAO) {
-        if (personDAO == null)
-            return null;
-        Sex sex = (Sex) this.getEnumRepository().getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
-        Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
-        for (AddressDAO addressDAO : personDAO.addressDAOS) {
-            person.addAddress(new Address(addressDAO.id, addressDAO.isPrimary,
-                                          addressDAO.street, addressDAO.number,
-                                          addressDAO.zipCode, addressDAO.city));
-        }
-        for (BankAccountDAO bankAccountDAO : personDAO.bankAccountDAOS) {
-            person.addBankAccount(new BankAccount(bankAccountDAO.id, bankAccountDAO.isPrimary,
-                                                  bankAccountDAO.accountHolderName, bankAccountDAO.bankName,
-                                                  bankAccountDAO.iban, bankAccountDAO.bic));
-        }
-        return person;
-    }
-
     @Override
     public Person savePerson(Person person) {
         doPersonTransaction(person, Session::saveOrUpdate);
@@ -88,6 +71,7 @@ public final class ExamplePersonRepository implements PersonRepository {
     }
 
     private EnumRepository enumRepository;
+
     private EnumRepository getEnumRepository() {
         if (enumRepository == null)
             enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
@@ -98,12 +82,42 @@ public final class ExamplePersonRepository implements PersonRepository {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
-            PersonDAO personDAO = new PersonDAO(person.getId(), person.getName(), person.getSurname(),
-                                                person.getBirthday(), person.getSex().getKey(),
-                                                person.getAddresses(), person.getBankAccounts());
+            PersonDAO personDAO = toPersonDAO(person);
             sessionOperation.accept(session, personDAO);
             session.getTransaction().commit();
             session.close();
         }
+    }
+
+    private Person toPerson(PersonDAO personDAO) {
+        if (personDAO == null)
+            return null;
+        Sex sex = (Sex) this.getEnumRepository().getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
+        Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
+        for (AddressDAO addressDAO : personDAO.addressDAOS) {
+            person.addAddress(toAddress(addressDAO));
+        }
+        for (BankAccountDAO bankAccountDAO : personDAO.bankAccountDAOS) {
+            person.addBankAccount(toBankAccount(bankAccountDAO));
+        }
+        return person;
+    }
+
+    private Address toAddress(@NonNull AddressDAO addressDAO) {
+        return new Address(addressDAO.id, addressDAO.isPrimary,
+                           addressDAO.street, addressDAO.number,
+                           addressDAO.zipCode, addressDAO.city);
+    }
+
+    private BankAccount toBankAccount(@NonNull BankAccountDAO bankAccountDAO) {
+        return new BankAccount(bankAccountDAO.id, bankAccountDAO.isPrimary,
+                               bankAccountDAO.accountHolderName, bankAccountDAO.bankName,
+                               bankAccountDAO.iban, bankAccountDAO.bic);
+    }
+
+    private PersonDAO toPersonDAO(@NonNull Person person) {
+        return new PersonDAO(person.getId(), person.getName(), person.getSurname(),
+                             person.getBirthday(), person.getSex().getKey(),
+                             person.getAddresses(), person.getBankAccounts());
     }
 }
