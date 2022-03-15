@@ -13,13 +13,13 @@ abstract class AbstractContractModificationService {
         ContractRepository contractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
         Contract contract = contractRepository.getContractByNumber(contractNumber);
         if ( contract != null ) {
-            Contract modifiedContract = contractModificationFunction.apply(contract);
-            Contract storedModifiedContract = contractRepository.saveContract(modifiedContract);
+            Contract modifiedContract =
+                    contractRepository.saveContract(contractModificationFunction.apply(contract));
             DocumentRepository documentRepository = (DocumentRepository) RepositoryRegistry.getInstance().getRepository(DocumentRepository.class);
             // TODO: In a real system, this would be managed by a rule based document component
-            documentRepository.createDocument(documentRepository.getFirstPageType(), storedModifiedContract);
-            documentRepository.createDocument(documentRepository.getPolicyType(), storedModifiedContract);
-            return storedModifiedContract;
+            documentRepository.createDocument(documentRepository.getFirstPageType(), modifiedContract);
+            documentRepository.createDocument(documentRepository.getPolicyType(), modifiedContract);
+            return modifiedContract;
         }
         else
             return null;
