@@ -1,22 +1,21 @@
 package de.fourtytwoways.onion.application.usecases.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.DocumentRepository;
+import de.fourtytwoways.onion.application.repositories.AbstractDocumentRepository;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
-import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class TestDocumentRepository implements DocumentRepository {
+public class TestDocumentRepository extends AbstractDocumentRepository {
     private final Collection<Document> documents = new ArrayList<>();
     private final List<String> printOutput = new ArrayList<>();
 
     @Override
-    public Document createDocument(EnumValue type, Object contentObject) {
+    public Document createDocument(DocumentType type, Object contentObject) {
         Contract contract = (Contract) contentObject;
         if (DocumentType.POLICY.equals(type)) {
             Document policy = new Document() {

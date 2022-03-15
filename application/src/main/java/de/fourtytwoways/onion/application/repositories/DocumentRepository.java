@@ -3,7 +3,8 @@ package de.fourtytwoways.onion.application.repositories;
 
 import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
-import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
+
+import java.util.Collection;
 
 @SuppressWarnings("SameReturnValue")
 public interface DocumentRepository extends Repository {
@@ -14,5 +15,6 @@ public interface DocumentRepository extends Repository {
         return DocumentType.POLICY;
     }
 
-    Document createDocument(EnumValue type, Object contentObject);
+    Document createDocument(DocumentType type, Object contentObject);
+    Collection<Document> createDocuments(Collection<DocumentType>types, Object contentObject);
 }
