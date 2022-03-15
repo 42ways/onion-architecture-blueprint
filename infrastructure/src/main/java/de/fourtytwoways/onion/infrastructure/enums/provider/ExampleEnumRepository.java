@@ -13,23 +13,12 @@ public class ExampleEnumRepository extends AbstractEnumRepository {
 
     @Override
     protected List<EnumValue> getEntriesImpl(EnumType enumType) {
-        switch (enumType) {
-            case TARIFF -> {
-                return providerTwo.getTariffs();
-            }
-            case PRODUCT -> {
-                return providerTwo.getProducts();
-            }
-            case BONUS_SYSTEM -> {
-                return providerOne.getBonusSystems();
-            }
-            case SEX -> {
-                return providerOne.getSexes();
-            }
-            case DOCUMENT_TYPE -> {
-                return providerOne.getDocumentTypes();
-            }
-        }
-        return null;
+        return switch (enumType) {
+            case BONUS_SYSTEM -> providerOne.getBonusSystems();
+            case SEX -> providerOne.getSexes();
+            case DOCUMENT_TYPE -> providerOne.getDocumentTypes();
+            case TARIFF -> providerTwo.getTariffs();
+            case PRODUCT -> providerTwo.getProducts();
+        };
     }
 }
