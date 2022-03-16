@@ -72,6 +72,15 @@ class MoneyTest {
     void amount() {
         Money m1 = Money.valueOf(1.2);
         assertEquals(BigDecimal.valueOf(1.2).setScale(2, RoundingMode.HALF_UP), m1.amount());
+        assertEquals("Money[amount=1.20, currency=EUR]", m1.toString());
+
+        Money m2 = Money.valueOf(12345.678, Money.JPY);
+        assertEquals(BigDecimal.valueOf(12346), m2.amount());
+        assertEquals("Money[amount=12346, currency=JPY]", m2.toString());
+
+        Money m3 = Money.valueOf(12345.6789, Money.USD);
+        assertEquals(BigDecimal.valueOf(12345.68), m3.amount());
+        assertEquals("Money[amount=12345.68, currency=USD]", m3.toString());
     }
 
     @Test

@@ -11,6 +11,7 @@ import java.util.Currency;
 public record Money (BigDecimal amount, Currency currency){
     public static final Currency EUR = Currency.getInstance("EUR");
     public static final Currency USD = Currency.getInstance("USD");
+    public static final Currency JPY = Currency.getInstance("JPY");
     public static final Currency defaultCurrency = EUR;
 
     public static Money valueOf(BigDecimal amount, Currency currency) {
