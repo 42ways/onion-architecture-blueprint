@@ -6,7 +6,7 @@ import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 
-import java.util.Set;
+import java.util.List;
 import java.util.function.Function;
 
 abstract class AbstractContractModificationService {
@@ -19,7 +19,7 @@ abstract class AbstractContractModificationService {
             DocumentRepository documentRepository = (DocumentRepository) RepositoryRegistry.getInstance().getRepository(DocumentRepository.class);
             // TODO: In a real system, this would be managed by a rule based document component
             documentRepository.createDocuments(
-                    Set.of(documentRepository.getFirstPageType(), documentRepository.getPolicyType()),
+                    List.of(documentRepository.getFirstPageType(), documentRepository.getPolicyType()),
                     modifiedContract);
             return modifiedContract;
         }
