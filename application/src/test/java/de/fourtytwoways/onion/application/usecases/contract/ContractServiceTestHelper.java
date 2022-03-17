@@ -1,10 +1,8 @@
 package de.fourtytwoways.onion.application.usecases.contract;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.ContractRepository;
-import de.fourtytwoways.onion.application.repositories.DocumentRepository;
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
-import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
+import de.fourtytwoways.onion.application.repositories.*;
+import de.fourtytwoways.onion.application.usecases.accounting.ContractChangedAccountingService;
 import de.fourtytwoways.onion.application.usecases.document.ContractChangedDocumentService;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.event.DomainEventPublisher;
@@ -24,7 +22,11 @@ abstract public class ContractServiceTestHelper {
         RepositoryRegistry.getInstance().registerRepository(EnumRepository.class, new TestEnumRepository());
         RepositoryRegistry.getInstance().registerRepository(ContractRepository.class, new TestContractRepository());
         RepositoryRegistry.getInstance().registerRepository(DocumentRepository.class, new TestDocumentRepository());
-        DomainEventPublisher.getInstance().clearSubscribers().subscribe(new ContractChangedDocumentService());
+        RepositoryRegistry.getInstance().registerRepository(AccountingRepository.class, new TestAccountingRepository());
+        DomainEventPublisher.getInstance().
+                clearSubscribers().
+                subscribe(new ContractChangedDocumentService()).
+                subscribe(new ContractChangedAccountingService());
     }
 
     protected void saveContract(Contract contract) {
