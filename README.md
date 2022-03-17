@@ -52,3 +52,12 @@ The module `demo` includes some demo programs that are available as Gradle tasks
 The demo programs use a H2 database configured to use file based storage in `demo/.h2` (see configuration file
 `infrastructure/src/main/resources/hibernate.cfg.xml`).
 
+## Caveats
+
+This project is just a playground for different aspects of Domain Driven Design (DDD),
+Onion Architecture and Software-Architecture / Software-Design in general.
+
+Many of the concepts, patterns and coding found in this implementation are more or less just
+attempts to evaluate ideas and/or compare different approaches for several aspects.
+
+Therefore, the project as a whole may seem inconsistent, premature or even plain wrong.
