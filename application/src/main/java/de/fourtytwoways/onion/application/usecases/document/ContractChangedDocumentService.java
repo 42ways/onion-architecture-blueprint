@@ -21,7 +21,7 @@ public class ContractChangedDocumentService implements DomainEventSubscriber {
     }
 
     @Override
-    public Class subscribedToEventType() {
+    public Class<?> subscribedToEventType() {
         return ContractValuesChanged.class;
     }
 }

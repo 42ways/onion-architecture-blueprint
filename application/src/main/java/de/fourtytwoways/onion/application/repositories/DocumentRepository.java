@@ -16,5 +16,6 @@ public interface DocumentRepository extends Repository {
     }
 
     Document createDocument(DocumentType type, Object contentObject);
+    @SuppressWarnings("UnusedReturnValue")
     Collection<Document> createDocuments(Collection<DocumentType>types, Object contentObject);
 }

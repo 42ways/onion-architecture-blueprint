@@ -12,6 +12,7 @@ class DomainEventPublisherTest {
         DomainEventPublisher domainEventPublisher = DomainEventPublisher.getInstance();
         assertEquals(domainEventPublisher.getClass(), DomainEventPublisher.class);
         DomainEventPublisher domainEventPublisher1 = DomainEventPublisher.getInstance();
+        //noinspection ConstantConditions
         assert domainEventPublisher == domainEventPublisher1;
     }
 
@@ -27,7 +28,7 @@ class DomainEventPublisherTest {
                 counter[0]++;
             }
             @Override
-            public Class subscribedToEventType() {
+            public Class<?> subscribedToEventType() {
                 return domainEvent.getClass();
             }
         });
@@ -53,7 +54,7 @@ class DomainEventPublisherTest {
                 counter[0]++;
             }
             @Override
-            public Class subscribedToEventType() {
+            public Class<?> subscribedToEventType() {
                 return domainEvent.getClass();
             }
         });
@@ -69,7 +70,7 @@ class DomainEventPublisherTest {
                 counter[0]+= 4;
             }
             @Override
-            public Class subscribedToEventType() {
+            public Class<?> subscribedToEventType() {
                 return domainEvent.getClass();
             }
         });
