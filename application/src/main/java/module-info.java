@@ -3,4 +3,5 @@ module onion.application.main {
 
     exports de.fourtytwoways.onion.application.repositories;
     exports de.fourtytwoways.onion.application.usecases.contract;
+    exports de.fourtytwoways.onion.application.usecases.document;
 }

@@ -3,7 +3,9 @@ package de.fourtytwoways.onion;
 
 import de.fourtytwoways.onion.application.repositories.*;
 import de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService;
+import de.fourtytwoways.onion.application.usecases.document.ContractChangedDocumentService;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
+import de.fourtytwoways.onion.domain.entities.event.DomainEventPublisher;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
 import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
@@ -21,7 +23,7 @@ import java.time.LocalDate;
 
 public class ContractDemo {
 
-    public static void registerRepos() {
+    public static void registerReposAndEventPublishers() {
         Repository enumRepository = new ExampleEnumRepository();
         Repository personRepository = new ExamplePersonRepository();
         Repository contractRepository = new ExampleContractRepository();
@@ -32,11 +34,13 @@ public class ContractDemo {
                 registerRepository(PersonRepository.class, personRepository).
                 registerRepository(ContractRepository.class, contractRepository).
                 registerRepository(DocumentRepository.class, documentRepository);
+
+        DomainEventPublisher.getInstance().clearSubscribers().subscribe(new ContractChangedDocumentService());
     }
 
     public static void main(String[] args) {
 
-        registerRepos();
+        registerReposAndEventPublishers();
 
         EnumRepository myEnumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
         ContractRepository myContractRepository = (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);

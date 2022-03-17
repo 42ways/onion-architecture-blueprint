@@ -13,8 +13,14 @@ public class DomainEventPublisher {
         return instance;
     }
 
-    public void subscribe(DomainEventSubscriber subscriber) {
+    public DomainEventPublisher clearSubscribers() {
+        subscribers.clear();
+        return this;
+    }
+
+    public DomainEventPublisher subscribe(DomainEventSubscriber subscriber) {
         subscribers.add(subscriber);
+        return this;
     }
 
     public <T> void publish(DomainEvent domainEvent) {
