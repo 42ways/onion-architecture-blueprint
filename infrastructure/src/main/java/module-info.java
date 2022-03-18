@@ -1,5 +1,5 @@
 module onion.infrastructure.main {
-    requires lombok;
+    requires static lombok;
     //noinspection Java9RedundantRequiresStatement
     requires java.naming;
     requires java.persistence;
