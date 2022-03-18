@@ -38,4 +38,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Test report
-        path: [cai]*/build/reports/tests/test
+        path: |
+          core/build/reports/tests/test
+          application/build/reports/tests/test
+          infrastructure/build/reports/tests/test
