@@ -5,7 +5,7 @@
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Java CI with Gradle
+name: CI build
 
 on:
   push:
@@ -25,11 +25,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
-    - name: Build with Gradle
+    - name: Build
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-    - name: Test with Gradle
+    - name: Test
       uses: gradle/gradle-build-action@v2
       with:
         arguments: test
