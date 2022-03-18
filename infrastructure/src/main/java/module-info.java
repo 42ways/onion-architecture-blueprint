@@ -1,7 +1,7 @@
 module onion.infrastructure.main {
     requires static lombok;
     //noinspection Java9RedundantRequiresStatement
-    requires java.naming;
+    requires transitive java.naming;
     requires java.persistence;
     requires org.hibernate.orm.core;
 
