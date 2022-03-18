@@ -37,3 +37,6 @@ hs_err_pid*
 
 # Ignore Gradle build output directory
 build
+
+# Ignore IntelliJ directory (all config and settings come from gradle)
+.idea/
