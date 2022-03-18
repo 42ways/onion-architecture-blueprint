@@ -1,3 +1,5 @@
+[![CI build](https://github.com/42ways/onion-architecture-blueprint/actions/workflows/gradle.yml/badge.svg)](https://github.com/42ways/onion-architecture-blueprint/actions/workflows/gradle.yml)
+
 # Onion Architecture Blueprint
 
 This project is a blueprint for the so-called "Onion Architecture", which is a very popular
