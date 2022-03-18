@@ -41,8 +41,13 @@ See the [official Gradle documentation](https://docs.gradle.org/current/userguid
 
 ### IntelliJ IDE
 
-The project was written using IntelliJ IDEA.
-The project configuration is stored in `.idea`, configured via the gradle files.
+The project was written using IntelliJ IDEA, but the build, esp. the dependencies, is based on `gradle`
+(and Java Modules).
+Therefore the `.idea/` folder is excluded from `git`.
+
+You can open the project as Gradle project with IntelliJ (and probably any other IDE such as Eclipse), and
+all settings should be correct. Please beware to use the gradle tasks and environment for the run configurations
+as well.
 
 ## Usage
 
