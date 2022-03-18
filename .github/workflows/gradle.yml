@@ -35,7 +35,7 @@ jobs:
       with:
         arguments: test
     - name: Archive test report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Test report
-        path: build/reports/tests/test
+        path: [cai]*/build/reports/tests/test
