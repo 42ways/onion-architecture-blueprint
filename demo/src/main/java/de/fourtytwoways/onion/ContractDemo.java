@@ -20,6 +20,8 @@ import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepositor
 import de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository;
 
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ContractDemo {
 
@@ -39,6 +41,7 @@ public class ContractDemo {
     }
 
     public static void main(String[] args) {
+        Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
 
         registerReposAndEventPublishers();
 

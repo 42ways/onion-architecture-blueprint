@@ -6,6 +6,9 @@ import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
 import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class EnumDemo {
 
     private static void printEnums(EnumRepository repo, EnumType t) {
@@ -17,6 +20,8 @@ public class EnumDemo {
     }
 
     public static void main(String[] args) {
+        Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
+
         EnumRepository myEnumRepository = new ExampleEnumRepository();
 
         printEnums(myEnumRepository, EnumType.PRODUCT);

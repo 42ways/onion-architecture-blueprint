@@ -15,6 +15,8 @@ import de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersonDemo {
 
@@ -28,6 +30,8 @@ public class PersonDemo {
     }
 
     public static void main(String[] args) {
+        Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
+
         registerRepos();
 
         // TODO: Can we get rid of this cast?

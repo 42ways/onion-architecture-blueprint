@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestAccountingRepository implements AccountingRepository {
-    private record AccountingInterfaceData(Person customer, Contract contract) {};
-    private final List<AccountingInterfaceData> interfaceData = new ArrayList();
+    private record AccountingInterfaceData(Person customer, Contract contract) {}
+    private final List<AccountingInterfaceData> interfaceData = new ArrayList<>();
     @Override
     public void updateContractInformationForCustomer(Person customer, Contract contract) {
         interfaceData.add(new AccountingInterfaceData(customer, contract));
