@@ -10,9 +10,18 @@ archidoc {
     file "$buildDir/architecture/classdiagram.dot"
     packages = ['de.fourtytwoways.onion']
     multiProject()
-    enableAllInfo()
+    // Comment/Uncomment the following options to configure diagram creation
+    // enableAllInfo()
+    // enableClassInfo()
+    // ignoreClassVisibility()
+    // enableFieldInfo()
+    // ignoreFieldVisibility()
+    // enableMethodInfo()
+    // ignoreMethodVisibility()
+    // enableAnnotationInfo()
+    // enableExternalClasses()
     // TODO: we want to have a class diagram with all info and the interclassdependencies as two separate graphs
-    // enableInterClassDependencies()
+    enableInterClassDependencies()
     verbose()
 }
 
