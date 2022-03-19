@@ -1,0 +1,6 @@
+// tasks for parent project only; see build.gradle in modules for subproject tasks and configuration
+
+task testReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/allTests")
+    reportOn getTasksByName("test", true)
+}

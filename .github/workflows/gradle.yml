@@ -30,15 +30,12 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-    - name: Test
+    - name: Generate Overall Test Report
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: test
-    - name: Archive test report
+        arguments: testReport
+    - name: Archive Test Report
       uses: actions/upload-artifact@v3
       with:
-        name: Test report
-        path: |
-          core/build/reports/tests/test
-          application/build/reports/tests/test
-          infrastructure/build/reports/tests/test
+        name: Onion CI Reports
+        path: build/reports

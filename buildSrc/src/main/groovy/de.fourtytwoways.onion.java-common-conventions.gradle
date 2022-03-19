@@ -23,4 +23,5 @@ dependencies {
 tasks.named('test') {
     //noinspection GrUnresolvedAccess
     useJUnitPlatform()
+    reporting.baseDir = "${rootProject.buildDir.path}/reports/${project.name}"
 }
