@@ -3,6 +3,31 @@
 plugins {
   id 'java'
   id "life.expert.archidoc" version "1.0.11"
+  id "com.github.spotbugs" version "5.0.6"
+}
+
+subprojects {
+    apply plugin: 'com.github.spotbugs'
+}
+
+spotbugs {
+    ignoreFailures = true
+    // ignoreFailures = false
+    showStackTraces = true
+    showProgress = true
+    reportLevel = 'default'
+    effort = 'default'
+    visitors = [ 'FindSqlInjection', 'SwitchFallthrough' ]
+    omitVisitors = [ 'FindNonShortCircuit' ]
+    reportsDir = file("$buildDir/reports/spotbugs")
+    includeFilter = file('spotbugs-include.xml')
+    excludeFilter = file('spotbugs-exclude.xml')
+    onlyAnalyze = ['com.foobar.MyClass', 'com.foobar.mypkg.*']
+    projectName = name
+    release = version
+    extraArgs = [ '-nested:false' ]
+    jvmArgs = [ '-Duser.language=en' ]
+    maxHeapSize = '512m'
 }
 
 project.tasks.getByName("archidoc").dependsOn getTasksByName("build", true)
