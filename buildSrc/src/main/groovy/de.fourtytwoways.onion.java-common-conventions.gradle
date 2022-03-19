@@ -31,3 +31,24 @@ jacocoTestReport {
     dependsOn test
 }
 
+spotbugs {
+    ignoreFailures = true
+    // ignoreFailures = false
+    // showStackTraces = true
+    // showProgress = true
+    // reportLevel = 'default'
+    // effort = 'default'
+    // visitors = [ 'FindSqlInjection', 'SwitchFallthrough' ]
+    // omitVisitors = [ 'FindNonShortCircuit' ]
+    // reportsDir = file("$buildDir/reports/spotbugs")
+    reportsDir = file("${rootProject.buildDir.path}/reports/${project.name}")
+    // includeFilter = file('spotbugs-include.xml')
+    // excludeFilter = file('spotbugs-exclude.xml')
+    // onlyAnalyze = ['de.fourtytwoways.onion.*']
+    // projectName = name
+    // release = version
+    // extraArgs = [ '-nested:false' ]
+    // jvmArgs = [ '-Duser.language=en' ]
+    // maxHeapSize = '512m'
+}
+
