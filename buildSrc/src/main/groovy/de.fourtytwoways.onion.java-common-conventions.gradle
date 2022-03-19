@@ -41,7 +41,6 @@ spotbugs {
     // visitors = [ 'FindSqlInjection', 'SwitchFallthrough' ]
     // omitVisitors = [ 'FindNonShortCircuit' ]
     // reportsDir = file("$buildDir/reports/spotbugs")
-    reportsDir = file("${rootProject.buildDir.path}/reports/${project.name}")
     // includeFilter = file('spotbugs-include.xml')
     // excludeFilter = file('spotbugs-exclude.xml')
     // onlyAnalyze = ['de.fourtytwoways.onion.*']
@@ -50,5 +49,25 @@ spotbugs {
     // extraArgs = [ '-nested:false' ]
     // jvmArgs = [ '-Duser.language=en' ]
     // maxHeapSize = '512m'
+}
+
+spotbugsMain {
+    reports {
+        html {
+            required = true
+            outputLocation = file("${rootProject.buildDir.path}/reports/${project.name}/spotbugsMain.html")
+            stylesheet = 'fancy-hist.xsl'
+        }
+    }
+}
+
+spotbugsTest {
+    reports {
+        html {
+            required = true
+            outputLocation = file("${rootProject.buildDir.path}/reports/${project.name}/spotbugsTest.html")
+            stylesheet = 'fancy-hist.xsl'
+        }
+    }
 }
 
