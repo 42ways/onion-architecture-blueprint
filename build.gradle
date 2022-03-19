@@ -1,5 +1,21 @@
 // tasks for parent project only; see build.gradle in modules for subproject tasks and configuration
 
+plugins {
+  id 'java'
+  id "life.expert.archidoc" version "1.0.11"
+}
+
+project.tasks.getByName("archidoc").dependsOn getTasksByName("build", true)
+archidoc {
+    file "$buildDir/architecture/classdiagram.dot"
+    packages = ['de.fourtytwoways.onion']
+    multiProject()
+    enableAllInfo()
+    // TODO: we want to have a class diagram with all info and the interclassdependencies as two separate graphs
+    // enableInterClassDependencies()
+    verbose()
+}
+
 task testReport(type: TestReport) {
     destinationDir = file("$buildDir/reports/allTests")
     reportOn getTasksByName("test", true)

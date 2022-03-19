@@ -39,3 +39,12 @@ jobs:
       with:
         name: Onion CI Reports
         path: build/reports
+    - name: Generate Architecture Diagrams
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: archidoc
+    - name: Archive Architecture Documents
+      uses: actions/upload-artifact@v3
+      with:
+        name: Onion Architecture Documents
+        path: build/architecture
