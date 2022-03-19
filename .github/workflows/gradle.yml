@@ -30,10 +30,10 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-    - name: Generate Overall Test Report
+    - name: Generate Overall Test and Coverage Reports
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: testReport
+        arguments: jacocoTestReport testReport
     - name: Archive Test Report
       uses: actions/upload-artifact@v3
       with:

@@ -2,6 +2,7 @@
 
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 repositories {
@@ -25,3 +26,8 @@ tasks.named('test') {
     useJUnitPlatform()
     reporting.baseDir = "${rootProject.buildDir.path}/reports/${project.name}"
 }
+
+jacocoTestReport {
+    dependsOn test
+}
+
