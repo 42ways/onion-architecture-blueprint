@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -36,6 +37,10 @@ public class Person {
         return this;
     }
 
+    public List<Address> getAddresses() {
+        return Collections.unmodifiableList(addresses);
+    }
+
     public Person addBankAccount(BankAccount bankAccount) {
         bankAccounts.add(bankAccount);
         return this;
@@ -46,4 +51,7 @@ public class Person {
         return this;
     }
 
+    public List<BankAccount> getBankAccounts() {
+        return Collections.unmodifiableList(bankAccounts);
+    }
 }
