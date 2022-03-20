@@ -9,6 +9,7 @@ import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Optional;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "CONTRACTS")
 public class ContractDAO extends Contract {
