@@ -1,5 +1,6 @@
 module onion.core.main {
     requires static lombok;
+    requires static com.github.spotbugs.annotations;
     requires com.google.common;
 
     exports de.fourtytwoways.onion.domain.entities.contract;

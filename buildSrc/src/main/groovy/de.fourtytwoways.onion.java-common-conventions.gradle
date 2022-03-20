@@ -12,9 +12,12 @@ repositories {
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
-	
+
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    compileOnly 'com.github.spotbugs:spotbugs-annotations:4.6.0'
+    annotationProcessor 'com.github.spotbugs:spotbugs-annotations:4.6.0'
 
     implementation 'com.google.guava:guava:31.1-jre'
 
