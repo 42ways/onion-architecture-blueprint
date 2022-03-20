@@ -14,7 +14,7 @@ project.tasks.getByName("archidoc").dependsOn getTasksByName("build", true)
 archidoc {
     file "$buildDir/architecture/classdiagram.dot"
     packages = ['de.fourtytwoways.onion']
-    multiProject()
+    multiProject(true)
     // Comment/Uncomment the following options to configure diagram creation
     // enableAllInfo()
     // enableClassInfo()
@@ -26,8 +26,8 @@ archidoc {
     // enableAnnotationInfo()
     // enableExternalClasses()
     // TODO: we want to have a class diagram with all info and the interclassdependencies as two separate graphs
-    enableInterClassDependencies()
-    verbose()
+    enableInterClassDependencies(true)
+    verbose(true)
 }
 
 task testReport(type: TestReport) {
