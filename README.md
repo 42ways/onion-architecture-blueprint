@@ -28,7 +28,7 @@ about this architectural pattern.
 ![Onion Architecture Module Dependencies](modules.png)
 ![Onion Architecture Diagram](ONION-architecture-10000ft.png)
 
-## Dependencies and setup
+## Build
 
 ### Gradle build
 
@@ -50,6 +50,28 @@ Therefore the `.idea/` folder is excluded from `git`.
 You can open the project as Gradle project with IntelliJ (and probably any other IDE such as Eclipse), and
 all settings should be correct. Please beware to use the gradle tasks and environment for the run configurations
 as well.
+
+## Dependencies and 3rd party tools
+
+All dependencies are specified in the gradle configuration and build files.
+Please refer to this actual source of truth regarding the current dependencies,
+since this README might be out of date.
+
+### Annotations and libraries
+
+The project uses JPA for persistence (only in the infrastructure layer),
+in the implementation variant [Hibernate](https://hibernate.org/).
+
+In order to get rid of some shortages of the Java language (especially the noisiness),
+we also added [Lombok](https://projectlombok.org/) and [Google Guava](https://github.com/google/guava) to the mix.
+
+### QA and documentation tools
+
+The project uses several tools for QA and documentation, so there are dependencies to
+
+* [JUnit Jupiter](https://junit.org/junit5/), the standard testing framework for Java
+* [SpotBugs](https://spotbugs.github.io/), the successor of FindBugs
+* [ArchiDoc](https://github.com/wilmerkrisp/archidoc), the Gradle wrapper for [Classgraph](https://github.com/classgraph/classgraph) 
 
 ## Usage
 
