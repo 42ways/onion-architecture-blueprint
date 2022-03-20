@@ -6,6 +6,7 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TestAccountingRepository implements AccountingRepository {
@@ -16,6 +17,6 @@ public class TestAccountingRepository implements AccountingRepository {
         interfaceData.add(new AccountingInterfaceData(customer, contract));
     }
     public List<AccountingInterfaceData> getInterfaceData() {
-        return interfaceData;
+        return Collections.unmodifiableList(interfaceData);
     }
 }

@@ -8,6 +8,7 @@ import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class TestDocumentRepository extends AbstractDocumentRepository {
@@ -69,6 +70,6 @@ public class TestDocumentRepository extends AbstractDocumentRepository {
     }
 
     public List<String> getPrintOutput() {
-        return printOutput;
+        return Collections.unmodifiableList(printOutput);
     }
 }
