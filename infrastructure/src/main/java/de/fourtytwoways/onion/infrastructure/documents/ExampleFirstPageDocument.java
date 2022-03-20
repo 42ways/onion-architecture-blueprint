@@ -5,19 +5,10 @@ import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 
-public class ExampleFirstPageDocument implements Document {
-    final int id;
-    final Contract contract;
-    boolean printed = false;
+public class ExampleFirstPageDocument extends AbstractExampleDocument {
 
     ExampleFirstPageDocument(int id, Contract contract) {
-        this.id = id;
-        this.contract = contract;
-    }
-
-    @Override
-    public int getId() {
-        return id;
+        super(id, contract);
     }
 
     @Override
@@ -38,6 +29,6 @@ public class ExampleFirstPageDocument implements Document {
         System.out.println("---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)");
         System.out.print(policy);
         System.out.println("---------- END DOCUMENT OUTPUT (FIRST PAGE)");
-        printed = true;
+        super.print();
     }
 }

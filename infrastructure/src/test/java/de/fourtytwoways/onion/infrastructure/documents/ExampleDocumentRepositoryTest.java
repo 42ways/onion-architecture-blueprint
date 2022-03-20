@@ -52,7 +52,8 @@ class ExampleDocumentRepositoryTest {
                 Money.valueOf(4711), Money.valueOf(19.71));
 
         DocumentRepository documentRepository = new ExampleDocumentRepository();
-        Document firstPage = documentRepository.createDocument(DocumentType.FIRST_PAGE, contract);
+        ExampleFirstPageDocument firstPage =
+                (ExampleFirstPageDocument) documentRepository.createDocument(DocumentType.FIRST_PAGE, contract);
         assertEquals(DocumentType.FIRST_PAGE, firstPage.getDocumentType());
         assertEquals("""
                              ---------- BEGIN DOCUMENT OUTPUT (FIRST PAGE)
@@ -65,6 +66,7 @@ class ExampleDocumentRepositoryTest {
                              Ihre Onion First Versicherungsgesellschaft auf Gegenseitigkeit
                              ---------- END DOCUMENT OUTPUT (FIRST PAGE)
                              """, outputStreamCaptor.toString(StandardCharsets.UTF_8));
+        assert firstPage.isPrinted();
     }
 
     @Test
@@ -80,7 +82,7 @@ class ExampleDocumentRepositoryTest {
                 Money.valueOf(4711), Money.valueOf(19.71));
 
         DocumentRepository documentRepository = new ExampleDocumentRepository();
-        Document policy = documentRepository.createDocument(DocumentType.POLICY, contract);
+        ExamplePolicyDocument policy = (ExamplePolicyDocument) documentRepository.createDocument(DocumentType.POLICY, contract);
         assertEquals(DocumentType.POLICY, policy.getDocumentType());
         assertEquals("""
                              ---------- BEGIN DOCUMENT OUTPUT
@@ -89,5 +91,6 @@ class ExampleDocumentRepositoryTest {
                              Der Beitrag beträgt 19.71 EUR
                              ---------- END DOCUMENT OUTPUT
                              """, outputStreamCaptor.toString(StandardCharsets.UTF_8));
+        assert policy.isPrinted();
     }
 }
