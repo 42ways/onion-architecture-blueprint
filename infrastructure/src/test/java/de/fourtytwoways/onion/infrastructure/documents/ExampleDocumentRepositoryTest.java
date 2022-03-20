@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +31,7 @@ class ExampleDocumentRepositoryTest {
     public void setUp() {
         ExampleTestRepositoryRegistration.registerRepos();
 
-        System.setOut(new PrintStream(outputStreamCaptor));
+        System.setOut(new PrintStream(outputStreamCaptor, false, StandardCharsets.UTF_8));
     }
 
     @AfterEach
@@ -63,7 +64,7 @@ class ExampleDocumentRepositoryTest {
                              Herzlichst,
                              Ihre Onion First Versicherungsgesellschaft auf Gegenseitigkeit
                              ---------- END DOCUMENT OUTPUT (FIRST PAGE)
-                             """, outputStreamCaptor.toString());
+                             """, outputStreamCaptor.toString(StandardCharsets.UTF_8));
     }
 
     @Test
@@ -87,6 +88,6 @@ class ExampleDocumentRepositoryTest {
                              Die Gesamtleistung beträgt 4711.00 EUR
                              Der Beitrag beträgt 19.71 EUR
                              ---------- END DOCUMENT OUTPUT
-                             """, outputStreamCaptor.toString());
+                             """, outputStreamCaptor.toString(StandardCharsets.UTF_8));
     }
 }
