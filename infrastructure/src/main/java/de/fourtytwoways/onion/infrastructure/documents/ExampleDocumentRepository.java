@@ -8,18 +8,19 @@ import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 
 public class ExampleDocumentRepository extends AbstractDocumentRepository {
     private static int lastId = 0;
+    private static int nextId() {return ++lastId;}
 
     @Override
     public Document createDocument(DocumentType type, Object contentObject) {
         Contract contract = (Contract) contentObject;
         if (DocumentType.POLICY.equals(type)) {
             // TODO: better way to generate document id!
-            Document policy = new ExamplePolicyDocument(++lastId, contract);
+            Document policy = new ExamplePolicyDocument(nextId(), contract);
             policy.print();
             return policy;
         } else if (DocumentType.FIRST_PAGE.equals(type)) {
             // TODO: better way to generate document id!
-            Document firstPage = new ExampleFirstPageDocument(++lastId, contract);
+            Document firstPage = new ExampleFirstPageDocument(nextId(), contract);
             firstPage.print();
             return firstPage;
         } else {
