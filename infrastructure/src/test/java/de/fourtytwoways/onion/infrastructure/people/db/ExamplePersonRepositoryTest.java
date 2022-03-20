@@ -72,6 +72,7 @@ class ExamplePersonRepositoryTest {
         Person wilma = new Person(11, "Wilma", "Flint",
                           LocalDate.of(1967, 8, 9), female);
         Person storedWilma = personRepository.savePerson(wilma);
+        assertEquals(storedWilma, wilma);
 
         assertEquals(1, personRepository.getPeopleByName("Wilma", "Flint").size());
         assertEquals(1, personRepository.getPeopleByName("Tom", null).size());
