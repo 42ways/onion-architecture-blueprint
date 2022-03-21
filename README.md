@@ -69,7 +69,8 @@ we also added [Lombok](https://projectlombok.org/) and [Google Guava](https://gi
 
 The project uses several tools for QA and documentation, so there are dependencies to
 
-* [JUnit Jupiter](https://junit.org/junit5/), the standard testing framework for Java
+* [JUnit Jupiter](https://junit.org/junit5/) (aka JUnit5), the standard testing framework for Java
+* [JaCoCo](https://www.jacoco.org/), code coverage analysis
 * [SpotBugs](https://spotbugs.github.io/), the successor of FindBugs
 * [ArchiDoc](https://github.com/wilmerkrisp/archidoc), the Gradle wrapper for [Classgraph](https://github.com/classgraph/classgraph) 
 
