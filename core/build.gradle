@@ -1,3 +1,22 @@
 plugins {
     id 'de.fourtytwoways.onion.java-library-conventions'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+compileKotlin {
+    destinationDirectory = compileJava.destinationDirectory
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+compileTestKotlin {
+    destinationDirectory = compileTestJava.destinationDirectory
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }

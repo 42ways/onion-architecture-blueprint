@@ -46,6 +46,6 @@ public class ContractDbMapper extends Contract {
     }
 
     public void setBeneficiaryId(int beneficiaryId) {
-        this.beneficiary = ContractDbMapper.getPersonRepository().getPersonById(beneficiaryId);
+        this.setBeneficiary(ContractDbMapper.getPersonRepository().getPersonById(beneficiaryId));
     }
 }
