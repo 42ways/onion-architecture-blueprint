@@ -1,8 +1,11 @@
 package de.fourtytwoways.onion.infrastructure.contracts.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+// In a "real" system, this class could be 100% generated from the data model
+// It contains all universally applicable mapping from the domain model to the database model
+// If there is a need for special ("handwritten") mapping code, that goes to the superclass "ContractDbMapper"
+
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
-import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
@@ -16,6 +19,8 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Optional;
 
+// TODO: Need Getters and Setters to be public? This class is only used by the persistence framework (aka JPA/Hibernate)
+
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "CONTRACTS")
@@ -28,15 +33,6 @@ public class ContractDAO extends ContractDbMapper {
             enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
         }
         return enumRepository;
-    }
-
-    private static PersonRepository personRepository;
-
-    private static PersonRepository getPersonRepository() {
-        if (personRepository == null) {
-            personRepository = (PersonRepository) RepositoryRegistry.getInstance().getRepository(PersonRepository.class);
-        }
-        return personRepository;
     }
 
     @Id
@@ -72,12 +68,7 @@ public class ContractDAO extends ContractDbMapper {
     @Access(AccessType.PROPERTY)
     @Column(name = "beneficiaryId")
     public int getBeneficiaryId() {
-        Person beneficiaryPerson = super.getBeneficiary();
-        return beneficiaryPerson == null ? 0 : beneficiaryPerson.getId();
-    }
-
-    public void setBeneficiaryId(int beneficiaryId) {
-        this.beneficiary = getPersonRepository().getPersonById(beneficiaryId);
+        return super.getBeneficiaryId();
     }
 
     @Access(AccessType.PROPERTY)
