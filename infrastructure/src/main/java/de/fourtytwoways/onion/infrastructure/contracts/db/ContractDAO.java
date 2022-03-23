@@ -4,7 +4,6 @@ package de.fourtytwoways.onion.infrastructure.contracts.db;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
-import de.fourtytwoways.onion.domain.entities.contract.Contract;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
@@ -20,7 +19,7 @@ import java.util.Optional;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "CONTRACTS")
-public class ContractDAO extends Contract {
+public class ContractDAO extends ContractDbMapper {
 
     private static EnumRepository enumRepository;
 
@@ -45,6 +44,7 @@ public class ContractDAO extends Contract {
     private int id;
 
     protected ContractDAO() {
+        super();
     }
 
     public ContractDAO(String contractNumber, Product product, Person beneficiary, LocalDate beginDate, LocalDate endDate, Money benefit, Money premium) {
@@ -99,7 +99,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setBenefitAmount(BigDecimal amount) {
-        setBenefit(createValidMoneyFromPartialData(amount, getBenefitCurrency()));
+        setBenefit(Money.valueOfNullable(amount, getBenefitCurrency()));
     }
 
     @Access(AccessType.PROPERTY)
@@ -109,7 +109,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setBenefitCurrency(String currency) {
-        setBenefit(createValidMoneyFromPartialData(getBenefitAmount(), currency));
+        setBenefit(Money.valueOfNullable(getBenefitAmount(), currency));
     }
 
     @Access(AccessType.PROPERTY)
@@ -119,7 +119,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setPremiumAmount(BigDecimal amount) {
-        setPremium(createValidMoneyFromPartialData(amount, getPremiumCurrency()));
+        setPremium(Money.valueOfNullable(amount, getPremiumCurrency()));
     }
 
     @Access(AccessType.PROPERTY)
@@ -129,12 +129,7 @@ public class ContractDAO extends Contract {
     }
 
     public void setPremiumCurrency(String currency) {
-        setPremium(createValidMoneyFromPartialData(getPremiumAmount(), currency));
+        setPremium(Money.valueOfNullable(getPremiumAmount(), currency));
     }
 
-    private Money createValidMoneyFromPartialData(BigDecimal amount, String currency) {
-        BigDecimal newAmount = amount != null ? amount : BigDecimal.valueOf(0);
-        Currency newCurrency = currency != null ? Currency.getInstance(currency) : Money.defaultCurrency;
-        return Money.valueOf(newAmount, newCurrency);
-    }
 }

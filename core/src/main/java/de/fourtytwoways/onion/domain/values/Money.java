@@ -36,6 +36,12 @@ public record Money (BigDecimal amount, Currency currency){
         return valueOf(amount, defaultCurrency);
     }
 
+    public static Money valueOfNullable(BigDecimal amount, String currency) {
+        BigDecimal newAmount = amount != null ? amount : BigDecimal.valueOf(0);
+        Currency newCurrency = currency != null ? Currency.getInstance(currency) : defaultCurrency;
+        return valueOf(newAmount, newCurrency);
+    }
+
     public Money add(Money other) {
         assertSameCurrency(other);
         return new Money(amount.add(other.amount), currency);
