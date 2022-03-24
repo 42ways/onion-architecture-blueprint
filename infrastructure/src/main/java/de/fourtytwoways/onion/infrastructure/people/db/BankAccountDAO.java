@@ -32,4 +32,10 @@ public class BankAccountDAO {
         this.iban = bankAccount.getIban();
         this.bic = bankAccount.getBic();
     }
+
+    BankAccount toBankAccount() {
+        return new BankAccount(id, isPrimary,
+                               accountHolderName, bankName,
+                               iban, bic);
+    }
 }

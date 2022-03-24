@@ -4,13 +4,8 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
-import de.fourtytwoways.onion.domain.entities.person.Address;
-import de.fourtytwoways.onion.domain.entities.person.BankAccount;
 import de.fourtytwoways.onion.domain.entities.person.Person;
-import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
-import lombok.NonNull;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
@@ -20,14 +15,23 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 public final class ExamplePersonRepository implements PersonRepository {
 
+    private static EnumRepository enumRepository;
+
+    static EnumRepository getEnumRepository() {
+        if (enumRepository == null)
+            enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
+        return enumRepository;
+    }
+
     @Override
     public Person getPersonById(int id) {
         try (Session session = SessionFactory.getSession()) {
-            return toPerson(session.find(PersonDAO.class, id));
+            return Optional.ofNullable(session.find(PersonDAO.class, id)).map(PersonDAO::toPerson).orElse(null);
         }
     }
 
@@ -51,7 +55,7 @@ public final class ExamplePersonRepository implements PersonRepository {
 
             // Since we have to do LAZY loading for Bank Accounts, we have to do the mapping
             // to the domain model while still having an open session
-            List<Person> people = results.stream().map(this::toPerson).toList();
+            List<Person> people = results.stream().map(PersonDAO::toPerson).toList();
 
             session.close();
 
@@ -70,14 +74,6 @@ public final class ExamplePersonRepository implements PersonRepository {
         doPersonTransaction(person, Session::delete);
     }
 
-    private EnumRepository enumRepository;
-
-    private EnumRepository getEnumRepository() {
-        if (enumRepository == null)
-            enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
-        return enumRepository;
-    }
-
     private void doPersonTransaction(Person person, BiConsumer<Session, PersonDAO> sessionOperation) {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
@@ -88,32 +84,6 @@ public final class ExamplePersonRepository implements PersonRepository {
             session.getTransaction().commit();
             session.close();
         }
-    }
-
-    private Person toPerson(PersonDAO personDAO) {
-        if (personDAO == null)
-            return null;
-        Sex sex = (Sex) this.getEnumRepository().getEntryByKey(EnumType.SEX, personDAO.sex).orElse(null);
-        Person person = new Person(personDAO.id, personDAO.name, personDAO.surname, personDAO.birthday, sex);
-        for (AddressDAO addressDAO : personDAO.addressDAOS) {
-            person.addAddress(toAddress(addressDAO));
-        }
-        for (BankAccountDAO bankAccountDAO : personDAO.bankAccountDAOS) {
-            person.addBankAccount(toBankAccount(bankAccountDAO));
-        }
-        return person;
-    }
-
-    private Address toAddress(@NonNull AddressDAO addressDAO) {
-        return new Address(addressDAO.id, addressDAO.isPrimary,
-                           addressDAO.street, addressDAO.number,
-                           addressDAO.zipCode, addressDAO.city);
-    }
-
-    private BankAccount toBankAccount(@NonNull BankAccountDAO bankAccountDAO) {
-        return new BankAccount(bankAccountDAO.id, bankAccountDAO.isPrimary,
-                               bankAccountDAO.accountHolderName, bankAccountDAO.bankName,
-                               bankAccountDAO.iban, bankAccountDAO.bic);
     }
 
 }

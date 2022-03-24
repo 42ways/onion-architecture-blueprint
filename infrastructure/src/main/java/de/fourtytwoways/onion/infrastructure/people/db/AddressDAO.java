@@ -33,4 +33,9 @@ public class AddressDAO {
         this.city = address.getCity();
     }
 
+    Address toAddress() {
+        return new Address(id, isPrimary,
+                           street, number,
+                           zipCode, city);
+    }
 }

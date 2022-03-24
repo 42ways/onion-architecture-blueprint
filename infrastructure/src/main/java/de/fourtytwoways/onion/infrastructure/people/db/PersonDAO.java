@@ -3,6 +3,9 @@ package de.fourtytwoways.onion.infrastructure.people.db;
 
 import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.domain.entities.person.BankAccount;
+import de.fourtytwoways.onion.domain.entities.person.Person;
+import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -42,5 +45,17 @@ public class PersonDAO {
         for (BankAccount bankAccount : bankAccounts) {
             bankAccountDAOS.add(new BankAccountDAO(this, bankAccount));
         }
+    }
+
+    Person toPerson() {
+        Sex sex = (Sex) ExamplePersonRepository.getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).orElse(null);
+        Person person = new Person(id, name, surname, birthday, sex);
+        for (AddressDAO addressDAO : addressDAOS) {
+            person.addAddress(addressDAO.toAddress());
+        }
+        for (BankAccountDAO bankAccountDAO : bankAccountDAOS) {
+            person.addBankAccount(bankAccountDAO.toBankAccount());
+        }
+        return person;
     }
 }
