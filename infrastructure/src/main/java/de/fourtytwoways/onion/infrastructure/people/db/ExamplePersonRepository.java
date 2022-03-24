@@ -82,8 +82,9 @@ public final class ExamplePersonRepository implements PersonRepository {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
-            PersonDAO personDAO = toPersonDAO(person);
-            sessionOperation.accept(session, personDAO);
+            sessionOperation.accept(session, new PersonDAO(person.getId(), person.getName(), person.getSurname(),
+                                                               person.getBirthday(), person.getSex().getKey(),
+                                                               person.getAddresses(), person.getBankAccounts()));
             session.getTransaction().commit();
             session.close();
         }
@@ -115,9 +116,4 @@ public final class ExamplePersonRepository implements PersonRepository {
                                bankAccountDAO.iban, bankAccountDAO.bic);
     }
 
-    private PersonDAO toPersonDAO(@NonNull Person person) {
-        return new PersonDAO(person.getId(), person.getName(), person.getSurname(),
-                             person.getBirthday(), person.getSex().getKey(),
-                             person.getAddresses(), person.getBankAccounts());
-    }
 }
