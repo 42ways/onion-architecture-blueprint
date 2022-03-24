@@ -5,6 +5,7 @@ import de.fourtytwoways.onion.application.repositories.PersonRepository;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -65,12 +66,16 @@ public final class ExamplePersonRepository implements PersonRepository {
     }
 
     private void doPersonTransaction(Person person, BiConsumer<Session, PersonDAO> sessionOperation) {
-        // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
-            session.beginTransaction();
-            sessionOperation.accept(session, new PersonDAO(person));
-            session.getTransaction().commit();
-            session.close();
+            Transaction tx = session.beginTransaction();
+            try {
+                sessionOperation.accept(session, new PersonDAO(person));
+            } catch (Exception e) {
+                if (tx != null)
+                    tx.rollback();
+                throw e;
+            }
+            tx.commit();
         }
     }
 
