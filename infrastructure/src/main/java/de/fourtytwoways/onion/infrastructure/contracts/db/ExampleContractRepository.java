@@ -8,6 +8,7 @@ import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -41,12 +42,16 @@ public class ExampleContractRepository implements ContractRepository {
 
     @Override
     public Contract saveContract(Contract contract) {
-        // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
-            session.beginTransaction();
-            session.saveOrUpdate(contract);
-            session.getTransaction().commit();
-            session.close();
+            Transaction tx = session.beginTransaction();
+            try {
+                session.saveOrUpdate(contract);
+            } catch (Exception e) {
+                if (tx != null)
+                    tx.rollback();
+                throw e;
+            }
+            tx.commit();
         }
         return getContractByNumber(contract.getContractNumber());
     }
