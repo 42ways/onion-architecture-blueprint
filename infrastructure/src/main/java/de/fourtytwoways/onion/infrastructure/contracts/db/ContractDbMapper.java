@@ -45,6 +45,7 @@ public class ContractDbMapper extends Contract {
         return beneficiaryPerson == null ? 0 : beneficiaryPerson.getId();
     }
 
+    @SuppressWarnings("unused") // needed by hibernate to set beneficiary
     public void setBeneficiaryId(int beneficiaryId) {
         this.beneficiary = ContractDbMapper.getPersonRepository().getPersonById(beneficiaryId);
     }

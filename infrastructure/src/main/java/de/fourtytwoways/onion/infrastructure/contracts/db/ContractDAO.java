@@ -47,6 +47,7 @@ public class ContractDAO extends ContractDbMapper {
         super(contractNumber, product, beneficiary, beginDate, endDate, benefit, premium);
     }
 
+    @Override
     @Access(AccessType.PROPERTY)
     @Column(name = "contractNumber")
     public String getContractNumber() {
@@ -65,18 +66,21 @@ public class ContractDAO extends ContractDbMapper {
         super.setProduct(product);
     }
 
+    @Override
     @Access(AccessType.PROPERTY)
     @Column(name = "beneficiaryId")
     public int getBeneficiaryId() {
         return super.getBeneficiaryId();
     }
 
+    @Override
     @Access(AccessType.PROPERTY)
     @Column(name = "startDate")
     public LocalDate getStartDate() {
         return super.getStartDate();
     }
 
+    @Override
     @Access(AccessType.PROPERTY)
     @Column(name = "endDate")
     public LocalDate getEndDate() {
