@@ -2,7 +2,6 @@ package de.fourtytwoways.onion.infrastructure.documents;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
-import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;
 
 public class ExamplePolicyDocument extends AbstractExampleDocument {
