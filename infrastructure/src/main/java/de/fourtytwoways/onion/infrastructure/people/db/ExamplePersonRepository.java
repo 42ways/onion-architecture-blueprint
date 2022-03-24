@@ -1,9 +1,7 @@
 package de.fourtytwoways.onion.infrastructure.people.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.PersonRepository;
-import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.infrastructure.database.SessionFactory;
 import org.hibernate.Session;
@@ -19,14 +17,6 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 
 public final class ExamplePersonRepository implements PersonRepository {
-
-    private static EnumRepository enumRepository;
-
-    static EnumRepository getEnumRepository() {
-        if (enumRepository == null)
-            enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
-        return enumRepository;
-    }
 
     @Override
     public Person getPersonById(int id) {
@@ -78,9 +68,7 @@ public final class ExamplePersonRepository implements PersonRepository {
         // TODO: Error handling
         try (Session session = SessionFactory.getSession()) {
             session.beginTransaction();
-            sessionOperation.accept(session, new PersonDAO(person.getId(), person.getName(), person.getSurname(),
-                                                               person.getBirthday(), person.getSex().getKey(),
-                                                               person.getAddresses(), person.getBankAccounts()));
+            sessionOperation.accept(session, new PersonDAO(person));
             session.getTransaction().commit();
             session.close();
         }

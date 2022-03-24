@@ -1,6 +1,8 @@
 package de.fourtytwoways.onion.infrastructure.people.db;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.onion.application.repositories.EnumRepository;
+import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Address;
 import de.fourtytwoways.onion.domain.entities.person.BankAccount;
 import de.fourtytwoways.onion.domain.entities.person.Person;
@@ -32,23 +34,30 @@ public class PersonDAO {
     public PersonDAO() {
     }
 
-    PersonDAO(int id, String name, String surname, LocalDate birthday, String sex,
-              Iterable<Address> addresses, Iterable<BankAccount> bankAccounts) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.birthday = birthday;
-        this.sex = sex;
-        for (Address address : addresses) {
+    PersonDAO(Person person) {
+        this.id = person.getId();
+        this.name = person.getName();
+        this.surname = person.getSurname();
+        this.birthday = person.getBirthday();
+        this.sex = person.getSex().getKey();
+        for (Address address : person.getAddresses()) {
             addressDAOS.add(new AddressDAO(this, address));
         }
-        for (BankAccount bankAccount : bankAccounts) {
+        for (BankAccount bankAccount : person.getBankAccounts()) {
             bankAccountDAOS.add(new BankAccountDAO(this, bankAccount));
         }
     }
 
+    private static EnumRepository enumRepository;
+
+    static EnumRepository getEnumRepository() {
+        if (enumRepository == null)
+            enumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
+        return enumRepository;
+    }
+
     Person toPerson() {
-        Sex sex = (Sex) ExamplePersonRepository.getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).orElse(null);
+        Sex sex = (Sex) getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).orElse(null);
         Person person = new Person(id, name, surname, birthday, sex);
         for (AddressDAO addressDAO : addressDAOS) {
             person.addAddress(addressDAO.toAddress());
