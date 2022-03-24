@@ -13,10 +13,17 @@ subprojects {
 project.tasks.getByName("archidoc").dependsOn getTasksByName("build", true)
 archidoc {
     file "$buildDir/architecture/classdiagram.dot"
-    packages = ['de.fourtytwoways.onion']
+    packages = ['de.fourtytwoways.onion.domain.entities.person',
+                'de.fourtytwoways.onion.domain.usecases.person',
+                'de.fourtytwoways.onion.application.usecases.person',
+                'de.fourtytwoways.onion.infrastructure.people.db']
+//    packages = ['de.fourtytwoways.onion.domain.entities.contract',
+//                'de.fourtytwoways.onion.domain.usecases.contract',
+//                'de.fourtytwoways.onion.application.usecases.contract',
+//                'de.fourtytwoways.onion.infrastructure.contracts.db']
     multiProject(true)
     // Comment/Uncomment the following options to configure diagram creation
-    // enableAllInfo()
+    enableAllInfo()
     // enableClassInfo()
     // ignoreClassVisibility()
     // enableFieldInfo()
@@ -24,9 +31,9 @@ archidoc {
     // enableMethodInfo()
     // ignoreMethodVisibility()
     // enableAnnotationInfo()
-    // enableExternalClasses()
+    enableExternalClasses()
     // TODO: we want to have a class diagram with all info and the interclassdependencies as two separate graphs
-    enableInterClassDependencies(true)
+    // enableInterClassDependencies(true)
     verbose(true)
 }
 
