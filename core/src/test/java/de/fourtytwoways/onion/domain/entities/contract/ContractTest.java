@@ -3,6 +3,8 @@ package de.fourtytwoways.onion.domain.entities.contract;
 
 import de.fourtytwoways.onion.domain.values.Money;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -40,41 +42,35 @@ class ContractTest {
         assert contract1.equals(contract2);
     }
 
-    @Test
-    void getDuration() {
+    @ParameterizedTest
+    @CsvSource({
+            "2022, 1, 1, 2042, 1,  1, 20, 0, 0",
+            "2022, 1, 1, 2042, 4,  1, 20, 3, 0",
+            "2022, 1, 1, 2041, 4, 11, 19, 3, 10"
+    })
+    void getDuration(int startYear, int startMonth, int startDay,
+                     int endYear, int endMonth, int endDay,
+                     int diffYears, int diffMonths, int diffDays) {
         Contract contract = new Contract("0815", null, null,
-                                         LocalDate.of(2022, 1, 1),
-                                         LocalDate.of(2042, 1, 1),
+                                         LocalDate.of(startYear, startMonth, startDay),
+                                         LocalDate.of(endYear, endMonth, endDay),
                                          Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(Period.of(20, 0, 0), contract.getDuration());
-        contract = new Contract("0815", null, null,
-                                LocalDate.of(2022, 1, 1),
-                                LocalDate.of(2042, 4, 1),
-                                Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(Period.of(20, 3, 0), contract.getDuration());
-        contract = new Contract("0815", null, null,
-                                LocalDate.of(2022, 1, 1),
-                                LocalDate.of(2041, 4, 11),
-                                Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(Period.of(19, 3, 10), contract.getDuration());
+        assertEquals(Period.of(diffYears, diffMonths, diffDays), contract.getDuration());
     }
 
-    @Test
-    void getDurationInMonths() {
+    @ParameterizedTest
+    @CsvSource({
+            "2022, 1, 1, 2042, 1,  1, 240",
+            "2022, 1, 1, 2042, 4,  1, 243",
+            "2022, 1, 1, 2041, 4, 11, 231"
+    })
+    void getDurationInMonths(int startYear, int startMonth, int startDay,
+                             int endYear, int endMonth, int endDay,
+                             int durationInMonths) {
         Contract contract = new Contract("0815", null, null,
-                                         LocalDate.of(2022, 1, 1),
-                                         LocalDate.of(2042, 1, 1),
-                                         Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(BigDecimal.valueOf(240), contract.getDurationInMonths());
-        contract = new Contract("0815", null, null,
-                                LocalDate.of(2022, 1, 1),
-                                LocalDate.of(2042, 4, 1),
-                                Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(BigDecimal.valueOf(243), contract.getDurationInMonths());
-        contract = new Contract("0815", null, null,
-                                LocalDate.of(2022, 1, 1),
-                                LocalDate.of(2041, 4, 11),
-                                Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(BigDecimal.valueOf(231), contract.getDurationInMonths());
+                                         LocalDate.of(startYear, startMonth, startDay),
+                                         LocalDate.of(endYear, endMonth, endDay),
+                                         Money.valueOf(4711), Money.valueOf(08.15));
+        assertEquals(BigDecimal.valueOf(durationInMonths), contract.getDurationInMonths());
     }
 }
