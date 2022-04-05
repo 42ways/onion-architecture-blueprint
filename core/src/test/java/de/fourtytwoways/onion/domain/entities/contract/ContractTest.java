@@ -51,12 +51,15 @@ class ContractTest {
     })
     void getDuration(int startYear, int startMonth, int startDay,
                      int endYear, int endMonth, int endDay,
-                     int diffYears, int diffMonths, int diffDays) {
+                     int expectedYears, int expectedMonths, int expectedDays) {
         Contract contract = new Contract("0815", null, null,
                                          LocalDate.of(startYear, startMonth, startDay),
                                          LocalDate.of(endYear, endMonth, endDay),
                                          Money.valueOf(47.11), Money.valueOf(08.15));
-        assertEquals(Period.of(diffYears, diffMonths, diffDays), contract.getDuration());
+
+        Period duration = contract.getDuration();
+
+        assertEquals(Period.of(expectedYears, expectedMonths, expectedDays), duration);
     }
 
     @ParameterizedTest
@@ -68,11 +71,14 @@ class ContractTest {
     })
     void getDurationInMonths(int startYear, int startMonth, int startDay,
                              int endYear, int endMonth, int endDay,
-                             int durationInMonths) {
+                             int expectedDurationInMonths) {
         Contract contract = new Contract("0815", null, null,
                                          LocalDate.of(startYear, startMonth, startDay),
                                          LocalDate.of(endYear, endMonth, endDay),
                                          Money.valueOf(4711), Money.valueOf(08.15));
-        assertEquals(BigDecimal.valueOf(durationInMonths), contract.getDurationInMonths());
+
+        BigDecimal durationInMonths = contract.getDurationInMonths();
+
+        assertEquals(BigDecimal.valueOf(expectedDurationInMonths), durationInMonths);
     }
 }
