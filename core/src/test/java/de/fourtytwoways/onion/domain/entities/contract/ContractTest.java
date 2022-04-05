@@ -46,7 +46,8 @@ class ContractTest {
     @CsvSource({
             "2022, 1, 1, 2042, 1,  1, 20, 0, 0",
             "2022, 1, 1, 2042, 4,  1, 20, 3, 0",
-            "2022, 1, 1, 2041, 4, 11, 19, 3, 10"
+            "2022, 1, 1, 2041, 4, 11, 19, 3, 10",
+            "2022, 1, 1, 2022, 1,  1,  0, 0, 0"
     })
     void getDuration(int startYear, int startMonth, int startDay,
                      int endYear, int endMonth, int endDay,
@@ -62,7 +63,8 @@ class ContractTest {
     @CsvSource({
             "2022, 1, 1, 2042, 1,  1, 240",
             "2022, 1, 1, 2042, 4,  1, 243",
-            "2022, 1, 1, 2041, 4, 11, 231"
+            "2022, 1, 1, 2041, 4, 11, 231",
+            "2022, 1, 1, 2022, 1,  1,   0"
     })
     void getDurationInMonths(int startYear, int startMonth, int startDay,
                              int endYear, int endMonth, int endDay,
