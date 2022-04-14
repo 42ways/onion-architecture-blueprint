@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.infrastructure.people.db;
+package de.fourtytwoways.onion.infrastructure.database.people;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.entities.person.Address;

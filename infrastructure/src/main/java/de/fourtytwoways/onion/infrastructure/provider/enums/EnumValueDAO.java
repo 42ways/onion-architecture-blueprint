@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.infrastructure.enums.provider;
+package de.fourtytwoways.onion.infrastructure.provider.enums;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;

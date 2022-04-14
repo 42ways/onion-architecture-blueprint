@@ -8,8 +8,8 @@ module onion.infrastructure.main {
     requires onion.application.main;
     requires onion.core.main;
 
-    exports de.fourtytwoways.onion.infrastructure.contracts.db;
-    exports de.fourtytwoways.onion.infrastructure.documents;
-    exports de.fourtytwoways.onion.infrastructure.enums.provider;
-    exports de.fourtytwoways.onion.infrastructure.people.db;
+    exports de.fourtytwoways.onion.infrastructure.database.contracts;
+    exports de.fourtytwoways.onion.infrastructure.adapter.documents;
+    exports de.fourtytwoways.onion.infrastructure.provider.enums;
+    exports de.fourtytwoways.onion.infrastructure.database.people;
 }

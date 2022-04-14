@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.infrastructure.documents;
+package de.fourtytwoways.onion.infrastructure.adapter.documents;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.AbstractDocumentRepository;

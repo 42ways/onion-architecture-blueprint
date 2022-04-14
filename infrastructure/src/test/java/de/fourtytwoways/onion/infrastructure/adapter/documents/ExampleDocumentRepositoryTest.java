@@ -1,11 +1,10 @@
-package de.fourtytwoways.onion.infrastructure.documents;
+package de.fourtytwoways.onion.infrastructure.adapter.documents;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.application.repositories.ContractRepository;
 import de.fourtytwoways.onion.application.repositories.DocumentRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.contract.Contract;
-import de.fourtytwoways.onion.domain.entities.document.Document;
 import de.fourtytwoways.onion.domain.entities.person.Person;
 import de.fourtytwoways.onion.domain.values.Money;
 import de.fourtytwoways.onion.domain.values.enumeration.DocumentType;

@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.infrastructure.contracts.db;
+package de.fourtytwoways.onion.infrastructure.database.contracts;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 // In a "real" system, this class could be 100% generated from the data model

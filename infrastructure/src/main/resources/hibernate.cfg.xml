@@ -12,10 +12,10 @@
         <!-- DB schema will be updated if needed -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- <property name="show_sql">true</property> -->
-        <mapping class="de.fourtytwoways.onion.infrastructure.enums.provider.EnumValueDAO"/>
-        <mapping class="de.fourtytwoways.onion.infrastructure.people.db.AddressDAO"/>
-        <mapping class="de.fourtytwoways.onion.infrastructure.people.db.BankAccountDAO"/>
-        <mapping class="de.fourtytwoways.onion.infrastructure.people.db.PersonDAO"/>
-        <mapping class="de.fourtytwoways.onion.infrastructure.contracts.db.ContractDAO"/>
+        <mapping class="de.fourtytwoways.onion.infrastructure.provider.enums.EnumValueDAO"/>
+        <mapping class="de.fourtytwoways.onion.infrastructure.database.people.AddressDAO"/>
+        <mapping class="de.fourtytwoways.onion.infrastructure.database.people.BankAccountDAO"/>
+        <mapping class="de.fourtytwoways.onion.infrastructure.database.people.PersonDAO"/>
+        <mapping class="de.fourtytwoways.onion.infrastructure.database.contracts.ContractDAO"/>
     </session-factory>
 </hibernate-configuration>

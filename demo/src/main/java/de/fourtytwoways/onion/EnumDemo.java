@@ -4,7 +4,7 @@ package de.fourtytwoways.onion;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumValue;
-import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
+import de.fourtytwoways.onion.infrastructure.provider.enums.ExampleEnumRepository;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

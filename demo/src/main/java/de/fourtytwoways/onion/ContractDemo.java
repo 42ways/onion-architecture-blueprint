@@ -14,10 +14,10 @@ import de.fourtytwoways.onion.domain.values.enumeration.ComputationTarget;
 import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
-import de.fourtytwoways.onion.infrastructure.contracts.db.ExampleContractRepository;
-import de.fourtytwoways.onion.infrastructure.documents.ExampleDocumentRepository;
-import de.fourtytwoways.onion.infrastructure.enums.provider.ExampleEnumRepository;
-import de.fourtytwoways.onion.infrastructure.people.db.ExamplePersonRepository;
+import de.fourtytwoways.onion.infrastructure.database.contracts.ExampleContractRepository;
+import de.fourtytwoways.onion.infrastructure.adapter.documents.ExampleDocumentRepository;
+import de.fourtytwoways.onion.infrastructure.provider.enums.ExampleEnumRepository;
+import de.fourtytwoways.onion.infrastructure.database.people.ExamplePersonRepository;
 
 import java.time.LocalDate;
 import java.util.logging.Level;

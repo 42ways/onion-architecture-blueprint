@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.infrastructure.database;
+package de.fourtytwoways.onion.infrastructure.database.session;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import org.hibernate.HibernateException;

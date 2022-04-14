@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.infrastructure.contracts.db;
+package de.fourtytwoways.onion.infrastructure.database.contracts;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 // This is the "mapping layer" for our database access framework

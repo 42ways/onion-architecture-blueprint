@@ -11,6 +11,8 @@ import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.values.enumeration.Product;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import de.fourtytwoways.onion.infrastructure.ExampleTestRepositoryRegistration;
+import de.fourtytwoways.onion.infrastructure.database.contracts.ContractDAO;
+import de.fourtytwoways.onion.infrastructure.database.contracts.ContractDbMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
