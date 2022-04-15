@@ -50,8 +50,8 @@ class ExamplePersonRepositoryTest {
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown]]," +
-                             " bankAccounts=[BankAccount(id=XX, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
+                             " bankAccounts=[BankAccount[id=XX, primary=true, accountHolderName=Tom Flint," +
+                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]])",
                      neutralizeIds(p.toString()));
     }
 
@@ -104,8 +104,8 @@ class ExamplePersonRepositoryTest {
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown]]," +
-                             " bankAccounts=[BankAccount(id=XX, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
+                             " bankAccounts=[BankAccount[id=XX, primary=true, accountHolderName=Tom Flint," +
+                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]])",
                      neutralizeIds(dbPerson.toString()));
 
         Person modifiedDbPerson = dbPerson.addBankAccount(secondBankAccount()).addAddress(secondAddress());
@@ -122,10 +122,10 @@ class ExamplePersonRepositoryTest {
                              " zipCode=12345, city=Myhometown]," +
                              " Address[id=XX, primary=false, street=Sunset Strip, number=77," +
                              " zipCode=77555, city=Sunny Village]]," +
-                             " bankAccounts=[BankAccount(id=XX, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)," +
-                             " BankAccount(id=XX, primary=false, accountHolderName=Flint familiy account," +
-                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV)])",
+                             " bankAccounts=[BankAccount[id=XX, primary=true, accountHolderName=Tom Flint," +
+                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]," +
+                             " BankAccount[id=XX, primary=false, accountHolderName=Flint familiy account," +
+                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV]])",
                      neutralizeIds(reloadedPerson.toString()));
     }
 

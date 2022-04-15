@@ -24,13 +24,13 @@ public class BankAccountDAO {
     }
 
     BankAccountDAO(PersonDAO personDAO, BankAccount bankAccount) {
-        this.id = bankAccount.getId();
+        this.id = bankAccount.id();
         this.personDAO = personDAO;
-        this.isPrimary = bankAccount.isPrimary();
-        this.accountHolderName = bankAccount.getAccountHolderName();
-        this.bankName = bankAccount.getBankName();
-        this.iban = bankAccount.getIban();
-        this.bic = bankAccount.getBic();
+        this.isPrimary = bankAccount.primary();
+        this.accountHolderName = bankAccount.accountHolderName();
+        this.bankName = bankAccount.bankName();
+        this.iban = bankAccount.iban();
+        this.bic = bankAccount.bic();
     }
 
     BankAccount toBankAccount() {

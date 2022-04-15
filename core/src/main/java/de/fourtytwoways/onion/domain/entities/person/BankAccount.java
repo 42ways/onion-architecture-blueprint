@@ -3,15 +3,13 @@ package de.fourtytwoways.onion.domain.entities.person;
 
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import lombok.With;
 
-@Value @Builder
-public class BankAccount {
-    int id;
-    @With boolean primary;
-    @With @NonNull String accountHolderName;
-    @With @NonNull String bankName;
-    @With @NonNull String iban;
-    @With @NonNull String bic;
+@Builder
+public record BankAccount(int id,
+                          @With boolean primary,
+                          @With @NonNull String accountHolderName,
+                          @With @NonNull String bankName,
+                          @With @NonNull String iban,
+                          @With @NonNull String bic) {
 }
