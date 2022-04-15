@@ -24,13 +24,13 @@ public class AddressDAO {
     }
 
     AddressDAO(PersonDAO personDAO, Address address) {
-        this.id = address.getId();
+        this.id = address.id();
         this.personDAO = personDAO;
-        this.isPrimary = address.isPrimary();
-        this.street = address.getStreet();
-        this.number = address.getNumber();
-        this.zipCode = address.getZipCode();
-        this.city = address.getCity();
+        this.isPrimary = address.primary();
+        this.street = address.street();
+        this.number = address.number();
+        this.zipCode = address.zipCode();
+        this.city = address.city();
     }
 
     Address toAddress() {

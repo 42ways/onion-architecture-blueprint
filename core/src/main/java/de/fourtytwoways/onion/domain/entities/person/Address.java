@@ -3,12 +3,11 @@ package de.fourtytwoways.onion.domain.entities.person;
 
 import lombok.*;
 
-@Value @Builder
-public class Address {
-    int id;
-    @With boolean primary;
-    @With @NonNull String street;
-    @With @NonNull String number;
-    @With @NonNull String zipCode;
-    @With @NonNull String city;
+@Builder
+public record Address(int id,
+                      @With boolean primary,
+                      @With @NonNull String street,
+                      @With @NonNull String number,
+                      @With @NonNull String zipCode,
+                      @With @NonNull String city) {
 }

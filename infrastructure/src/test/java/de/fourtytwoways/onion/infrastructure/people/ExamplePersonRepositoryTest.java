@@ -48,8 +48,8 @@ class ExamplePersonRepositoryTest {
         assertEquals(1, p.getAddresses().size());
         assertEquals(1, p.getBankAccounts().size());
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=XX, primary=true, street=Main Street, number=42," +
-                             " zipCode=12345, city=Myhometown)]," +
+                             " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
+                             " zipCode=12345, city=Myhometown]]," +
                              " bankAccounts=[BankAccount(id=XX, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
                      neutralizeIds(p.toString()));
@@ -102,8 +102,8 @@ class ExamplePersonRepositoryTest {
 
         Person dbPerson = personRepository.getPersonById(storedP.getId());
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=XX, primary=true, street=Main Street, number=42," +
-                             " zipCode=12345, city=Myhometown)]," +
+                             " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
+                             " zipCode=12345, city=Myhometown]]," +
                              " bankAccounts=[BankAccount(id=XX, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
                      neutralizeIds(dbPerson.toString()));
@@ -118,10 +118,10 @@ class ExamplePersonRepositoryTest {
         assertEquals(2, reloadedPerson.getBankAccounts().size());
         assertEquals(storedPerson.toString(), reloadedPerson.toString());
         assertEquals("Person(id=XX, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=XX, primary=true, street=Main Street, number=42," +
-                             " zipCode=12345, city=Myhometown)," +
-                             " Address(id=XX, primary=false, street=Sunset Strip, number=77," +
-                             " zipCode=77555, city=Sunny Village)]," +
+                             " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
+                             " zipCode=12345, city=Myhometown]," +
+                             " Address[id=XX, primary=false, street=Sunset Strip, number=77," +
+                             " zipCode=77555, city=Sunny Village]]," +
                              " bankAccounts=[BankAccount(id=XX, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)," +
                              " BankAccount(id=XX, primary=false, accountHolderName=Flint familiy account," +

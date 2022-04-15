@@ -62,14 +62,14 @@ class PersonTest {
         Person p2 = p1.addAddress(firstAddress());
         assertEquals(1, p2.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)], bankAccounts=[])",
+                             " addresses=[Address[id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown]], bankAccounts=[])",
                      p2.toString());
 
         Person p3 = p2.addAddress(secondAddress());
         assertEquals(2, p3.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)," +
-                             " Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)], bankAccounts=[])",
+                             " addresses=[Address[id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown]," +
+                             " Address[id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village]], bankAccounts=[])",
                      p3.toString());
     }
 
@@ -78,14 +78,14 @@ class PersonTest {
         Person p1 = createTestPerson().addAddress(firstAddress()).addAddress(secondAddress());
         assertEquals(2, p1.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)," +
-                             " Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)], bankAccounts=[])",
+                             " addresses=[Address[id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown]," +
+                             " Address[id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village]], bankAccounts=[])",
                      p1.toString());
 
         Person p2 = p1.removeAddress(firstAddress());
         assertEquals(1, p2.getAddresses().size());
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)], bankAccounts=[])",
+                             " addresses=[Address[id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village]], bankAccounts=[])",
                      p2.toString());
     }
 
@@ -148,8 +148,8 @@ class PersonTest {
         assertEquals(1, p3.getBankAccounts().size());
 
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
-                             " addresses=[Address(id=0, primary=true, street=Main Street, number=42," +
-                             " zipCode=12345, city=Myhometown)]," +
+                             " addresses=[Address[id=0, primary=true, street=Main Street, number=42," +
+                             " zipCode=12345, city=Myhometown]]," +
                              " bankAccounts=[BankAccount(id=0, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)])",
                      p3.toString());
@@ -164,8 +164,8 @@ class PersonTest {
 
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=" +
-                             "[Address(id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown)," +
-                             " Address(id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village)]," +
+                             "[Address[id=0, primary=true, street=Main Street, number=42, zipCode=12345, city=Myhometown]," +
+                             " Address[id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village]]," +
                              " bankAccounts=" +
                              "[BankAccount(id=0, primary=true, accountHolderName=Tom Flint," +
                              " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X)," +
