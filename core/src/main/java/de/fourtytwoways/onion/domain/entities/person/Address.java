@@ -1,7 +1,9 @@
 package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import lombok.*;
+import lombok.Builder;
+import lombok.NonNull;
+import lombok.With;
 
 @Builder
 public record Address(int id,
