@@ -34,8 +34,13 @@ public class BankAccountDAO {
     }
 
     BankAccount toBankAccount() {
-        return new BankAccount(id, isPrimary,
-                               accountHolderName, bankName,
-                               iban, bic);
+        return BankAccount.builder()
+                .id(id)
+                .primary(isPrimary)
+                .accountHolderName(accountHolderName)
+                .bankName(bankName)
+                .iban(iban)
+                .bic(bic)
+                .build();
     }
 }

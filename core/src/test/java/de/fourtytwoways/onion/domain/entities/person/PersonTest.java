@@ -27,13 +27,21 @@ class PersonTest {
     }
 
     private BankAccount firstBankAccount() {
-        return new BankAccount(true, "Tom Flint", "Garden Onion Bank",
-                               "123456789", "GOB123X");
+        return BankAccount.builder()
+                .primary(true)
+                .accountHolderName("Tom Flint")
+                .bankName("Garden Onion Bank")
+                .iban("123456789")
+                .bic("GOB123X").build();
     }
 
     private BankAccount secondBankAccount() {
-        return new BankAccount(false, "Flint familiy account", "Shallot Savings",
-                               "123654789", "SHA1SAV");
+        return BankAccount.builder()
+                .primary(false)
+                .accountHolderName("Flint familiy account")
+                .bankName("Shallot Savings")
+                .iban("123654789")
+                .bic("SHA1SAV").build();
     }
 
     @Test

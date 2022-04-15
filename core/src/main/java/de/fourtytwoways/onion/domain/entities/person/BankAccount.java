@@ -1,19 +1,17 @@
 package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import lombok.With;
 
-@Data
-@AllArgsConstructor
-@RequiredArgsConstructor
+@Value @Builder
 public class BankAccount {
-    private int id;
-    private final boolean primary;
-    @NonNull private final String accountHolderName;
-    @NonNull private final String bankName;
-    @NonNull private final String iban;
-    @NonNull private final String bic;
+    int id;
+    @With boolean primary;
+    @With @NonNull String accountHolderName;
+    @With @NonNull String bankName;
+    @With @NonNull String iban;
+    @With @NonNull String bic;
 }

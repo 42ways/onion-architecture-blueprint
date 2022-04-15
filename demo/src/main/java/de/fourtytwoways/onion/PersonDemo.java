@@ -69,9 +69,14 @@ public class PersonDemo {
 
         Person person3 =
                 person2.addAddress(new Address(true, "Main Street", "1",
-                                               "87654", "High Noon Town")).
-                        addBankAccount(new BankAccount(true, "Jerry",
-                                                       "First Savings Bank", "192837465", "FIR$T"));
+                                               "87654", "High Noon Town"))
+                        .addBankAccount(BankAccount.builder()
+                                                .primary(true)
+                                                .accountHolderName("Jerry")
+                                                .bankName("First Savings Bank")
+                                                .iban("192837465")
+                                                .bic("FIR$T")
+                                                .build());
         myPersonRepository.savePerson(person3);
         System.out.println(person3);
 
