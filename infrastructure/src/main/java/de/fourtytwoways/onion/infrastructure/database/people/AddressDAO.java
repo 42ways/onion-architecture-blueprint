@@ -34,8 +34,13 @@ public class AddressDAO {
     }
 
     Address toAddress() {
-        return new Address(id, isPrimary,
-                           street, number,
-                           zipCode, city);
+        return Address.builder()
+                .id(id)
+                .primary(isPrimary)
+                .street(street)
+                .number(number)
+                .zipCode(zipCode)
+                .city(city)
+                .build();
     }
 }

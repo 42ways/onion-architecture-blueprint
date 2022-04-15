@@ -60,7 +60,13 @@ public class PersonDemo {
         Person p1 = myPersonRepository.getPersonById(1);
         System.out.println(p1);
 
-        Person p6 = p1.addAddress(new Address(true, "Rodeo Boulevard", "42", "88776", "Mytown"));
+        Person p6 = p1.addAddress(Address.builder()
+                                          .primary(true)
+                                          .street("Rodeo Boulevard")
+                                          .number("42")
+                                          .zipCode("88776")
+                                          .city("Mytown")
+                                          .build());
         System.out.println(p6);
         myPersonRepository.savePerson(p6);
 
@@ -68,8 +74,13 @@ public class PersonDemo {
         System.out.println(p7);
 
         Person person3 =
-                person2.addAddress(new Address(true, "Main Street", "1",
-                                               "87654", "High Noon Town"))
+                person2.addAddress(Address.builder()
+                                           .primary(true)
+                                           .street("Main Street")
+                                           .number("1")
+                                           .zipCode("87654")
+                                           .city("High Noon Town")
+                                           .build())
                         .addBankAccount(BankAccount.builder()
                                                 .primary(true)
                                                 .accountHolderName("Jerry")
@@ -80,7 +91,13 @@ public class PersonDemo {
         myPersonRepository.savePerson(person3);
         System.out.println(person3);
 
-        Person p2 = p1.addAddress(new Address(false, "Oasisroad", "5", "76543", "Dessert Island"));
+        Person p2 = p1.addAddress(Address.builder()
+                                          .primary(false)
+                                          .street("Oasisroad")
+                                          .number("5")
+                                          .zipCode("76543")
+                                          .city("Dessert Island")
+                                          .build());
         System.out.println(p2);
         myPersonRepository.savePerson(p2);
 

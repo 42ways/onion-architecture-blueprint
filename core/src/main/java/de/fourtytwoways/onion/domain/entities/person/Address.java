@@ -1,19 +1,14 @@
 package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
-@RequiredArgsConstructor
+@Value @Builder
 public class Address {
-    private int id;
-    private final boolean primary;
-    @NonNull private final String street;
-    @NonNull private final String number;
-    @NonNull private final String zipCode;
-    @NonNull private final String city;
+    int id;
+    @With boolean primary;
+    @With @NonNull String street;
+    @With @NonNull String number;
+    @With @NonNull String zipCode;
+    @With @NonNull String city;
 }

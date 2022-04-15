@@ -17,13 +17,23 @@ class PersonTest {
     }
 
     private Address firstAddress() {
-        return new Address(true, "Main Street", "42",
-                           "12345", "Myhometown");
+        return Address.builder()
+                .primary(true)
+                .street("Main Street")
+                .number("42")
+                .zipCode("12345")
+                .city("Myhometown")
+                .build();
     }
 
     private Address secondAddress() {
-        return new Address(false, "Sunset Strip", "77",
-                           "77555", "Sunny Village");
+        return Address.builder()
+                .primary(false)
+                .street("Sunset Strip")
+                .number("77")
+                .zipCode("77555")
+                .city("Sunny Village")
+                .build();
     }
 
     private BankAccount firstBankAccount() {
