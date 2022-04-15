@@ -69,8 +69,14 @@ class ExamplePersonRepositoryTest {
         assertEquals(0, personRepository.getPeopleByName(null, "Stone").size());
 
         Sex female = new Sex(1, "F", "Female");
-        Person wilma = new Person(11, "Wilma", "Flint",
-                          LocalDate.of(1967, 8, 9), female);
+        Person wilma =
+                Person.builder()
+                        .id(11)
+                        .name("Wilma")
+                        .surname("Flint")
+                        .birthday(LocalDate.of(1967, 8, 9))
+                        .sex(female)
+                        .build();
         Person storedWilma = personRepository.savePerson(wilma);
         assertEquals(storedWilma, wilma);
 
@@ -151,8 +157,13 @@ class ExamplePersonRepositoryTest {
 
     private Person firstTestPerson() {
         Sex male = new Sex(2, "M", "Male");
-        return new Person(42, "Tom", "Flint",
-                          LocalDate.of(1966, 6, 6), male);
+        return Person.builder()
+                .id(42)
+                .name("Tom")
+                .surname("Flint")
+                .birthday(LocalDate.of(1966, 6, 6))
+                .sex(male)
+                .build();
     }
 
     private Address firstAddress() {

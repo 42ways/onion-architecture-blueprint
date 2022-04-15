@@ -44,8 +44,13 @@ class ExampleDocumentRepositoryTest {
                 RepositoryRegistry.getInstance().getRepository(ContractRepository.class)).createContract(
                 "0815",
                 new Product(42, "TEST", "MyTestProduct"),
-                new Person(1, "Freddy", "Krüger",
-                           LocalDate.of(1987, 6, 5), new Sex(1, "M", "Male")),
+                Person.builder()
+                        .id(1)
+                        .name("Freddy")
+                        .surname("Krüger")
+                        .birthday(LocalDate.of(1987, 6, 5))
+                        .sex(new Sex(1, "M", "Male"))
+                        .build(),
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
                 Money.valueOf(4711), Money.valueOf(19.71));
@@ -74,8 +79,13 @@ class ExampleDocumentRepositoryTest {
                 RepositoryRegistry.getInstance().getRepository(ContractRepository.class)).createContract(
                 "0815",
                 new Product(42, "TEST", "MyTestProduct"),
-                new Person(1, "Freddy", "Krüger",
-                           LocalDate.of(1987, 6, 5), new Sex(1, "M", "Männlich")),
+                Person.builder()
+                        .id(1)
+                        .name("Freddy")
+                        .surname("Krüger")
+                        .birthday(LocalDate.of(1987, 6, 5))
+                        .sex(new Sex(1, "M", "Männlich"))
+                        .build(),
                 LocalDate.of(2022, 4, 1),
                 LocalDate.of(2042, 3, 31),
                 Money.valueOf(4711), Money.valueOf(19.71));

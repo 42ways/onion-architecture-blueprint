@@ -58,7 +58,14 @@ public class PersonDAO {
 
     Person toPerson() {
         Sex sex = (Sex) getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).orElse(null);
-        Person person = new Person(id, name, surname, birthday, sex);
+        Person person =
+                Person.builder()
+                        .id(id)
+                        .name(name)
+                        .surname(surname)
+                        .birthday(birthday)
+                        .sex(sex)
+                        .build();
         for (AddressDAO addressDAO : addressDAOS) {
             person.addAddress(addressDAO.toAddress());
         }

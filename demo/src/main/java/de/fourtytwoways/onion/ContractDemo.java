@@ -109,9 +109,23 @@ public class ContractDemo {
 
     private static void createTestPeople(EnumRepository myEnumRepository, PersonRepository myPersonRepository) {
         Sex male = (Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "M").orElse(null);
-        Person person1 = new Person(1, "Tom", "Cartoon", LocalDate.of(1966, 6, 6), male);
+        Person person1 =
+                Person.builder()
+                        .id(1)
+                        .name("Tom")
+                        .surname("Cartoon")
+                        .birthday(LocalDate.of(1966, 6, 6))
+                        .sex(male)
+                        .build();
         myPersonRepository.savePerson(person1);
-        Person person2 = new Person(2, "Jerry", "Sketch", LocalDate.of(1977, 7, 7), male);
+        Person person2 =
+                Person.builder()
+                        .id(2)
+                        .name("Jerry")
+                        .surname("Sketch")
+                        .birthday(LocalDate.of(1977, 7, 7))
+                        .sex(male)
+                        .build();
         myPersonRepository.savePerson(person2);
     }
 }

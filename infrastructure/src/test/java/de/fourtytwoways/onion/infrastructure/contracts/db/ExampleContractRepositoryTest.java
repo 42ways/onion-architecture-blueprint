@@ -40,16 +40,16 @@ class ExampleContractRepositoryTest {
         ContractRepository contractRepository =
                 (ContractRepository) RepositoryRegistry.getInstance().getRepository(ContractRepository.class);
         Object contract = contractRepository.createContract("4711",
-                                                              endowmentInsurance, null,
-                                                              LocalDate.of(2022, 1, 1),
-                                                              LocalDate.of(2032, 1, 1),
-                                                              Money.valueOf(31415.93),
-                                                              Money.valueOf(3.14));
+                                                            endowmentInsurance, null,
+                                                            LocalDate.of(2022, 1, 1),
+                                                            LocalDate.of(2032, 1, 1),
+                                                            Money.valueOf(31415.93),
+                                                            Money.valueOf(3.14));
         assert contract instanceof Contract;
         assert contract instanceof ContractDbMapper;
         assert contract instanceof ContractDAO;
-        assertEquals("4711", ((Contract)contract).getContractNumber());
-        assertEquals(endowmentInsurance, ((Contract)contract).getProduct());
+        assertEquals("4711", ((Contract) contract).getContractNumber());
+        assertEquals(endowmentInsurance, ((Contract) contract).getProduct());
     }
 
     @Test
@@ -60,8 +60,14 @@ class ExampleContractRepositoryTest {
         PersonRepository personRepository =
                 (PersonRepository) RepositoryRegistry.getInstance().getRepository(PersonRepository.class);
         Sex male = new Sex(2, "M", "Male");
-        Person beneficiary = new Person(42, "Tom", "Flint",
-                          LocalDate.of(1966, 6, 6), male);
+        Person beneficiary =
+                Person.builder()
+                        .id(42)
+                        .name("Tom")
+                        .surname("Flint")
+                        .birthday(LocalDate.of(1966, 6, 6))
+                        .sex(male)
+                        .build();
         personRepository.savePerson(beneficiary);
 
         ContractRepository contractRepository =
