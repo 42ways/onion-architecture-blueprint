@@ -108,14 +108,13 @@ public class ContractDemo {
     }
 
     private static void createTestPeople(EnumRepository myEnumRepository, PersonRepository myPersonRepository) {
-        Sex male = (Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "M").orElse(null);
         Person person1 =
                 Person.builder()
                         .id(1)
                         .name("Tom")
                         .surname("Cartoon")
                         .birthday(LocalDate.of(1966, 6, 6))
-                        .sex(male)
+                        .sex((Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "M").get())
                         .build();
         myPersonRepository.savePerson(person1);
         Person person2 =
@@ -124,7 +123,7 @@ public class ContractDemo {
                         .name("Jerry")
                         .surname("Sketch")
                         .birthday(LocalDate.of(1977, 7, 7))
-                        .sex(male)
+                        .sex((Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "F").get())
                         .build();
         myPersonRepository.savePerson(person2);
     }

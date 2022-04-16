@@ -38,8 +38,6 @@ public class PersonDemo {
         EnumRepository myEnumRepository = (EnumRepository) RepositoryRegistry.getInstance().getRepository(EnumRepository.class);
         PersonRepository myPersonRepository = (PersonRepository) RepositoryRegistry.getInstance().getRepository(PersonRepository.class);
 
-        Sex male = (Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "M").orElse(null);
-
         deleteDemoPeople();
 
         Person person1 =
@@ -48,7 +46,7 @@ public class PersonDemo {
                         .name("Tom")
                         .surname("Cartoon")
                         .birthday(LocalDate.of(1966, 6, 6))
-                        .sex(male)
+                        .sex((Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "M").get())
                         .build();
         myPersonRepository.savePerson(person1);
 
@@ -58,7 +56,7 @@ public class PersonDemo {
                         .name("Jerry")
                         .surname("Sketch")
                         .birthday(LocalDate.of(1977, 7, 7))
-                        .sex(male)
+                        .sex((Sex) myEnumRepository.getEntryByKey(EnumType.SEX, "F").get())
                         .build();
         myPersonRepository.savePerson(person2);
 
