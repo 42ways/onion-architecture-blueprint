@@ -59,7 +59,6 @@ public class PersonDAO {
     }
 
     Person toPerson() {
-        Sex sex = (Sex) getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).orElse(null);
         List<Address> addresses = new ArrayList<>();
         for (AddressDAO addressDAO : addressDAOS) {
             addresses.add(addressDAO.toAddress());
@@ -73,7 +72,7 @@ public class PersonDAO {
                 .name(name)
                 .surname(surname)
                 .birthday(birthday)
-                .sex(sex)
+                .sex((Sex) getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).get())
                 .addresses(ImmutableList.copyOf(addresses))
                 .bankAccounts(ImmutableList.copyOf(bankAccounts))
                 .build();
