@@ -68,16 +68,14 @@ public class PersonDAO {
         for (BankAccountDAO bankAccountDAO : bankAccountDAOS) {
             bankAccounts.add(bankAccountDAO.toBankAccount());
         }
-        Person person =
-                Person.builder()
-                        .id(id)
-                        .name(name)
-                        .surname(surname)
-                        .birthday(birthday)
-                        .sex(sex)
-                        .addresses(ImmutableList.copyOf(addresses))
-                        .bankAccounts(ImmutableList.copyOf(bankAccounts))
-                        .build();
-        return person;
+        return Person.builder()
+                .id(id)
+                .name(name)
+                .surname(surname)
+                .birthday(birthday)
+                .sex(sex)
+                .addresses(ImmutableList.copyOf(addresses))
+                .bankAccounts(ImmutableList.copyOf(bankAccounts))
+                .build();
     }
 }
