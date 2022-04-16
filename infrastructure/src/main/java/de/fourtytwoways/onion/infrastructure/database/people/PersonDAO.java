@@ -13,6 +13,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "PEOPLE")
@@ -58,6 +60,14 @@ public class PersonDAO {
 
     Person toPerson() {
         Sex sex = (Sex) getEnumRepository().getEntryByKey(EnumType.SEX, this.sex).orElse(null);
+        List<Address> addresses = new ArrayList<>();
+        for (AddressDAO addressDAO : addressDAOS) {
+            addresses.add(addressDAO.toAddress());
+        }
+        List<BankAccount> bankAccounts = new ArrayList<>();
+        for (BankAccountDAO bankAccountDAO : bankAccountDAOS) {
+            bankAccounts.add(bankAccountDAO.toBankAccount());
+        }
         Person person =
                 Person.builder()
                         .id(id)
@@ -65,13 +75,9 @@ public class PersonDAO {
                         .surname(surname)
                         .birthday(birthday)
                         .sex(sex)
+                        .addresses(Collections.unmodifiableList(addresses))
+                        .bankAccounts(Collections.unmodifiableList(bankAccounts))
                         .build();
-        for (AddressDAO addressDAO : addressDAOS) {
-            person.addAddress(addressDAO.toAddress());
-        }
-        for (BankAccountDAO bankAccountDAO : bankAccountDAOS) {
-            person.addBankAccount(bankAccountDAO.toBankAccount());
-        }
         return person;
     }
 }

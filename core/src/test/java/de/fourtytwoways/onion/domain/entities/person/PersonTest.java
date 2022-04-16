@@ -12,8 +12,13 @@ class PersonTest {
 
     private Person createTestPerson() {
         Sex male = new Sex(2, "M", "Male");
-        return new Person(42, "Tom", "Flint",
-                          LocalDate.of(1966, 6, 6), male);
+        return Person.builder()
+                .id(42)
+                .name("Tom")
+                .surname("Flint")
+                .birthday(LocalDate.of(1966, 6, 6))
+                .sex(male)
+                .build();
     }
 
     private Address firstAddress() {
