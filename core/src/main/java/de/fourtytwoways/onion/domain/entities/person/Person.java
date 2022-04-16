@@ -1,6 +1,7 @@
 package de.fourtytwoways.onion.domain.entities.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import com.google.common.collect.ImmutableList;
 import de.fourtytwoways.onion.domain.values.enumeration.Sex;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Builder;
@@ -21,21 +22,19 @@ public class Person {
     @With @NonNull String surname;
     @With @NonNull LocalDate birthday;
     @With @NonNull Sex sex;
-    // TODO: addresses and bankAccounts have to be unmodifiable Lists,
-    //       so builder should ensure to only accept unmodifiable lists (or convert them)
-    @Builder.Default @With @NonNull List<Address> addresses = Collections.unmodifiableList(new ArrayList<>());
-    @Builder.Default @With @NonNull List<BankAccount> bankAccounts = Collections.unmodifiableList(new ArrayList<>());
+    @Builder.Default @With @NonNull ImmutableList<Address> addresses = ImmutableList.of();
+    @Builder.Default @With @NonNull ImmutableList<BankAccount> bankAccounts = ImmutableList.of();
 
     public Person addAddress(Address address) {
         List<Address> newAddresses = new ArrayList<>(addresses);
         newAddresses.add(address);
-        return this.withAddresses(Collections.unmodifiableList(newAddresses));
+        return this.withAddresses(ImmutableList.copyOf(newAddresses));
     }
 
     public Person removeAddress(Address address) {
         List<Address> newAddresses = new ArrayList<>(addresses);
         newAddresses.remove(address);
-        return this.withAddresses(Collections.unmodifiableList(newAddresses));
+        return this.withAddresses(ImmutableList.copyOf(newAddresses));
     }
 
     public @NonNull List<Address> getAddresses() {
@@ -45,13 +44,13 @@ public class Person {
     public Person addBankAccount(BankAccount bankAccount) {
         List<BankAccount> newBankAccounts = new ArrayList<>(bankAccounts);
         newBankAccounts.add(bankAccount);
-        return this.withBankAccounts(Collections.unmodifiableList(newBankAccounts));
+        return this.withBankAccounts(ImmutableList.copyOf(newBankAccounts));
     }
 
     public Person removeBankAccount(BankAccount bankAccount) {
         List<BankAccount> newBankAccounts = new ArrayList<>(bankAccounts);
         newBankAccounts.remove(bankAccount);
-        return this.withBankAccounts(Collections.unmodifiableList(newBankAccounts));
+        return this.withBankAccounts(ImmutableList.copyOf(newBankAccounts));
     }
 
     public @NonNull List<BankAccount> getBankAccounts() {

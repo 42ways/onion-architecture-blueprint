@@ -7,6 +7,7 @@ module onion.infrastructure.main {
 
     requires onion.application.main;
     requires onion.core.main;
+    requires com.google.common;
 
     exports de.fourtytwoways.onion.infrastructure.database.contracts;
     exports de.fourtytwoways.onion.infrastructure.adapter.documents;

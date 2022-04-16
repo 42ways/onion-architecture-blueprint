@@ -1,6 +1,7 @@
 package de.fourtytwoways.onion.infrastructure.database.people;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import com.google.common.collect.ImmutableList;
 import de.fourtytwoways.onion.application.repositories.EnumRepository;
 import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.entities.person.Address;
@@ -75,8 +76,8 @@ public class PersonDAO {
                         .surname(surname)
                         .birthday(birthday)
                         .sex(sex)
-                        .addresses(Collections.unmodifiableList(addresses))
-                        .bankAccounts(Collections.unmodifiableList(bankAccounts))
+                        .addresses(ImmutableList.copyOf(addresses))
+                        .bankAccounts(ImmutableList.copyOf(bankAccounts))
                         .build();
         return person;
     }
