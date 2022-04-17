@@ -4,7 +4,8 @@ package de.fourtytwoways.onion.domain.model.person;
 import lombok.Builder;
 import lombok.NonNull;
 import lombok.With;
-
+import org.iban4j.BicUtil;
+import org.iban4j.IbanUtil;
 @Builder
 public record BankAccount(int id,
                           @With boolean primary,
@@ -13,17 +14,9 @@ public record BankAccount(int id,
                           @With @NonNull String iban,
                           @With @NonNull String bic) {
 
-    public interface Validator {
-        boolean validate(String iban, String bic);
-    }
-
-    public static BankAccount.Validator validator = null;
-
     public BankAccount {
-        if (validator != null && !validator.validate(iban, bic)) {
-            throw new java.lang.IllegalArgumentException(
-                    String.format("Invalid IBAN (%s) or BIC (%)", iban, bic));
-        }
+        IbanUtil.validate(iban);
+        BicUtil.validate(bic);
     }
 
 }

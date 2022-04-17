@@ -5,6 +5,15 @@ plugins {
     id 'jacoco'
 }
 
+compileJava {
+    doFirst {
+        options.compilerArgs += [
+                '--module-path', classpath.asPath  // this is needed to convert iban4j to automatic module
+                // TODO: find a better way to fix this (e.g. add module-info.java to iban4j)
+        ]
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -74,4 +83,3 @@ spotbugsTest {
         }
     }
 }
-

@@ -12,6 +12,8 @@ import de.fourtytwoways.onion.domain.model.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.model.enumeration.Sex;
 import de.fourtytwoways.onion.infrastructure.provider.enumeration.ExampleEnumRepository;
 import de.fourtytwoways.onion.infrastructure.database.person.ExamplePersonRepository;
+import org.iban4j.CountryCode;
+import org.iban4j.Iban;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -97,8 +99,13 @@ public class PersonDemo {
                                                 .primary(true)
                                                 .accountHolderName("Jerry")
                                                 .bankName("First Savings Bank")
-                                                .iban("192837465")
-                                                .bic("FIR$T")
+                                                .iban(new Iban.Builder()
+                                                              .countryCode(CountryCode.DE)
+                                                              .bankCode("89370400")
+                                                              .accountNumber("4405320130")
+                                                              .build()
+                                                              .toString())
+                                                .bic("GOBAYERN")
                                                 .build());
         myPersonRepository.savePerson(person3);
         System.out.println(person3);

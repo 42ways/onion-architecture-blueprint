@@ -2,6 +2,8 @@ package de.fourtytwoways.onion.domain.model.person;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.model.enumeration.Sex;
+import org.iban4j.CountryCode;
+import org.iban4j.Iban;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -46,8 +48,14 @@ class PersonTest {
                 .primary(true)
                 .accountHolderName("Tom Flint")
                 .bankName("Garden Onion Bank")
-                .iban("123456789")
-                .bic("GOB123X").build();
+                .iban(new Iban.Builder()
+                              .countryCode(CountryCode.DE)
+                              .bankCode("12345678")
+                              .accountNumber("1234567890")
+                              .build()
+                              .toString())
+                .bic("GOBAYERN")
+                .build();
     }
 
     private BankAccount secondBankAccount() {
@@ -55,8 +63,14 @@ class PersonTest {
                 .primary(false)
                 .accountHolderName("Flint familiy account")
                 .bankName("Shallot Savings")
-                .iban("123654789")
-                .bic("SHA1SAV").build();
+                .iban(new Iban.Builder()
+                              .countryCode(CountryCode.DE)
+                              .bankCode("87654321")
+                              .accountNumber("3216549870")
+                              .build()
+                              .toString())
+                .bic("SHALALLA")
+                .build();
     }
 
     @Test
@@ -101,7 +115,7 @@ class PersonTest {
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount[id=0, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]])",
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]])",
                      p1.toString());
 
         Person p2 = p1.addBankAccount(secondBankAccount());
@@ -109,9 +123,9 @@ class PersonTest {
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount[id=0, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]," +
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]," +
                              " BankAccount[id=0, primary=false, accountHolderName=Flint familiy account," +
-                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV]])",
+                             " bankName=Shallot Savings, iban=DE80876543213216549870, bic=SHALALLA]])",
                      p2.toString());
     }
 
@@ -122,9 +136,9 @@ class PersonTest {
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount[id=0, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]," +
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]," +
                              " BankAccount[id=0, primary=false, accountHolderName=Flint familiy account," +
-                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV]])",
+                             " bankName=Shallot Savings, iban=DE80876543213216549870, bic=SHALALLA]])",
                      p1.toString());
 
         Person p2 = p1.removeBankAccount(firstBankAccount());
@@ -132,7 +146,7 @@ class PersonTest {
         assertEquals("Person(id=42, name=Tom, surname=Flint, birthday=1966-06-06, sex=Sex(2, M, Male)," +
                              " addresses=[]," +
                              " bankAccounts=[BankAccount[id=0, primary=false, accountHolderName=Flint familiy account," +
-                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV]])",
+                             " bankName=Shallot Savings, iban=DE80876543213216549870, bic=SHALALLA]])",
                      p2.toString());
     }
 
@@ -156,7 +170,7 @@ class PersonTest {
                              " addresses=[Address[id=0, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown]]," +
                              " bankAccounts=[BankAccount[id=0, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]])",
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]])",
                      p3.toString());
 
         Person p4 = p3.addBankAccount(secondBankAccount());
@@ -173,9 +187,9 @@ class PersonTest {
                              " Address[id=0, primary=false, street=Sunset Strip, number=77, zipCode=77555, city=Sunny Village]]," +
                              " bankAccounts=" +
                              "[BankAccount[id=0, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]," +
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]," +
                              " BankAccount[id=0, primary=false, accountHolderName=Flint familiy account," +
-                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV]])",
+                             " bankName=Shallot Savings, iban=DE80876543213216549870, bic=SHALALLA]])",
                      p5.toString());
     }
 

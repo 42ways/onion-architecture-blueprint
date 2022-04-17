@@ -1,6 +1,8 @@
 module onion.demo.main {
     requires java.logging;
     requires java.sql;
+    // iban4j is not a java module, but we add all class path entries to our build path
+    requires iban4j;
 
     requires onion.application.main;
     requires onion.core.main;

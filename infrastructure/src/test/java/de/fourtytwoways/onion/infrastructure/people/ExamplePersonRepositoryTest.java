@@ -8,6 +8,8 @@ import de.fourtytwoways.onion.domain.model.person.BankAccount;
 import de.fourtytwoways.onion.domain.model.person.Person;
 import de.fourtytwoways.onion.domain.model.enumeration.Sex;
 import de.fourtytwoways.onion.infrastructure.ExampleTestRepositoryRegistration;
+import org.iban4j.CountryCode;
+import org.iban4j.Iban;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -51,7 +53,7 @@ class ExamplePersonRepositoryTest {
                              " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown]]," +
                              " bankAccounts=[BankAccount[id=XX, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]])",
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]])",
                      neutralizeIds(p.toString()));
     }
 
@@ -105,7 +107,7 @@ class ExamplePersonRepositoryTest {
                              " addresses=[Address[id=XX, primary=true, street=Main Street, number=42," +
                              " zipCode=12345, city=Myhometown]]," +
                              " bankAccounts=[BankAccount[id=XX, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]])",
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]])",
                      neutralizeIds(dbPerson.toString()));
 
         Person modifiedDbPerson = dbPerson.addBankAccount(secondBankAccount()).addAddress(secondAddress());
@@ -123,9 +125,9 @@ class ExamplePersonRepositoryTest {
                              " Address[id=XX, primary=false, street=Sunset Strip, number=77," +
                              " zipCode=77555, city=Sunny Village]]," +
                              " bankAccounts=[BankAccount[id=XX, primary=true, accountHolderName=Tom Flint," +
-                             " bankName=Garden Onion Bank, iban=123456789, bic=GOB123X]," +
+                             " bankName=Garden Onion Bank, iban=DE87123456781234567890, bic=GOBAYERN]," +
                              " BankAccount[id=XX, primary=false, accountHolderName=Flint familiy account," +
-                             " bankName=Shallot Savings, iban=123654789, bic=SHA1SAV]])",
+                             " bankName=Shallot Savings, iban=DE80876543213216549870, bic=SHALALLA]])",
                      neutralizeIds(reloadedPerson.toString()));
     }
 
@@ -191,8 +193,13 @@ class ExamplePersonRepositoryTest {
                 .primary(true)
                 .accountHolderName("Tom Flint")
                 .bankName("Garden Onion Bank")
-                .iban("123456789")
-                .bic("GOB123X")
+                .iban(new Iban.Builder()
+                              .countryCode(CountryCode.DE)
+                              .bankCode("12345678")
+                              .accountNumber("1234567890")
+                              .build()
+                              .toString())
+                .bic("GOBAYERN")
                 .build();
     }
 
@@ -201,8 +208,13 @@ class ExamplePersonRepositoryTest {
                 .primary(false)
                 .accountHolderName("Flint familiy account")
                 .bankName("Shallot Savings")
-                .iban("123654789")
-                .bic("SHA1SAV")
+                .iban(new Iban.Builder()
+                              .countryCode(CountryCode.DE)
+                              .bankCode("87654321")
+                              .accountNumber("3216549870")
+                              .build()
+                              .toString())
+                .bic("SHALALLA")
                 .build();
     }
 }

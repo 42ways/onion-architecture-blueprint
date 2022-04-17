@@ -1,3 +1,7 @@
 plugins {
     id 'de.fourtytwoways.onion.java-library-conventions'
 }
+
+dependencies {
+    api 'org.iban4j:iban4j:3.2.3-RELEASE'
+}
