@@ -1,11 +1,11 @@
 package de.fourtytwoways.onion.infrastructure;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.*;
-import de.fourtytwoways.onion.infrastructure.adapter.documents.ExampleDocumentRepository;
-import de.fourtytwoways.onion.infrastructure.database.contracts.ExampleContractRepository;
-import de.fourtytwoways.onion.infrastructure.database.people.ExamplePersonRepository;
-import de.fourtytwoways.onion.infrastructure.provider.enums.ExampleEnumRepository;
+import de.fourtytwoways.onion.application.repository.*;
+import de.fourtytwoways.onion.infrastructure.adapter.document.ExampleDocumentRepository;
+import de.fourtytwoways.onion.infrastructure.database.contract.ExampleContractRepository;
+import de.fourtytwoways.onion.infrastructure.database.person.ExamplePersonRepository;
+import de.fourtytwoways.onion.infrastructure.provider.enumeration.ExampleEnumRepository;
 
 public class ExampleTestRepositoryRegistration {
     public static void registerRepos() {

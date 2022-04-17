@@ -1,17 +1,17 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.EnumRepository;
-import de.fourtytwoways.onion.application.repositories.PersonRepository;
-import de.fourtytwoways.onion.application.repositories.Repository;
-import de.fourtytwoways.onion.application.repositories.RepositoryRegistry;
-import de.fourtytwoways.onion.domain.entities.person.Address;
-import de.fourtytwoways.onion.domain.entities.person.BankAccount;
-import de.fourtytwoways.onion.domain.entities.person.Person;
-import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.values.enumeration.Sex;
-import de.fourtytwoways.onion.infrastructure.provider.enums.ExampleEnumRepository;
-import de.fourtytwoways.onion.infrastructure.database.people.ExamplePersonRepository;
+import de.fourtytwoways.onion.application.repository.EnumRepository;
+import de.fourtytwoways.onion.application.repository.PersonRepository;
+import de.fourtytwoways.onion.application.repository.Repository;
+import de.fourtytwoways.onion.application.repository.RepositoryRegistry;
+import de.fourtytwoways.onion.domain.model.person.Address;
+import de.fourtytwoways.onion.domain.model.person.BankAccount;
+import de.fourtytwoways.onion.domain.model.person.Person;
+import de.fourtytwoways.onion.domain.model.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.model.enumeration.Sex;
+import de.fourtytwoways.onion.infrastructure.provider.enumeration.ExampleEnumRepository;
+import de.fourtytwoways.onion.infrastructure.database.person.ExamplePersonRepository;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -3,11 +3,11 @@ module onion.core.main {
     requires static com.github.spotbugs.annotations;
     requires com.google.common;
 
-    exports de.fourtytwoways.onion.domain.entities.contract;
-    exports de.fourtytwoways.onion.domain.entities.document;
-    exports de.fourtytwoways.onion.domain.entities.event;
-    exports de.fourtytwoways.onion.domain.entities.person;
-    exports de.fourtytwoways.onion.domain.usecases.contract;
-    exports de.fourtytwoways.onion.domain.values;
-    exports de.fourtytwoways.onion.domain.values.enumeration;
+    exports de.fourtytwoways.onion.domain.model.contract;
+    exports de.fourtytwoways.onion.domain.model.document;
+    exports de.fourtytwoways.onion.domain.event;
+    exports de.fourtytwoways.onion.domain.model.person;
+    exports de.fourtytwoways.onion.domain.usecase.contract;
+    exports de.fourtytwoways.onion.domain.model.enumeration;
+    exports de.fourtytwoways.onion.domain.model.asset;
 }

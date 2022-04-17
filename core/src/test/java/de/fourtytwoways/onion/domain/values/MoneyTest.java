@@ -1,6 +1,7 @@
 package de.fourtytwoways.onion.domain.values;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
+import de.fourtytwoways.onion.domain.model.asset.Money;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

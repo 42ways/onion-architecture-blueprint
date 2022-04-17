@@ -9,8 +9,8 @@ module onion.infrastructure.main {
     requires onion.core.main;
     requires com.google.common;
 
-    exports de.fourtytwoways.onion.infrastructure.database.contracts;
-    exports de.fourtytwoways.onion.infrastructure.adapter.documents;
-    exports de.fourtytwoways.onion.infrastructure.provider.enums;
-    exports de.fourtytwoways.onion.infrastructure.database.people;
+    exports de.fourtytwoways.onion.infrastructure.database.contract;
+    exports de.fourtytwoways.onion.infrastructure.adapter.document;
+    exports de.fourtytwoways.onion.infrastructure.provider.enumeration;
+    exports de.fourtytwoways.onion.infrastructure.database.person;
 }

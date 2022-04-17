@@ -1,23 +1,23 @@
 package de.fourtytwoways.onion;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
-import de.fourtytwoways.onion.application.repositories.*;
-import de.fourtytwoways.onion.application.usecases.contract.ChangePremiumService;
-import de.fourtytwoways.onion.application.usecases.document.ContractChangedDocumentService;
-import de.fourtytwoways.onion.domain.entities.contract.Contract;
-import de.fourtytwoways.onion.domain.entities.event.DomainEventPublisher;
-import de.fourtytwoways.onion.domain.entities.person.Person;
-import de.fourtytwoways.onion.domain.usecases.contract.ContractCalculation;
-import de.fourtytwoways.onion.domain.usecases.contract.ContractDurationChange;
-import de.fourtytwoways.onion.domain.values.Money;
-import de.fourtytwoways.onion.domain.values.enumeration.ComputationTarget;
-import de.fourtytwoways.onion.domain.values.enumeration.EnumType;
-import de.fourtytwoways.onion.domain.values.enumeration.Product;
-import de.fourtytwoways.onion.domain.values.enumeration.Sex;
-import de.fourtytwoways.onion.infrastructure.database.contracts.ExampleContractRepository;
-import de.fourtytwoways.onion.infrastructure.adapter.documents.ExampleDocumentRepository;
-import de.fourtytwoways.onion.infrastructure.provider.enums.ExampleEnumRepository;
-import de.fourtytwoways.onion.infrastructure.database.people.ExamplePersonRepository;
+import de.fourtytwoways.onion.application.repository.*;
+import de.fourtytwoways.onion.application.usecase.contract.ChangePremiumService;
+import de.fourtytwoways.onion.application.usecase.document.ContractChangedDocumentService;
+import de.fourtytwoways.onion.domain.model.contract.Contract;
+import de.fourtytwoways.onion.domain.event.DomainEventPublisher;
+import de.fourtytwoways.onion.domain.model.person.Person;
+import de.fourtytwoways.onion.domain.usecase.contract.ContractCalculation;
+import de.fourtytwoways.onion.domain.usecase.contract.ContractDurationChange;
+import de.fourtytwoways.onion.domain.model.asset.Money;
+import de.fourtytwoways.onion.domain.model.enumeration.ComputationTarget;
+import de.fourtytwoways.onion.domain.model.enumeration.EnumType;
+import de.fourtytwoways.onion.domain.model.enumeration.Product;
+import de.fourtytwoways.onion.domain.model.enumeration.Sex;
+import de.fourtytwoways.onion.infrastructure.database.contract.ExampleContractRepository;
+import de.fourtytwoways.onion.infrastructure.adapter.document.ExampleDocumentRepository;
+import de.fourtytwoways.onion.infrastructure.provider.enumeration.ExampleEnumRepository;
+import de.fourtytwoways.onion.infrastructure.database.person.ExamplePersonRepository;
 
 import java.time.LocalDate;
 import java.util.logging.Level;
