@@ -57,6 +57,13 @@ All dependencies are specified in the gradle configuration and build files.
 Please refer to this actual source of truth regarding the current dependencies,
 since this README might be out of date.
 
+### Domain functionality
+
+Our example domains are simplified insurance contracts and people with addresses and bank accounts.
+
+For the later we use the library [iban4j.org](https://github.com/arturmkrtchyan/iban4j)
+to validate and create iban and bic objects.
+
 ### Annotations and libraries
 
 The project uses JPA for persistence (only in the infrastructure layer),
