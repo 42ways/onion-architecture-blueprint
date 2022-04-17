@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.domain.values;
+package de.fourtytwoways.onion.domain.model.asset;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.model.asset.Money;

@@ -1,4 +1,4 @@
-package de.fourtytwoways.onion.domain.model.event;
+package de.fourtytwoways.onion.domain.event;
 // (c) 2022 Thomas Herrmann, 42ways GmbH
 
 import de.fourtytwoways.onion.domain.event.DomainEvent;
