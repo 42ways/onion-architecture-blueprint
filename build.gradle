@@ -13,14 +13,12 @@ subprojects {
 project.tasks.getByName("archidoc").dependsOn getTasksByName("build", true)
 archidoc {
     file "$buildDir/architecture/classdiagram.dot"
-    packages = ['de.fourtytwoways.onion.domain.entities.person',
-                'de.fourtytwoways.onion.domain.usecases.person',
-                'de.fourtytwoways.onion.application.usecases.person',
-                'de.fourtytwoways.onion.infrastructure.people.db']
-//    packages = ['de.fourtytwoways.onion.domain.entities.contract',
-//                'de.fourtytwoways.onion.domain.usecases.contract',
-//                'de.fourtytwoways.onion.application.usecases.contract',
-//                'de.fourtytwoways.onion.infrastructure.contracts.db']
+    packages = ['de.fourtytwoways.onion.domain.model.person',
+                'de.fourtytwoways.onion.infrastructure.database.person']
+//    packages = ['de.fourtytwoways.onion.domain.model.contract',
+//                'de.fourtytwoways.onion.domain.usecase.contract',
+//                'de.fourtytwoways.onion.application.usecase.contract',
+//                'de.fourtytwoways.onion.infrastructure.database.contract']
     multiProject(true)
     // Comment/Uncomment the following options to configure diagram creation
     enableAllInfo()
