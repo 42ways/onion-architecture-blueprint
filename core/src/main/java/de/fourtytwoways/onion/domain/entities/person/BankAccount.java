@@ -12,4 +12,18 @@ public record BankAccount(int id,
                           @With @NonNull String bankName,
                           @With @NonNull String iban,
                           @With @NonNull String bic) {
+
+    public interface Validator {
+        boolean validate(String iban, String bic);
+    }
+
+    public static BankAccount.Validator validator = null;
+
+    public BankAccount {
+        if (validator != null && !validator.validate(iban, bic)) {
+            throw new java.lang.IllegalArgumentException(
+                    String.format("Invalid IBAN (%s) or BIC (%)", iban, bic));
+        }
+    }
+
 }
