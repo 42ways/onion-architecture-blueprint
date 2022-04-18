@@ -13,8 +13,9 @@ subprojects {
 project.tasks.getByName("archidoc").dependsOn getTasksByName("build", true)
 archidoc {
     file "$buildDir/architecture/classdiagram.dot"
-    packages = ['de.fourtytwoways.onion.domain.model.person',
-                'de.fourtytwoways.onion.infrastructure.database.person']
+    packages = ['de.fourtytwoways.onion']
+//    packages = ['de.fourtytwoways.onion.domain.model.person',
+//                'de.fourtytwoways.onion.infrastructure.database.person']
 //    packages = ['de.fourtytwoways.onion.domain.model.contract',
 //                'de.fourtytwoways.onion.domain.usecase.contract',
 //                'de.fourtytwoways.onion.application.usecase.contract',
