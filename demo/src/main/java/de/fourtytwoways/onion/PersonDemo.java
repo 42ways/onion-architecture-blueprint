@@ -17,8 +17,9 @@ import org.iban4j.Iban;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PersonDemo {
 
@@ -32,7 +33,10 @@ public class PersonDemo {
     }
 
     public static void main(String[] args) {
-        Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.SEVERE);
+
+        Logger logger = LoggerFactory.getLogger(ContractDemo.class);
+        logger.info("PersonDemo started");
 
         registerRepos();
 

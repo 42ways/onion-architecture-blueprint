@@ -6,8 +6,8 @@ import de.fourtytwoways.onion.domain.model.enumeration.EnumType;
 import de.fourtytwoways.onion.domain.model.enumeration.EnumValue;
 import de.fourtytwoways.onion.infrastructure.provider.enumeration.ExampleEnumRepository;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EnumDemo {
 
@@ -20,7 +20,10 @@ public class EnumDemo {
     }
 
     public static void main(String[] args) {
-        Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.SEVERE);
+
+        Logger logger = LoggerFactory.getLogger(ContractDemo.class);
+        logger.info("EnumDemo started");
 
         EnumRepository myEnumRepository = new ExampleEnumRepository();
 

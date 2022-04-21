@@ -20,8 +20,9 @@ import de.fourtytwoways.onion.infrastructure.provider.enumeration.ExampleEnumRep
 import de.fourtytwoways.onion.infrastructure.database.person.ExamplePersonRepository;
 
 import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ContractDemo {
 
@@ -41,7 +42,10 @@ public class ContractDemo {
     }
 
     public static void main(String[] args) {
-        Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.SEVERE);
+
+        Logger logger = LoggerFactory.getLogger(ContractDemo.class);
+        logger.info("ContractDemo started");
 
         registerReposAndEventPublishers();
 
