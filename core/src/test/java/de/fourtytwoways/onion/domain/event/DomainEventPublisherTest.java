@@ -6,6 +6,8 @@ import de.fourtytwoways.onion.domain.event.DomainEventPublisher;
 import de.fourtytwoways.onion.domain.event.DomainEventSubscriber;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DomainEventPublisherTest {
@@ -22,7 +24,9 @@ class DomainEventPublisherTest {
     @Test
     void clearSubscribers() {
         final int[] counter = {0};
-        final DomainEvent domainEvent = new DomainEvent(){};
+        record MyDomainEvent(LocalDate occurredOn) implements DomainEvent{}
+        final DomainEvent domainEvent = new MyDomainEvent(LocalDate.of(2022,4,1));
+
         DomainEventPublisher domainEventPublisher = DomainEventPublisher.getInstance();
         assertEquals(0, counter[0]);
         domainEventPublisher.subscribe(new DomainEventSubscriber() {
@@ -48,7 +52,9 @@ class DomainEventPublisherTest {
     @Test
     void subscribeAndPublish() {
         final int[] counter = {0};
-        final DomainEvent domainEvent = new DomainEvent(){};
+        record MyDomainEvent(LocalDate occurredOn) implements DomainEvent{}
+        final DomainEvent domainEvent = new MyDomainEvent(LocalDate.of(2022,4,1));
+
         DomainEventPublisher domainEventPublisher = DomainEventPublisher.getInstance();
         assertEquals(0, counter[0]);
         domainEventPublisher.subscribe(new DomainEventSubscriber() {

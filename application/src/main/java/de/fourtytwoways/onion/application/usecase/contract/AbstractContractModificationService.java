@@ -6,6 +6,7 @@ import de.fourtytwoways.onion.application.repository.RepositoryRegistry;
 import de.fourtytwoways.onion.domain.model.contract.Contract;
 import de.fourtytwoways.onion.domain.event.DomainEventPublisher;
 
+import java.time.LocalDate;
 import java.util.function.Function;
 
 abstract class AbstractContractModificationService {
@@ -15,7 +16,7 @@ abstract class AbstractContractModificationService {
         if ( contract != null ) {
             Contract modifiedContract =
                     contractRepository.saveContract(contractModificationFunction.apply(contract));
-            DomainEventPublisher.getInstance().publish(new ContractValuesChanged(modifiedContract));
+            DomainEventPublisher.getInstance().publish(new ContractValuesChanged(LocalDate.now(), modifiedContract));
             return modifiedContract;
         }
         else

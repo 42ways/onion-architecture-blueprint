@@ -4,5 +4,7 @@ package de.fourtytwoways.onion.application.usecase.contract;
 import de.fourtytwoways.onion.domain.model.contract.Contract;
 import de.fourtytwoways.onion.domain.event.DomainEvent;
 
-public record ContractValuesChanged(Contract modifiedContract) implements DomainEvent {
+import java.time.LocalDate;
+
+public record ContractValuesChanged(LocalDate occurredOn, Contract modifiedContract) implements DomainEvent {
 }
